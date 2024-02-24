@@ -1,13 +1,13 @@
-import IO.Teclado;
-import Model.Entitys.Usuario;
-import Model.Proyectos.tipoRol;
+import View.View;
 
 public class Main {
     public static void main(String[] args) {
-
-        Teclado.leeString("Introduce algo");
-
-
+        View view = new View();
+        int opcion =0;
+        do{
+            view.menuRegistroUsuario();
+            opcion ++;
+        }while (opcion <2);
 
     }
 }
