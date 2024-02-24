@@ -5,7 +5,9 @@ package IO;
 
 import Interfaces.iTeclado;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class Teclado implements iTeclado {
     private static Scanner teclado = new Scanner(System.in);
@@ -13,14 +15,25 @@ public class Teclado implements iTeclado {
     public static String leeString(String cadena) {
         String cadenaUsuario;
         System.out.println(cadena);
-        cadenaUsuario=teclado.nextLine();
+        cadenaUsuario = teclado.nextLine();
         return cadenaUsuario;
     }
 
     public static int leeEntero(String cadena) {
-        int numeroUsuario;
-        System.out.println(cadena);
-        numeroUsuario=teclado.nextInt();
+        int numeroUsuario = 0;
+        boolean entradaValida = false;
+
+        do {
+            try {
+                System.out.println(cadena);
+                numeroUsuario = teclado.nextInt();
+                entradaValida = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Introduce un número válido.");
+                teclado.nextLine();
+            }
+        } while (!entradaValida);
+
         return numeroUsuario;
     }
 
