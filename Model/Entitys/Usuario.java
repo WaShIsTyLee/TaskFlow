@@ -1,7 +1,5 @@
 package Model.Entitys;
 
-import Model.Proyectos.tipoRol;
-
 import java.util.Objects;
 
 public class Usuario {
@@ -18,6 +16,10 @@ public class Usuario {
         this.correo = correo;
         this.codigo = codigo;
     }
+    public Usuario(){
+        this("","","","","");
+    }
+
 
 
     public String getNombre() {
@@ -48,6 +50,7 @@ public class Usuario {
     public String getCorreo() {
         return correo;
     }
+
     //Tocar este set para que no se puedan guardar 2 correos iguales
     public void setCorreo(String correo) {
 
@@ -82,4 +85,10 @@ public class Usuario {
     }
 
     //Falta un hashcode para la contraseña
+
+
+
+
+
+
 }

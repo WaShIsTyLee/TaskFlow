@@ -1,7 +1,15 @@
 package Interfaces;
 
 public interface iTeclado {
-    String leeString();
-    int leeEntero();
-    void imprimirCadena();
+    static String leeString(String cadena) {
+        return null;
+    }
+
+    static int leeEntero(String cadena) {
+        return 0;
+    }
+
+    static void imprimirCadena(String cadena) {
+
+    }
 }
