@@ -10,14 +10,15 @@ import java.util.Scanner;
 
 
 public class Teclado implements iTeclado {
-    private static Scanner teclado = new Scanner(System.in);
+        private static Scanner teclado = new Scanner(System.in);
 
-    public static String leeString(String cadena) {
-        String cadenaUsuario;
-        System.out.println(cadena);
-        cadenaUsuario = teclado.nextLine();
-        return cadenaUsuario;
-    }
+        public static String leeString(String cadena) {
+            String cadenaUsuario;
+            System.out.println(cadena);
+            cadenaUsuario = teclado.next();
+            return cadenaUsuario;
+        }
+
 
     public static int leeEntero(String cadena) {
         int numeroUsuario = 0;
@@ -25,7 +26,6 @@ public class Teclado implements iTeclado {
 
         do {
             try {
-                System.out.println(cadena);
                 numeroUsuario = teclado.nextInt();
                 entradaValida = true;
             } catch (InputMismatchException e) {
@@ -37,7 +37,8 @@ public class Teclado implements iTeclado {
         return numeroUsuario;
     }
 
-    public static void imprimirCadena(String cadena) {
-        System.out.println(cadena);
+        public static void imprimirCadena(String cadena) {
+            System.out.println(cadena);
+        }
     }
-}
+
