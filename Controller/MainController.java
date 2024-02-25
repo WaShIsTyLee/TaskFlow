@@ -13,6 +13,7 @@ public class MainController implements iController {
     @Override
     public void switchMenuRegistroInicioSesion() {
         int opcion = 0;
+
         do {
                 opcion = view.menuRegistroInicioSesion();
                 switch (opcion) {
@@ -27,4 +28,6 @@ public class MainController implements iController {
                 }
         } while (!(opcion == 1 || opcion == 2));
     }
+
 }
+

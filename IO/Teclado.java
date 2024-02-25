@@ -8,6 +8,7 @@ import Interfaces.iTeclado;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
 public class Teclado implements iTeclado {
         private static Scanner teclado = new Scanner(System.in);
 
@@ -17,6 +18,7 @@ public class Teclado implements iTeclado {
             cadenaUsuario = teclado.next();
             return cadenaUsuario;
         }
+
 
     public static int leeEntero(String cadena) {
         int numeroUsuario = 0;
