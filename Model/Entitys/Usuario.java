@@ -65,6 +65,12 @@ public class Usuario {
         this.codigo = codigo;
     }
 
+    public static boolean validarCorreo(String email) {
+
+        return email.matches("^([\\w-]+\\.)*?[\\w-]+@[\\w-]+\\.([\\w-]+\\.)*?[\\w]+$");
+
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
