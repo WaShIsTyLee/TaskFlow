@@ -99,6 +99,51 @@ public class View implements iView {
 
     @Override
     public int tareasProyecto() {
-        return 0;
+        int opcion = 0;
+        boolean entradaValida = false;
+
+        do {
+            Teclado.imprimirCadena("Menú de Tareas del Proyecto");
+            Teclado.imprimirCadena("1. Crear tarea");
+            Teclado.imprimirCadena("2. Editar tarea");
+            Teclado.imprimirCadena("3. Eliminar tarea");
+            Teclado.imprimirCadena("4. Ver lista de tareas");
+            Teclado.imprimirCadena("5. Volver al menú principal");
+            opcion = Teclado.leeEntero("");
+
+            switch (opcion) {
+                case 1:
+                    // Lógica para crear una nueva tarea
+                    Teclado.imprimirCadena("Creando nueva tarea...");
+                    entradaValida = true;
+                    break;
+                case 2:
+                    // Lógica para editar una tarea existente
+                    Teclado.imprimirCadena("Editando tarea...");
+                    entradaValida = true;
+                    break;
+                case 3:
+                    // Lógica para eliminar una tarea existente
+                    Teclado.imprimirCadena("Eliminando tarea...");
+                    entradaValida = true;
+                    break;
+                case 4:
+                    // Lógica para mostrar la lista de tareas del proyecto
+                    Teclado.imprimirCadena("Lista de tareas del proyecto:");
+                    // Aquí iterar sobre la lista de tareas y mostrarlas
+                    entradaValida = true;
+                    break;
+                case 5:
+                    // Volver al menú principal
+                    entradaValida = true;
+                    break;
+                default:
+                    Teclado.imprimirCadena("Error, introduce un número válido.");
+            }
+
+        } while (!entradaValida);
+
+        return opcion;
     }
+
 }
