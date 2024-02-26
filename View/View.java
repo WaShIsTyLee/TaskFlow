@@ -63,8 +63,14 @@ public class View implements iView {
         while (!credencialesValidas) {
             nombre = Teclado.leeString("Introduzca su nombre completo");
             usuario = Teclado.leeString("Introduzca su nombre de Usuario");
-            correo = Teclado.leeString("Introduzca su gmail");
+            correo = Teclado.leeString("Introduzca su email");
+
             //VALIDACION CORREO CREAR FUNCION
+            while(!Usuario.validarCorreo(correo)){
+                Teclado.imprimirCadena("Correo no válido");
+                correo = Teclado.leeString("Introduzca su email");
+            }
+
             contraseña = Teclado.leeString("Introduzca su contraseña");
 
             // Verificar si el nombre de usuario o el correo ya están registrados
@@ -77,6 +83,22 @@ public class View implements iView {
                 menuRegistroInicioSesion();
             }
         }
+
         return usuarioRegistrado;
+    }
+
+    @Override
+    public void mensajeBienvenidaTaskFlow() {
+
+    }
+
+    @Override
+    public int eleccionCRUD() {
+        return 0;
+    }
+
+    @Override
+    public int tareasProyecto() {
+        return 0;
     }
 }
