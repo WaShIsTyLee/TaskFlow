@@ -7,6 +7,25 @@ import Model.Entitys.Usuario;
 
 
 public class View implements iView {
+
+    @Override
+    public void mensajesDeInicio() {
+
+        Teclado.imprimirCadena(" ____o__ __o____                           o        o__ __o__/_   o                                   \n" +
+                "  /   \\   /   \\                           <|>      <|    v       <|>                                  \n" +
+                "       \\o/                                / \\      < >           / \\                                  \n" +
+                "        |            o__ __o/      __o__  \\o/  o/   |            \\o/    o__ __o     o              o  \n" +
+                "       < >          /v     |      />  \\    |  /v    o__/_         |    /v     v\\   <|>            <|> \n" +
+                "        |          />     / \\     \\o      / \\/>     |            / \\  />       <\\  < >            < > \n" +
+                "        o          \\      \\o/      v\\     \\o/\\o    <o>           \\o/  \\         /   \\o    o/\\o    o/  \n" +
+                "       <|           o      |        <\\     |  v\\    |             |    o       o     v\\  /v  v\\  /v   \n" +
+                "       / \\          <\\__  / \\  _\\o__</    / \\  <\\  / \\           / \\   <\\__ __/>      <\\/>    <\\/>    \n" +
+                "                                                                                                      \n" +
+                "                                                                                                      \n" +
+                "                                                                                                      ");
+
+    }
+
     @Override
     public int menuRegistroInicioSesion() {
         int opcion;

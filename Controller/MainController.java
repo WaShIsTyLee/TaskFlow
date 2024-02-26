@@ -9,6 +9,10 @@ public class MainController implements iController {
 
     View view = new View();
 
+    public void mensajesDeInicio(){
+
+    }
+
     @Override
     public void switchMenuRegistroInicioSesion() {
         int opcion;
