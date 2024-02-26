@@ -44,5 +44,3 @@ public class Teclado implements iTeclado {
         System.out.println(cadena);
     }
 }
-
-

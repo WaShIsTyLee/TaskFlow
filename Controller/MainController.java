@@ -10,15 +10,18 @@ public class MainController implements iController {
     Usuario usuario = new Usuario();
 
 
+
     @Override
     public void switchMenuRegistroInicioSesion() {
         int opcion = 0;
 
         do {
                 opcion = view.menuRegistroInicioSesion();
+
                     switch (opcion) {
                     case 1:
                         view.menuIniciarSesion();
+                        view.mensajesDeInicio();
                         break;
                     case 2:
                         view.menuRegistroUsuario();
