@@ -10,14 +10,16 @@ import java.util.Scanner;
 
 
 public class Teclado implements iTeclado {
-        private static Scanner teclado = new Scanner(System.in);
+    private static Scanner teclado = new Scanner(System.in);
+    private static Scanner tecladonumeros = new Scanner(System.in);
 
-        public static String leeString(String cadena) {
-            String cadenaUsuario;
-            System.out.println(cadena);
-            cadenaUsuario = teclado.next();
-            return cadenaUsuario;
-        }
+    public static String leeString(String cadena) {
+
+        String cadenaUsuario;
+        System.out.println(cadena);
+        cadenaUsuario = teclado.nextLine();
+        return cadenaUsuario;
+    }
 
 
     public static int leeEntero(String cadena) {
@@ -26,19 +28,21 @@ public class Teclado implements iTeclado {
 
         do {
             try {
-                numeroUsuario = teclado.nextInt();
+                numeroUsuario = tecladonumeros.nextInt();
                 entradaValida = true;
             } catch (InputMismatchException e) {
                 System.out.println("Error: Introduce un número válido.");
-                teclado.nextLine();
+                teclado.nextInt();
             }
         } while (!entradaValida);
+
 
         return numeroUsuario;
     }
 
-        public static void imprimirCadena(String cadena) {
-            System.out.println(cadena);
-        }
+    public static void imprimirCadena(String cadena) {
+        System.out.println(cadena);
     }
+}
+
 

@@ -16,7 +16,7 @@ public class MainController implements iController {
 
         do {
                 opcion = view.menuRegistroInicioSesion();
-                switch (opcion) {
+                    switch (opcion) {
                     case 1:
                         view.menuIniciarSesion();
                         break;

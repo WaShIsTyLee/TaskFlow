@@ -11,4 +11,10 @@ public interface iView {
     Usuario menuRegistroUsuario();
         //Registrar usuario con los setter
 
+    void mensajeBienvenidaTaskFlow();
+     // BIENVENIDO A TASKFLOW (NOMBRE APP)
+    int eleccionCRUD();
+    //1 listar proyecto 2 crear proyecto 3 Borrar proyecto 4 Organizar tareas 5 Salir y guardar(Serializador)
+    int tareasProyecto();
+    //1 Tareas de mi proecto(Assignar Tareas) 2 Ver tareas como coloaborador
 }

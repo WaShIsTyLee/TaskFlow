@@ -31,7 +31,6 @@ public class Archivo {
      * @param usuariosRegistrados
      * @return
      */
-
     private static boolean usuarioRegistrado(String nombreUsuario, String correo, String usuariosRegistrados) {
         boolean usuarioRegistrado = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
@@ -50,6 +49,7 @@ public class Archivo {
 
     /**
      * Logica para leer el archivo usuariosRegistrados y dar acceso al iniciar sesion
+     *
      * @param usuariosRegistrados Nombre del archivo donde se encuentran los usuarios registrados
      * @param nombreUsuario       Nombre de usuario a verificar
      * @param contraseña          Contraseña a verificar
@@ -61,8 +61,13 @@ public class Archivo {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-                if (partes.length >= 3 && partes[1].equals(nombreUsuario) && partes[2].equals(contraseña)) {
-                    credencialesValidas = true;
+                if (partes.length >= 3) {
+                    String usuarioRegistrado = partes[1].trim();
+                    String contraseñaRegistrada = partes[2].trim();
+                    if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(contraseña)) {
+                        credencialesValidas = true;
+                        break;
+                    }
                 }
             }
         } catch (IOException e) {
