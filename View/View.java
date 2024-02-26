@@ -114,13 +114,16 @@ public class View implements iView {
     public int eleccionCRUD() {
         int op = -1;
         boolean entradaValida = false;
+
         do {
-            Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+            Teclado.imprimirCadena("Elige la opción que desees usar: ");
             Teclado.imprimirCadena("1. Listar proyecto");
             Teclado.imprimirCadena("2. Crear proyecto");
             Teclado.imprimirCadena("3. Borrar proyecto");
             Teclado.imprimirCadena("4. Organizar tareas");
             Teclado.imprimirCadena("5. Salir y guardar");
+            op = Teclado.leeEntero(""); // Leer la entrada del usuario para actualizar op
+
             switch (op) {
                 case 1:
                     Teclado.imprimirCadena("Listando proyectos...");
@@ -139,24 +142,25 @@ public class View implements iView {
                     entradaValida = true;
                     break;
                 case 5:
-
                     Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
                     entradaValida = true;
+                    menuRegistroInicioSesion();
                     break;
                 default:
-                    Teclado.imprimirCadena("Error, introduce un numero entre 1 y 5.");
+                    Teclado.imprimirCadena("Error, introduce un número entre 1 y 5.");
             }
         } while (!entradaValida);
 
         return op;
     }
 
+
     @Override
     public int tareasProyecto() {
-        int opcion = 0;
-        boolean entradaValida = false;
+        int opcion = -1;
+        boolean volverAlMenuPrincipal = false;
 
-        do {
+        while (!volverAlMenuPrincipal) {
             Teclado.imprimirCadena("Menú de Tareas del Proyecto");
             Teclado.imprimirCadena("1. Crear tarea");
             Teclado.imprimirCadena("2. Editar tarea");
@@ -169,34 +173,31 @@ public class View implements iView {
                 case 1:
                     // Lógica para crear una nueva tarea
                     Teclado.imprimirCadena("Creando nueva tarea...");
-                    entradaValida = true;
                     break;
                 case 2:
                     // Lógica para editar una tarea existente
                     Teclado.imprimirCadena("Editando tarea...");
-                    entradaValida = true;
                     break;
                 case 3:
                     // Lógica para eliminar una tarea existente
                     Teclado.imprimirCadena("Eliminando tarea...");
-                    entradaValida = true;
                     break;
                 case 4:
                     // Lógica para mostrar la lista de tareas del proyecto
                     Teclado.imprimirCadena("Lista de tareas del proyecto:");
                     // Aquí iterar sobre la lista de tareas y mostrarlas
-                    entradaValida = true;
                     break;
                 case 5:
-                    // Volver al menú principal
-                    entradaValida = true;
+                    // Establece la variable para volver al menú principal y salir del bucle
+                    volverAlMenuPrincipal = true;
+                    eleccionCRUD();
                     break;
                 default:
                     Teclado.imprimirCadena("Error, introduce un número válido.");
             }
+        }
 
-        } while (!entradaValida);
-
+        // Retorna la opción seleccionada del menú principal
         return opcion;
     }
 
