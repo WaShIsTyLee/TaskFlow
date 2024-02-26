@@ -19,10 +19,9 @@ public class View implements iView {
                 "        |          />     / \\     \\o      / \\/>     |            / \\  />       <\\  < >            < > \n" +
                 "        o          \\      \\o/      v\\     \\o/\\o    <o>           \\o/  \\         /   \\o    o/\\o    o/  \n" +
                 "       <|           o      |        <\\     |  v\\    |             |    o       o     v\\  /v  v\\  /v   \n" +
-                "       / \\          <\\__  / \\  _\\o__</    / \\  <\\  / \\           / \\   <\\__ __/>      <\\/>    <\\/>    \n" +
-                "                                                                                                      \n" +
-                "                                                                                                      \n" +
-                "                                                                                                      ");
+                "       / \\          <\\__  / \\  _\\o__</    / \\  <\\  / \\           / \\   <\\__ __/>      <\\/>    <\\/>    \n");
+        Teclado.imprimirCadena("");
+        Teclado.imprimirCadena("Bienvenido a TaskFlow...");
     }
 
     @Override
@@ -31,22 +30,23 @@ public class View implements iView {
         boolean entradaValida = false;
 
         do {
-            System.out.println("Elige la opcion que desees usar: ");
-            System.out.println("1. Iniciar Sesión");
-            System.out.println("2. Registrarse");
+            Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+            Teclado.imprimirCadena("1. Iniciar Sesión");
+            Teclado.imprimirCadena("2. Registrarse");
+
             opcion = Teclado.leeEntero("");
 
             switch (opcion) {
                 case 1:
-                    System.out.println("Iniciando Sesión...");
+                    Teclado.imprimirCadena("Iniciando Sesión...");
                     entradaValida = true;
                     break;
                 case 2:
-                    System.out.println("Registrándose...");
+                    Teclado.imprimirCadena("Registrándose...");
                     entradaValida = true;
                     break;
                 default:
-                    System.out.println("Error, introduce 1 o 2.");
+                    Teclado.imprimirCadena("Error, introduce 1 o 2.");
             }
 
         } while (!entradaValida);
@@ -62,9 +62,9 @@ public class View implements iView {
         String usuario = Teclado.leeString("Introduzca su Usuario:");
         String contraseña = Teclado.leeString("Introduzca su contraseña");
         if (Archivo.verificarCredenciales("usuariosRegistrados", usuario, contraseña)) {
-            System.out.println("LOGEANDOTE CRUCK");
+            Teclado.imprimirCadena("LOGEANDOTE CRUCK");
         } else {
-            System.out.println("No estas logeado en la web");
+            Teclado.imprimirCadena("No estas logeado en la web");
         }
 
 
@@ -81,8 +81,14 @@ public class View implements iView {
         while (!credencialesValidas) {
             nombre = Teclado.leeString("Introduzca su nombre completo");
             usuario = Teclado.leeString("Introduzca su nombre de Usuario");
-            correo = Teclado.leeString("Introduzca su gmail");
+            correo = Teclado.leeString("Introduzca su email");
+
             //VALIDACION CORREO CREAR FUNCION
+            while (!Usuario.validarCorreo(correo)) {
+                Teclado.imprimirCadena("Correo no válido");
+                correo = Teclado.leeString("Introduzca su email");
+            }
+
             contraseña = Teclado.leeString("Introduzca su contraseña");
 
             // Verificar si el nombre de usuario o el correo ya están registrados
@@ -95,6 +101,7 @@ public class View implements iView {
                 menuRegistroInicioSesion();
             }
         }
+
         return usuarioRegistrado;
     }
 
@@ -108,35 +115,36 @@ public class View implements iView {
         int op = -1;
         boolean entradaValida = false;
         do {
-            System.out.println("Elige la opcion que desees usar: ");
-            System.out.println("1. Listar proyecto");
-            System.out.println("2. Crear proyecto");
-            System.out.println("3. Borrar proyecto");
-            System.out.println("4. Organizar tareas");
-            System.out.println("5. Salir y guardar");
+            Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+            Teclado.imprimirCadena("1. Listar proyecto");
+            Teclado.imprimirCadena("2. Crear proyecto");
+            Teclado.imprimirCadena("3. Borrar proyecto");
+            Teclado.imprimirCadena("4. Organizar tareas");
+            Teclado.imprimirCadena("5. Salir y guardar");
             switch (op) {
                 case 1:
-                    System.out.println("Listando proyectos...");
+                    Teclado.imprimirCadena("Listando proyectos...");
                     entradaValida = true;
                     break;
                 case 2:
-                    System.out.println("Crear proyecto...");
+                    Teclado.imprimirCadena("Crear proyecto...");
                     entradaValida = true;
                     break;
                 case 3:
-                    System.out.println("Borrando proyecto...");
+                    Teclado.imprimirCadena("Borrando proyecto...");
                     entradaValida = true;
                     break;
                 case 4:
-                    System.out.println("Organizando tareas...");
+                    Teclado.imprimirCadena("Organizando tareas...");
                     entradaValida = true;
                     break;
                 case 5:
-                    System.out.println("Saliendo, los cambios se han guardado correctamente.");
+
+                    Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
                     entradaValida = true;
                     break;
                 default:
-                    System.out.println("Error, introduce un numero entre 1 y 5.");
+                    Teclado.imprimirCadena("Error, introduce un numero entre 1 y 5.");
             }
         } while (!entradaValida);
 

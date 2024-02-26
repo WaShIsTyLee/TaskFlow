@@ -13,12 +13,10 @@ public class Serializador {
      */
     public static <T> boolean serialize(T obj, String filename) {
         boolean result = false;
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename)
-        )) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(obj);
             result = true;
         } catch (IOException e) {
-
 
         }
 
@@ -27,15 +25,11 @@ public class Serializador {
 
     public static <T> T deserializer(String filename) {
         T result = null;
-        try (ObjectInputStream ois = new ObjectInputStream(
-                new FileInputStream(filename)
-        )) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             result = (T) ois.readObject();
-
         } catch (IOException | ClassNotFoundException e) {
 
         }
-
 
         return result;
     }
