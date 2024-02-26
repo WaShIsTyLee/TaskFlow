@@ -6,7 +6,7 @@ public class Main {
         MainController mainController = new MainController();
         int opcion=0;
         do {
-            mainController.switchMenuRegistroInicioSesion();
+             mainController.switchMenuRegistroInicioSesion();
             opcion ++;
         }while (opcion !=2);
 
