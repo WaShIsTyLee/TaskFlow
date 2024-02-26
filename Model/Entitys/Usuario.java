@@ -34,7 +34,6 @@ public class Usuario {
         return usuario;
     }
 
-    //Tocar este set para que no se puedan guardar 2 nombres de usuario iguales
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }

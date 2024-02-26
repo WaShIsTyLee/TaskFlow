@@ -5,8 +5,11 @@ import View.View;
 public class Main {
     public static void main(String[] args) {
         MainController mainController = new MainController();
-        View view = new View();
-        view.mensajesDeInicio();
+        int opcion=0;
+        do {
+             mainController.switchMenuRegistroInicioSesion();
+            opcion ++;
+        }while (opcion !=2);
 
     }
 }

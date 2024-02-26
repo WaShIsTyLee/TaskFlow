@@ -23,59 +23,128 @@ public class View implements iView {
                 "                                                                                                      \n" +
                 "                                                                                                      \n" +
                 "                                                                                                      ");
-
     }
 
     @Override
     public int menuRegistroInicioSesion() {
-        int opcion;
-        System.out.println("1. Iniciar Sesion");
-        System.out.println("2. Registrarse");
-        opcion = Teclado.leeEntero("");
+        int opcion = 0;
+        boolean entradaValida = false;
+
         do {
+            System.out.println("Elige la opcion que desees usar: ");
+            System.out.println("1. Iniciar Sesión");
+            System.out.println("2. Registrarse");
+            opcion = Teclado.leeEntero("");
+
             switch (opcion) {
                 case 1:
                     System.out.println("Iniciando Sesión...");
+                    entradaValida = true;
                     break;
                 case 2:
-                    System.out.println("Registrandose...");
+                    System.out.println("Registrándose...");
+                    entradaValida = true;
                     break;
                 default:
                     System.out.println("Error, introduce 1 o 2.");
             }
-            return opcion;
-        }while (opcion !=1 || opcion !=2);
+
+        } while (!entradaValida);
+
+        return opcion;
     }
+
 
     @Override
     public void menuIniciarSesion() {
-        // Tenemos que tocarlo para saber si el user y la contraseña existe
-        System.out.println("Usuario");
-        System.out.println("Contraseña");
+        //TOCAR PARA QUE SE REPITA EL PEDIR USUARIO Y CONTRASEÑA
+        //Logica de comprobar si esta en el archivo ya esta hecha NO TOCAR
+        String usuario = Teclado.leeString("Introduzca su Usuario:");
+        String contraseña = Teclado.leeString("Introduzca su contraseña");
+        if (Archivo.verificarCredenciales("usuariosRegistrados", usuario, contraseña)) {
+            System.out.println("LOGEANDOTE CRUCK");
+        } else {
+            System.out.println("No estas logeado en la web");
+        }
+
+
     }
 
     @Override
     public Usuario menuRegistroUsuario() {
-        boolean aux = false;
-        do {
-            Teclado.imprimirCadena("Introduzca los siguientes datos");
-            String nombre = Teclado.leeString("Introduzca su nombre completo");
-            String usuario = Teclado.leeString("Introduzca su nombre de Usuario");
-            String correo = Teclado.leeString("Introduzca su gmail");
-            String contraseña = Teclado.leeString("Introduzca su contraseña");
 
-            Usuario usuarioRegistrado = null; // Inicializamos como null
+        Teclado.imprimirCadena("Introduzca los siguientes datos");
+        String nombre, usuario, correo, contraseña;
+        Usuario usuarioRegistrado = null;
+        boolean credencialesValidas = false;
 
-            if (!Archivo.verificarCredenciales("usuariosRegistrados", usuario, "", "") &&
-                    !Archivo.verificarCredenciales("usuariosRegistrados", "", "", correo)) {
+        while (!credencialesValidas) {
+            nombre = Teclado.leeString("Introduzca su nombre completo");
+            usuario = Teclado.leeString("Introduzca su nombre de Usuario");
+            correo = Teclado.leeString("Introduzca su gmail");
+            //VALIDACION CORREO CREAR FUNCION
+            contraseña = Teclado.leeString("Introduzca su contraseña");
+
+            // Verificar si el nombre de usuario o el correo ya están registrados
+            if (!Archivo.verificarCredenciales("usuariosRegistrados", usuario, contraseña)) {
                 usuarioRegistrado = new Usuario(nombre, usuario, contraseña, correo, "");
-                Archivo.guardarEnArchivo(usuarioRegistrado.getUsuario(), usuarioRegistrado.getContraseña(), "usuariosRegistrados", usuarioRegistrado.getCorreo());
-                aux = true;
+                Archivo.guardarEnArchivo(usuarioRegistrado.getNombre(), usuarioRegistrado.getUsuario(), usuarioRegistrado.getContraseña(), usuarioRegistrado.getCorreo(), "usuariosRegistrados");
+                credencialesValidas = true;
             } else {
                 System.out.println("El usuario o el correo electrónico ya están en uso. Por favor, elija otro.");
+                menuRegistroInicioSesion();
             }
-            return usuarioRegistrado;
-        } while (aux != false);
+        }
+        return usuarioRegistrado;
+    }
+
+    @Override
+    public void mensajeBienvenidaTaskFlow() {
+        Teclado.imprimirCadena("Bienvenido a TaskFloW");
+    }
+
+    @Override
+    public int eleccionCRUD() {
+        int op = -1;
+        boolean entradaValida = false;
+        do {
+            System.out.println("Elige la opcion que desees usar: ");
+            System.out.println("1. Listar proyecto");
+            System.out.println("2. Crear proyecto");
+            System.out.println("3. Borrar proyecto");
+            System.out.println("4. Organizar tareas");
+            System.out.println("5. Salir y guardar");
+            switch (op) {
+                case 1:
+                    System.out.println("Listando proyectos...");
+                    entradaValida = true;
+                    break;
+                case 2:
+                    System.out.println("Crear proyecto...");
+                    entradaValida = true;
+                    break;
+                case 3:
+                    System.out.println("Borrando proyecto...");
+                    entradaValida = true;
+                    break;
+                case 4:
+                    System.out.println("Organizando tareas...");
+                    entradaValida = true;
+                    break;
+                case 5:
+                    System.out.println("Saliendo, los cambios se han guardado correctamente.");
+                    entradaValida = true;
+                    break;
+                default:
+                    System.out.println("Error, introduce un numero entre 1 y 5.");
+            }
+        } while (!entradaValida);
+
+        return op;
+    }
+
+    @Override
+    public int tareasProyecto() {
+        return 0;
     }
 }
-
