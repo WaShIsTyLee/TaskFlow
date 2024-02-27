@@ -1,0 +1,109 @@
+package Model.Archivos;
+
+import IO.Teclado;
+import Model.Entitys.Usuario;
+import View.View;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Archivo {
+    /**
+     * Logica para guardar Usuarios en un archivo llamado usuariosRegistrados
+     *
+     * @param nombreUsuario       Nombre de usuario a guardar
+     * @param contraseña          Contraseña a guardar
+     * @param usuariosRegistrados Nombre del archivo donde se guardarán los usuarios
+     */
+    public static void guardarEnArchivo(String nombre, String nombreUsuario, String contraseña, String correo, String usuariosRegistrados) {
+        if (usuarioRegistrado(nombreUsuario, correo, usuariosRegistrados)) {
+            System.out.println("El nombre de usuario o el correo ya están registrados.");
+        }
+        try (FileWriter writer = new FileWriter(usuariosRegistrados, true)) {
+            writer.write(nombre + "," + nombreUsuario + "," + contraseña + "," + correo + "\n");
+            System.out.println("Usuario registrado correctamente.");
+        } catch (IOException e) {
+            System.out.println("Error al guardar usuario en el archivo: " + e.getMessage());
+        }
+    }
+
+    /**
+     * @param nombreUsuario
+     * @param correo
+     * @param usuariosRegistrados
+     * @return
+     */
+    private static boolean usuarioRegistrado(String nombreUsuario, String correo, String usuariosRegistrados) {
+        boolean usuarioRegistrado = false;
+        try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] datos = linea.split(",");
+                if (datos.length >= 3 && (datos[1].equals(nombreUsuario) || datos[3].equals(correo))) {
+                    usuarioRegistrado = true;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+        return usuarioRegistrado;
+    }
+
+    /**
+     * Logica para leer el archivo usuariosRegistrados y dar acceso al iniciar sesion
+     *
+     * @param usuariosRegistrados Nombre del archivo donde se encuentran los usuarios registrados
+     * @param nombreUsuario       Nombre de usuario a verificar
+     * @param contraseña          Contraseña a verificar
+     * @return true si las credenciales son válidas, false si no lo son
+     */
+
+
+    public static boolean verificarCredenciales(String usuariosRegistrados, String nombreUsuario, String contraseña) {
+        boolean credencialesValidas = false;
+        try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+                if (partes.length >= 3) {
+                    String usuarioRegistrado = partes[1].trim();
+                    String contraseñaRegistrada = partes[2].trim();
+                    if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(contraseña)) {
+                        credencialesValidas = true;
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+        return credencialesValidas;
+    }
+    public static void login(String usuario,String contraseña){
+        if (Archivo.verificarCredenciales("usuariosRegistrados", usuario, contraseña)) {
+            Teclado.imprimirCadena("LOGEANDOTE CRUCK");
+        } else {
+            Teclado.imprimirCadena("No estas logeado en la web");
+        }
+
+
+    }
+    public static String validacionCorreo( String correo){
+        while (!Usuario.validarCorreo(correo)) {
+            Teclado.imprimirCadena("Correo no válido");
+            correo = Teclado.leeString("Introduzca su email");
+        }
+        return correo;
+    }
+    public static boolean validacionUsuarioCorreo(String usuario,String contraseña, String nombre,String correo,Usuario usuarioRegistrado,boolean credencialesValidas ){
+        if (!Archivo.verificarCredenciales("usuariosRegistrados", usuario, contraseña)) {
+            usuarioRegistrado = new Usuario(nombre, usuario, contraseña, correo, "");
+            Archivo.guardarEnArchivo(usuarioRegistrado.getNombre(), usuarioRegistrado.getUsuario(), usuarioRegistrado.getContraseña(), usuarioRegistrado.getCorreo(), "usuariosRegistrados");
+            credencialesValidas = true;
+        }
+        return credencialesValidas;
+    }
+
+}
