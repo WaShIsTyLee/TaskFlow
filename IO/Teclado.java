@@ -13,7 +13,7 @@ public class Teclado implements iTeclado {
     private static Scanner teclado = new Scanner(System.in);
     private static Scanner tecladonumeros = new Scanner(System.in);
 
-    public static String leeString(String cadena) {
+    public static String leeString(String cadena){
 
         String cadenaUsuario;
         System.out.println(cadena);

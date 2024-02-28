@@ -82,12 +82,12 @@ public class Usuario {
                 '}';
     }
 
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Usuario usuario1)) return false;
-        return Objects.equals(getUsuario(), usuario1.getUsuario()) && Objects.equals(getCorreo(), usuario1.getCorreo());
-    }
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(getUsuario(), usuario.getUsuario()) &&
+                Objects.equals(getCorreo(), usuario.getCorreo());    }
 
     //Falta un hashcode para la contraseña
 
