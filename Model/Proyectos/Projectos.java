@@ -1,6 +1,5 @@
 package Model.Proyectos;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Projectos {

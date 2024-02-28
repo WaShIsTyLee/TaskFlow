@@ -1,41 +1,34 @@
-package IO;
-
-// Funciones de teclado como LeerString, LeerEntero, CambiarContraseña escrita por cmd a Asteriscos,
-// Imprmir por cmd algo
+package IO; // Los nombres de paquete generalmente se escriben en minúsculas
 
 import Interfaces.iTeclado;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+public class Teclado implements iTeclado { // Corrección del nombre de la interfaz y convención de nomenclatura
 
-public class Teclado implements iTeclado {
-    private static Scanner teclado = new Scanner(System.in);
-    private static Scanner tecladonumeros = new Scanner(System.in);
+    private static final Scanner teclado = new Scanner(System.in); // Se define teclado como final porque no se reasigna y para reflejar que es constante
+    private static final Scanner tecladoNumeros = new Scanner(System.in); // Nombres de variables significativos (tecladoNumeros)
 
-    public static String leeString(String cadena) {
+    public static String leeString(String mensaje) { // Cambio de nombre de parámetro a mensaje para mayor claridad
 
-        String cadenaUsuario;
-        System.out.println(cadena);
-        cadenaUsuario = teclado.nextLine();
-        return cadenaUsuario;
+        System.out.println(mensaje); // Cambio de "cadena" a "mensaje" para reflejar su función
+        return teclado.nextLine(); // Simplificación del código, eliminación de la variable cadenaUsuario
     }
 
-
-    public static int leeEntero(String cadena) {
+    public static int leeEntero(String mensaje) {
         int numeroUsuario = 0;
-        boolean entradaValida = false;
 
         do {
             try {
-                numeroUsuario = tecladonumeros.nextInt();
-                entradaValida = true;
+                System.out.println(mensaje); // Cambio de "cadena" a "mensaje" para reflejar su función
+                numeroUsuario = tecladoNumeros.nextInt();
+                break; // Se sale del bucle si la entrada es válida
             } catch (InputMismatchException e) {
                 System.out.println("Error: Introduce un número válido.");
-                teclado.nextInt();
+                tecladoNumeros.next(); // Se limpia el buffer del scanner para evitar un bucle infinito
             }
-        } while (!entradaValida);
-
+        } while (true);
 
         return numeroUsuario;
     }

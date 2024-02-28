@@ -97,7 +97,7 @@ public class View implements iView {
                 Archivo.guardarEnArchivo(usuarioRegistrado.getNombre(), usuarioRegistrado.getUsuario(), usuarioRegistrado.getContraseña(), usuarioRegistrado.getCorreo(), "usuariosRegistrados");
                 credencialesValidas = true;
             } else {
-                System.out.println("El usuario o el correo electrónico ya están en uso. Por favor, elija otro.");
+                Teclado.imprimirCadena("El usuario o el correo electrónico ya están en uso. Por favor, elija otro.");
                 menuRegistroInicioSesion();
             }
         }
