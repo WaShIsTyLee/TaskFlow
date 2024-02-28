@@ -10,7 +10,9 @@ public class Teclado implements iTeclado { // Corrección del nombre de la inter
     private static final Scanner teclado = new Scanner(System.in); // Se define teclado como final porque no se reasigna y para reflejar que es constante
     private static final Scanner tecladoNumeros = new Scanner(System.in); // Nombres de variables significativos (tecladoNumeros)
 
-    public static String leeString(String mensaje) { // Cambio de nombre de parámetro a mensaje para mayor claridad
+ 
+
+    public static String leeString(String cadena){
 
         System.out.println(mensaje); // Cambio de "cadena" a "mensaje" para reflejar su función
         return teclado.nextLine(); // Simplificación del código, eliminación de la variable cadenaUsuario
