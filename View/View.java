@@ -68,7 +68,6 @@ public class View implements iView {
             contraseña = Teclado.leeString("Introduzca su contraseña");
             Datos.guardarEnArchivo(nombre,usuario,correo,contraseña,"usuariosRegistrados");
 
-
         return usuarioRegistrado;
     }
 
