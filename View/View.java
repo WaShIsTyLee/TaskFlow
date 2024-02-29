@@ -41,6 +41,8 @@ public class View implements iView {
         boolean credencialesCorrectas = false;
 
         do {
+            System.out.println(" ");
+            System.out.println(" ");
             String usuario = Teclado.leeString("Introduzca su Usuario:");
             String contraseña = Teclado.leeString("Introduzca su contraseña");
             credencialesCorrectas = Datos.verificarCredenciales("usuariosRegistrados", usuario, contraseña);
