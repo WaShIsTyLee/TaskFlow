@@ -29,15 +29,19 @@ public class MainController implements iController {
                 case 2:
                     view.menuRegistroUsuario();
                     switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
-
-
                     break;
+
+                case 3:
+                    System.out.println(" ");
+                    System.out.println("Adios");
+                    break;
+
                 default:
                     System.out.println("Ups... Parece que te has equivocado, prueba otra vez.");
                     System.out.println(" ");
                     opcion=view.menuRegistroInicioSesion();
             }
-        } while (!(opcion == 1 || opcion == 2));
+        } while (opcion != 3);
     }
 
     public void switchEleccionCrud(int opcion) {  //LLAMAR A CADA FUNCION CUANDO ESTEN CREADAS

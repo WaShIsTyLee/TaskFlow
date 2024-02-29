@@ -27,8 +27,9 @@ public class View implements iView {
     public int menuRegistroInicioSesion() {   //ACABAO
         int opcion = 0;
         Teclado.imprimirCadena("Elige la opcion que desees usar: ");
-        Teclado.imprimirCadena("1. Iniciar Sesión");
-        Teclado.imprimirCadena("2. Registrarse");
+        Teclado.imprimirCadena("1. Iniciar Sesión ");
+        Teclado.imprimirCadena("2. Registrarse ");
+        Teclado.imprimirCadena("3. Salir ");
         opcion = Teclado.leeEntero("");
 
         return opcion;
