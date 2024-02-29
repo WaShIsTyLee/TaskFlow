@@ -86,7 +86,7 @@ public class Usuario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario = (Usuario) o;
-        return Objects.equals(getUsuario(), usuario.getUsuario()) &&
+        return Objects.equals(getUsuario(), usuario.getUsuario()) ||
                 Objects.equals(getCorreo(), usuario.getCorreo());    }
 
     //Falta un hashcode para la contraseña

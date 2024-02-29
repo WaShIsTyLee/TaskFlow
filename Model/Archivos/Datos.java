@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Datos {
 
-    public static void guardarEnArchivo(String nombre, String nombreUsuario, String contraseña, String correo, String usuariosRegistrados) {
+    public static void guardarEnArchivo(String nombre, String nombreUsuario, String correo, String contraseña, String usuariosRegistrados) {
 
         if (usuarioRegistrado(nombreUsuario, correo, usuariosRegistrados)) {
             System.out.println("El nombre de usuario o el correo ya están registrados.");
@@ -29,7 +29,7 @@ public class Datos {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
-                if (datos.length >= 3 && datos[1].equals(nombreUsuario) && datos[3].equals(correo)) {
+                if (datos[1].equals(nombreUsuario) || datos[3].equals(correo)) {
                     usuarioRegistrado = true;
                     break; // Salir del bucle tan pronto como se encuentre un usuario con el mismo correo
                 }
