@@ -4,9 +4,14 @@ import IO.Teclado;
 import Interfaces.iView;
 import Model.Archivos.Datos;
 import Model.Entitys.Usuario;
+import Model.Proyectos.Projectos;
+
+import java.io.Console;
+import java.util.Scanner;
 
 
 public class View implements iView {
+    Console console = System.console();
 
 
     @Override
@@ -80,10 +85,9 @@ public class View implements iView {
             Teclado.imprimirCadena("1. Listar proyecto");
             Teclado.imprimirCadena("2. Crear proyecto");
             Teclado.imprimirCadena("3. Borrar proyecto");
-            Teclado.imprimirCadena("4. Organizar tareas");
-            Teclado.imprimirCadena("5. Salir y guardar");
+            Teclado.imprimirCadena("4. Salir y guardar");
             opcion = Teclado.leeEntero("");
-        } while (opcion < 1 || opcion > 5);
+        } while (opcion < 1 || opcion > 4);
 
         return opcion;
     }
@@ -104,6 +108,16 @@ public class View implements iView {
         } while (opcion < 1 || opcion > 5);
 
         return opcion;
+    }
+
+    @Override
+    public int menuCRUDcreador() {
+        return 0;
+    }
+
+    @Override
+    public int menuColaborador(Projectos projecto) {
+        return 0;
     }
 
 }

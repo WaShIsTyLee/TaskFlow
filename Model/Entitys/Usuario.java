@@ -1,26 +1,36 @@
 package Model.Entitys;
 
+import Model.Proyectos.TipoRol;
+
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario {
+public class Usuario implements Serializable {
     private String nombre;
     private String usuario;
     private String contraseña;
     private String correo;
     private String codigo;
+    private TipoRol tipoRol;
 
-    public Usuario(String nombre, String usuario, String contraseña, String correo, String codigo) {
+
+    public Usuario(String nombre, String usuario, String contraseña, String correo, String codigo, TipoRol tipoRol) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.correo = correo;
         this.codigo = codigo;
+        this.tipoRol = tipoRol;
     }
     public Usuario(){
-        this("","","","","");
+        this("","","","","",null);
     }
 
+    public static boolean validarCorreo(String email) {
 
+        return email.matches("^([\\w-]+\\.)*?[\\w-]+@[\\w-]+\\.([\\w-]+\\.)*?[\\w]+$");
+
+    }
 
     public String getNombre() {
         return nombre;
@@ -50,9 +60,7 @@ public class Usuario {
         return correo;
     }
 
-    //Tocar este set para que no se puedan guardar 2 correos iguales
     public void setCorreo(String correo) {
-
         this.correo = correo;
     }
 
@@ -60,26 +68,16 @@ public class Usuario {
         return codigo;
     }
 
-    //Utilizar el setCodigo de juanje de su anterior proyecto
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
 
-    public static boolean validarCorreo(String email) {
-
-        return email.matches("^([\\w-]+\\.)*?[\\w-]+@[\\w-]+\\.([\\w-]+\\.)*?[\\w]+$");
-
+    public TipoRol getTipoRol() {
+        return tipoRol;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", usuario='" + usuario + '\'' +
-                ", contraseña='" + contraseña + '\'' +
-                ", correo='" + correo + '\'' +
-                ", codigo='" + codigo + '\'' +
-                '}';
+    public void setTipoRol(TipoRol tipoRol) {
+        this.tipoRol = tipoRol;
     }
 
     public boolean equals(Object o) {
@@ -92,8 +90,15 @@ public class Usuario {
     //Falta un hashcode para la contraseña
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "nombre='" + nombre + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", correo='" + correo + '\'' +
+                ", codigo='" + codigo + '\'' +
+                ", tipoRol=" + tipoRol +
+                '}';
+    }
 }
