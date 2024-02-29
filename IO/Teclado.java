@@ -1,36 +1,41 @@
-package IO; // Los nombres de paquete generalmente se escriben en minúsculas
+package IO;
+
+// Funciones de teclado como LeerString, LeerEntero, CambiarContraseña escrita por cmd a Asteriscos,
+// Imprmir por cmd algo
 
 import Interfaces.iTeclado;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Teclado implements iTeclado { // Corrección del nombre de la interfaz y convención de nomenclatura
 
-    private static final Scanner teclado = new Scanner(System.in); // Se define teclado como final porque no se reasigna y para reflejar que es constante
-    private static final Scanner tecladoNumeros = new Scanner(System.in); // Nombres de variables significativos (tecladoNumeros)
-
- 
+public class Teclado implements iTeclado {
+    private static Scanner teclado = new Scanner(System.in);
 
     public static String leeString(String cadena){
 
-        System.out.println(mensaje); // Cambio de "cadena" a "mensaje" para reflejar su función
-        return teclado.nextLine(); // Simplificación del código, eliminación de la variable cadenaUsuario
+        String cadenaUsuario;
+        System.out.println(cadena);
+        cadenaUsuario = teclado.nextLine();
+        return cadenaUsuario;
     }
 
-    public static int leeEntero(String mensaje) {
+
+    public static int leeEntero(String cadena) {
         int numeroUsuario = 0;
+        boolean entradaValida = false;
 
         do {
             try {
-                System.out.println(mensaje); // Cambio de "cadena" a "mensaje" para reflejar su función
-                numeroUsuario = tecladoNumeros.nextInt();
-                break; // Se sale del bucle si la entrada es válida
+                numeroUsuario = teclado.nextInt();
+                teclado.nextLine();
+                entradaValida = true;
             } catch (InputMismatchException e) {
                 System.out.println("Error: Introduce un número válido.");
-                tecladoNumeros.next(); // Se limpia el buffer del scanner para evitar un bucle infinito
+                teclado.nextLine();
             }
-        } while (true);
+        } while (!entradaValida);
+
 
         return numeroUsuario;
     }
