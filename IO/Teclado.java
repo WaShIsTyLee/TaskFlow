@@ -5,6 +5,7 @@ package IO;
 
 import Interfaces.iTeclado;
 
+import java.io.Console;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,7 +13,7 @@ import java.util.Scanner;
 public class Teclado implements iTeclado {
     private static Scanner teclado = new Scanner(System.in);
 
-    public static String leeString(String cadena){
+    public static String leeString(String cadena) {
 
         String cadenaUsuario;
         System.out.println(cadena);
@@ -43,4 +44,6 @@ public class Teclado implements iTeclado {
     public static void imprimirCadena(String cadena) {
         System.out.println(cadena);
     }
-}
+
+
+    }

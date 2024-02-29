@@ -48,7 +48,7 @@ public class Datos {
                 String[] partes = linea.split(",");
                 if (partes.length >= 3) {
                     String usuarioRegistrado = partes[1].trim();
-                    String contraseñaRegistrada = partes[3].trim();
+                    String contraseñaRegistrada = partes[2].trim();
                     if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(contraseña)) {
                         credencialesValidas = true;
                         break;

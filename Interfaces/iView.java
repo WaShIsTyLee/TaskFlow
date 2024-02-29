@@ -1,6 +1,7 @@
 package Interfaces;
 
 import Model.Entitys.Usuario;
+import Model.Proyectos.Projectos;
 
 public interface iView {
 
@@ -15,4 +16,18 @@ public interface iView {
     //1 listar proyecto 2 crear proyecto 3 Borrar proyecto 4 Organizar tareas 5 Salir y guardar(Serializador)
     int tareasProyecto();
     //1 Tareas de mi proecto(Assignar Tareas) 2 Ver tareas como coloaborador
+
+    int menuCRUDcreador();
+    //1. CRUD
+    //2. Añadir Colaborador
+
+    int menuColaborador(Projectos projecto);
+    //IMPRIMIR LAS TAREAS DEL PROYECTO
+    //1. Modificar estado Tareas
+    //2. Añadir cometario
+
+
+
+
+
 }

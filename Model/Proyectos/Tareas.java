@@ -2,27 +2,17 @@ package Model.Proyectos;
 
 import IO.Teclado;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class Tareas {
+public class Tareas implements Serializable {
     String nombre;
     String descripcion;
     LocalDate fechaInicio;
     LocalDate fechaLimite;
     estadoTareas estadoTareas;
-
-    public Tareas(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaLimite, Model.Proyectos.estadoTareas estadoTareas) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.fechaInicio = fechaInicio;
-        this.fechaLimite = fechaLimite;
-        this.estadoTareas = estadoTareas;
-    }
-
-    public Tareas() {
-
-    }
+    String comentario;
 
     public String getNombre() {
         return nombre;
@@ -64,11 +54,24 @@ public class Tareas {
         this.estadoTareas = estadoTareas;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (!(object instanceof Tareas tareas)) return false;
-        return Objects.equals(nombre, tareas.nombre) && Objects.equals(descripcion, tareas.descripcion) && Objects.equals(fechaInicio, tareas.fechaInicio) && Objects.equals(fechaLimite, tareas.fechaLimite) && estadoTareas == tareas.estadoTareas;
+    public String getComentario() {
+        return comentario;
+    }
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
+    }
+
+    public Tareas(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaLimite, Model.Proyectos.estadoTareas estadoTareas, String comentario) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaLimite = fechaLimite;
+        this.estadoTareas = estadoTareas;
+        this.comentario = comentario;
+    }
+    public Tareas(){
+        this("","",null,null,null,"");
     }
 
     @Override
@@ -79,6 +82,7 @@ public class Tareas {
                 ", fechaInicio=" + fechaInicio +
                 ", fechaLimite=" + fechaLimite +
                 ", estadoTareas=" + estadoTareas +
+                ", comentario='" + comentario + '\'' +
                 '}';
     }
 }
