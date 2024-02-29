@@ -31,7 +31,7 @@ public class Teclado implements iTeclado {
                 teclado.nextLine();
                 entradaValida = true;
             } catch (InputMismatchException e) {
-                System.out.println("Error: Introduce un número válido.");
+                System.out.println("Error: Introduce un número.");
                 teclado.nextLine();
             }
         } while (!entradaValida);

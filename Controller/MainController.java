@@ -33,7 +33,9 @@ public class MainController implements iController {
 
                     break;
                 default:
-                    System.out.println("Elige la opcion correcta.");
+                    System.out.println("Ups... Parece que te has equivocado, prueba otra vez.");
+                    System.out.println(" ");
+                    opcion=view.menuRegistroInicioSesion();
             }
         } while (!(opcion == 1 || opcion == 2));
     }
