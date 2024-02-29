@@ -1,11 +1,9 @@
 package View;
 
-import Controller.MainController;
 import IO.Teclado;
 import Interfaces.iView;
-import Model.Entitys.Usuario;
-import Controller.MainController;
 import Model.Archivos.Datos;
+import Model.Entitys.Usuario;
 
 
 public class View implements iView {
@@ -44,7 +42,7 @@ public class View implements iView {
         do {
             String usuario = Teclado.leeString("Introduzca su Usuario:");
             String contraseña = Teclado.leeString("Introduzca su contraseña");
-            credencialesCorrectas = Datos.verificarCredenciales("usuariosRegistrados",usuario, contraseña);
+            credencialesCorrectas = Datos.verificarCredenciales("usuariosRegistrados", usuario, contraseña);
 
             if (!credencialesCorrectas) {
                 Teclado.imprimirCadena("Credenciales incorrectas. Inténtalo de nuevo.");
@@ -61,12 +59,15 @@ public class View implements iView {
         String nombre, usuario, correo, contraseña;
         Usuario usuarioRegistrado = null;
 
-            nombre = Teclado.leeString("Introduzca su nombre completo");
-            usuario = Teclado.leeString("Introduzca su nombre de Usuario");
+        nombre = Teclado.leeString("Introduzca su nombre completo");
+        usuario = Teclado.leeString("Introduzca su nombre de Usuario");
+        correo = Teclado.leeString("Introduzca su email");
+        while (!Usuario.validarCorreo(correo)) {
+            Teclado.imprimirCadena("Correo no válido");
             correo = Teclado.leeString("Introduzca su email");
-            Usuario.validarCorreo(correo);
-            contraseña = Teclado.leeString("Introduzca su contraseña");
-            Datos.guardarEnArchivo(nombre,usuario,correo,contraseña,"usuariosRegistrados");
+        }
+        contraseña = Teclado.leeString("Introduzca su contraseña");
+        Datos.guardarEnArchivo(nombre, usuario, correo, contraseña, "usuariosRegistrados");
 
         return usuarioRegistrado;
     }

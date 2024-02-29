@@ -28,6 +28,9 @@ public class MainController implements iController {
                     break;
                 case 2:
                     view.menuRegistroUsuario();
+                    switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+
+
                     break;
                 default:
                     System.out.println("Elige la opcion correcta.");
@@ -89,8 +92,6 @@ public class MainController implements iController {
 
         }
     }
-
-
 
 
 }
