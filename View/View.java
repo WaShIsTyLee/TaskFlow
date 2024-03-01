@@ -88,9 +88,10 @@ public class View implements iView {
             Teclado.imprimirCadena("1. Listar proyecto");
             Teclado.imprimirCadena("2. Crear proyecto");
             Teclado.imprimirCadena("3. Borrar proyecto");
-            Teclado.imprimirCadena("4. Salir y guardar");
+            Teclado.imprimirCadena("4. Organizar proyecto");
+            Teclado.imprimirCadena("5. salir y guardar");
             opcion = Teclado.leeEntero("");
-        } while (opcion < 1 || opcion > 4);
+        } while (opcion < 1 || opcion > 5);
 
         return opcion;
     }
@@ -104,7 +105,7 @@ public class View implements iView {
             Teclado.imprimirCadena("1. Crear tarea");
             Teclado.imprimirCadena("2. Editar tarea");
             Teclado.imprimirCadena("3. Eliminar tarea");
-            Teclado.imprimirCadena("4. Ver lista de tareas");
+            Teclado.imprimirCadena("4. Ver lista de usuarios");
             Teclado.imprimirCadena("5. Volver al menú principal");
             opcion = Teclado.leeEntero("");
 

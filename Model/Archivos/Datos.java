@@ -1,5 +1,7 @@
 package Model.Archivos;
 
+import IO.Teclado;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -59,5 +61,19 @@ public class Datos {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
         return credencialesValidas;
+    }
+    public static void listarUsuarios(String usuariosRegistrados) {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
+            String linea;
+                while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+                    Teclado.imprimirCadena("nombre: "+partes[0].trim());
+                    Teclado.imprimirCadena("usuario: "+partes[1].trim());
+
+                }
+        }catch(IOException e){
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
     }
 }
