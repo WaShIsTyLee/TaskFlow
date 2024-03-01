@@ -35,13 +35,13 @@ public class MainController implements iController {
                     break;
 
                 case 3:
-                    System.out.println(" ");
-                    System.out.println("Adios");
+                    Teclado.imprimirCadena(" ");
+                    Teclado.imprimirCadena("Adios");
                     break;
 
                 default:
-                    System.out.println("Ups... Parece que te has equivocado, prueba otra vez.");
-                    System.out.println(" ");
+                    Teclado.imprimirCadena("Ups... Parece que te has equivocado, prueba otra vez.");
+                    Teclado.imprimirCadena(" ");
                     opcion=view.menuRegistroInicioSesion();
             }
         } while (opcion != 3);
