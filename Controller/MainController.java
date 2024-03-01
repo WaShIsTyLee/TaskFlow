@@ -3,12 +3,15 @@ package Controller;
 import IO.Teclado;
 import Interfaces.iController;
 import Model.Entitys.Usuario;
+import Model.Serializador.Serializador;
 import View.View;
 
 public class MainController implements iController {
 
     View view = new View();
     Usuario usuario = new Usuario();
+
+
 
     @Override
     public void startApp() {
@@ -64,6 +67,8 @@ public class MainController implements iController {
                 break;
             case 5:
                 Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
+
+
                 switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
                 break;
         }
