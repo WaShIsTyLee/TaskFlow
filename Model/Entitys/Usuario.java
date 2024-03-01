@@ -1,8 +1,11 @@
 package Model.Entitys;
 
+import Model.Proyectos.Projectos;
+import Model.Proyectos.Tareas;
 import Model.Proyectos.TipoRol;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Usuario implements Serializable {
@@ -12,6 +15,7 @@ public class Usuario implements Serializable {
     private String correo;
     private String codigo;
     private TipoRol tipoRol;
+    ArrayList<Projectos> projectos = new ArrayList<>();
 
 
     public Usuario(String nombre, String usuario, String contraseña, String correo, String codigo, TipoRol tipoRol) {
