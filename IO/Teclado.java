@@ -18,6 +18,13 @@ public class Teclado implements iTeclado {
         String cadenaUsuario;
         System.out.println(cadena);
         cadenaUsuario = teclado.nextLine();
+        if (cadenaUsuario.isEmpty() || cadenaUsuario.isBlank()) {
+            do {
+                Teclado.imprimirCadena("Aqui no hay na... ponme algo niño");
+                cadenaUsuario = teclado.nextLine();
+            } while (cadenaUsuario.isEmpty() || cadenaUsuario.isBlank());
+
+        }
         return cadenaUsuario;
     }
 
@@ -46,4 +53,4 @@ public class Teclado implements iTeclado {
     }
 
 
-    }
+}

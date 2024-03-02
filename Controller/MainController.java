@@ -2,6 +2,7 @@ package Controller;
 
 import IO.Teclado;
 import Interfaces.iController;
+import Model.Archivos.Datos;
 import Model.Entitys.Usuario;
 import Model.Serializador.Serializador;
 import View.View;
@@ -48,60 +49,74 @@ public class MainController implements iController {
     }
 
     public void switchEleccionCrud(int opcion) {  //LLAMAR A CADA FUNCION CUANDO ESTEN CREADAS
-        switch (opcion) {
-            case 1:
-                Teclado.imprimirCadena("Listando proyectos...");
 
-                break;
-            case 2:
-                Teclado.imprimirCadena("Crear proyecto...");
+            switch (opcion) {
+                case 1:
+                    Teclado.imprimirCadena("Listando proyectos...");
 
-                break;
-            case 3:
-                Teclado.imprimirCadena("Borrando proyecto...");
+                    break;
+                case 2:
+                    Teclado.imprimirCadena("Crear proyecto...");
 
-                break;
-            case 4:
-                Teclado.imprimirCadena("Organizando tareas...");
-                switchEleccionTareas(view.tareasProyecto());
-                break;
-            case 5:
-                Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
+                    break;
+                case 3:
+                    Teclado.imprimirCadena("Borrando proyecto...");
+
+                    break;
+                case 4:
+                    Teclado.imprimirCadena("Organizando tareas...");
+                    switchEleccionTareas(view.tareasProyecto());
+                    break;
+                case 5:
+                    Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
+                    Teclado.imprimirCadena("");
+                    Teclado.imprimirCadena("");
+                    switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+                    break;
+            }
 
 
-                switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
-                break;
-        }
     }
 
     @Override
     public void switchEleccionTareas(int opcion) {
-        switch (opcion) {
-            case 1:
-                // Lógica para crear una nueva tarea
-                Teclado.imprimirCadena("Creando nueva tarea...");
 
-                break;
-            case 2:
-                // Lógica para editar una tarea existente
-                Teclado.imprimirCadena("Editando tarea...");
+        do {
+            switch (opcion) {
+                case 1:
+                    // Lógica para crear una nueva tarea
+                    Teclado.imprimirCadena("Creando nueva tarea...");
 
-                break;
-            case 3:
-                // Lógica para eliminar una tarea existente
-                Teclado.imprimirCadena("Eliminando tarea...");
+                    break;
+                case 2:
+                    // Lógica para editar una tarea existente
+                    Teclado.imprimirCadena("Editando tarea...");
 
-                break;
-            case 4:
-                // Lógica para mostrar la lista de tareas del proyecto
-                Teclado.imprimirCadena("Lista de tareas del proyecto:");
+                    break;
+                case 3:
+                    // Lógica para eliminar una tarea existente
+                    Teclado.imprimirCadena("Eliminando tarea...");
 
-                break;
-            case 5:
-                view.eleccionCRUD();
-                break;
+                    break;
+                case 4:
+                    // Lógica para mostrar la lista de usuarios
+                    Teclado.imprimirCadena("Lista de usuarios del proyecto:");
+                    Datos.listarUsuarios("usuariosRegistrados");
 
-        }
+                    break;
+                case 5:
+                    Teclado.imprimirCadena("");
+                    Teclado.imprimirCadena("");
+                    view.eleccionCRUD();
+                    break;
+
+
+            }
+            Teclado.imprimirCadena("");
+            Teclado.imprimirCadena("");
+            switchEleccionTareas(view.tareasProyecto());
+
+        }while (opcion!=5);
     }
 
 
