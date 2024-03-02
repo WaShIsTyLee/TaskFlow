@@ -10,7 +10,7 @@ import View.View;
 public class MainController implements iController {
 
     View view = new View();
-    Usuario usuario = new Usuario();
+
 
 
 
