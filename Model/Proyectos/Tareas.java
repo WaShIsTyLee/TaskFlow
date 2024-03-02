@@ -85,4 +85,21 @@ public class Tareas implements Serializable {
                 ", comentario='" + comentario + '\'' +
                 '}';
     }
+
+    public void imprimirEstadoTareas() {
+        switch (this.estadoTareas) {
+            case SinIniciar:
+                Teclado.imprimirCadena("La tarea aún no ha comenzado.");
+                break;
+            case EnTramite:
+                Teclado.imprimirCadena("La tarea está en proceso.");
+                break;
+            case Finalizada:
+                Teclado.imprimirCadena("La tarea ha sido completada.");
+                break;
+            default:
+                Teclado.imprimirCadena("Estado desconocido.");
+                break;
+        }
+    }
 }

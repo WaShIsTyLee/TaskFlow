@@ -4,5 +4,5 @@ public interface iSecondaryController {
 
     void switchMenuCRUDcreador();
 
-    void switchMenuColaborador();
+    void switchMenuColaborador(int opcion);
 }
