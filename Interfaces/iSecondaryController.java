@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public interface iSecondaryController {
 
     void switchMenuCRUDcreador();
+    void switchMenuColaborador(int opcion);
 
     void switchMenuColaborador();
 

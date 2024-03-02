@@ -28,7 +28,7 @@ public class Datos {
         boolean usuarioRegistrado = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
             String linea;
-            while ((linea = reader.readLine()) != null) {
+            while ((linea = reader.readLine()) != null){
                 String[] datos = linea.split(",");
                 if (datos[1].equals(nombreUsuario) || datos[3].equals(correo)) {
                     usuarioRegistrado = true;

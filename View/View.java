@@ -35,8 +35,9 @@ public class View implements iView {
     public int menuRegistroInicioSesion() {   //ACABAO
         int opcion = 0;
         Teclado.imprimirCadena("Elige la opcion que desees usar: ");
-        Teclado.imprimirCadena("1. Iniciar Sesión");
-        Teclado.imprimirCadena("2. Registrarse");
+        Teclado.imprimirCadena("1. Iniciar Sesión ");
+        Teclado.imprimirCadena("2. Registrarse ");
+        Teclado.imprimirCadena("3. Salir ");
         opcion = Teclado.leeEntero("");
 
         return opcion;
@@ -48,6 +49,8 @@ public class View implements iView {
         boolean credencialesCorrectas = false;
 
         do {
+            Teclado.imprimirCadena(" ");
+            Teclado.imprimirCadena(" ");
             String usuario = Teclado.leeString("Introduzca su Usuario:");
             String contraseña = Teclado.leeString("Introduzca su contraseña");
             credencialesCorrectas = Datos.verificarCredenciales("usuariosRegistrados", usuario, contraseña);
@@ -120,7 +123,18 @@ public class View implements iView {
 
     @Override
     public int menuColaborador(Projectos projecto) {
-        return 0;
+        int opcion = -1;
+
+        do {
+            Teclado.imprimirCadena("Menú de Colaborador del proyecto");
+            Teclado.imprimirCadena("1. Editar estado de la tarea");
+            Teclado.imprimirCadena("2. Añadir comentario");
+            Teclado.imprimirCadena("3. Volver al menú principal");
+            opcion = Teclado.leeEntero("");
+
+        } while (opcion < 1 || opcion > 3);
+
+        return opcion;
     }
 
         public Projectos añadirProjecto() {
