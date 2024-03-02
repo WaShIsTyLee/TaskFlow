@@ -32,8 +32,9 @@ public class View implements iView {
     public int menuRegistroInicioSesion() {   //ACABAO
         int opcion = 0;
         Teclado.imprimirCadena("Elige la opcion que desees usar: ");
-        Teclado.imprimirCadena("1. Iniciar Sesión");
-        Teclado.imprimirCadena("2. Registrarse");
+        Teclado.imprimirCadena("1. Iniciar Sesión ");
+        Teclado.imprimirCadena("2. Registrarse ");
+        Teclado.imprimirCadena("3. Salir ");
         opcion = Teclado.leeEntero("");
 
         return opcion;
@@ -45,6 +46,8 @@ public class View implements iView {
         boolean credencialesCorrectas = false;
 
         do {
+            Teclado.imprimirCadena(" ");
+            Teclado.imprimirCadena(" ");
             String usuario = Teclado.leeString("Introduzca su Usuario:");
             String contraseña = Teclado.leeString("Introduzca su contraseña");
             credencialesCorrectas = Datos.verificarCredenciales("usuariosRegistrados", usuario, contraseña);

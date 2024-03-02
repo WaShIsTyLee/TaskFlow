@@ -1,5 +1,6 @@
 package Controller;
 
+
 import IO.Teclado;
 import Interfaces.iSecondaryController;
 import Model.Proyectos.Projectos;
@@ -11,11 +12,7 @@ public class SecondaryController implements iSecondaryController  {
     View view = new View();
 
     Tareas tareas = new Tareas();
-
-    @Override
-    public void switchMenuCRUDcreador() {
-
-    }
+SecondaryController implements iSecondaryController {
 
     @Override
     public void switchMenuColaborador(int opcion) {
@@ -52,5 +49,6 @@ public class SecondaryController implements iSecondaryController  {
     public void añadirComentario(Tareas tareas, Projectos projectos, String comentario){
         comentario = Teclado.leeString("");
         tareas.setComentario(comentario);
+
     }
 }
