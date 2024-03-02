@@ -16,6 +16,7 @@ public class Datos {
             try (FileWriter writer = new FileWriter(usuariosRegistrados, true)) {
                 writer.write(nombre + "," + nombreUsuario + "," + contraseña + "," + correo + "\n");
                 System.out.println("Usuario registrado correctamente.");
+
             } catch (IOException e) {
                 System.out.println("Error al guardar usuario en el archivo: " + e.getMessage());
             }
@@ -31,7 +32,7 @@ public class Datos {
                 String[] datos = linea.split(",");
                 if (datos[1].equals(nombreUsuario) || datos[3].equals(correo)) {
                     usuarioRegistrado = true;
-                    break; // Salir del bucle tan pronto como se encuentre un usuario con el mismo correo
+                    break;
                 }
             }
         } catch (IOException e) {

@@ -9,7 +9,11 @@ public class Main {
         MainController mainController = new MainController();
         View view = new View();
 
-        mainController.switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+      //  mainController.switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+
+view.añadirProjecto();
+
+
 
 
 

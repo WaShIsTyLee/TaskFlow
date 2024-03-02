@@ -11,5 +11,5 @@ public interface iSecondaryController {
 
     void switchMenuColaborador();
 
-    boolean borrarProyecto(String nombre, ArrayList<Projectos> listaProyectos);
+
 }
