@@ -15,7 +15,6 @@ public class Usuario implements Serializable {
     private String correo;
     private String codigo;
     private TipoRol tipoRol;
-    ArrayList<Projectos> projectos = new ArrayList<>();
 
 
     public Usuario(String nombre, String usuario, String contraseña, String correo, String codigo, TipoRol tipoRol) {

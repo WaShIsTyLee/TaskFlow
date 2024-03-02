@@ -7,33 +7,26 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Projectos implements Serializable {
-    ArrayList<Usuario> usuariosProyecto = new ArrayList<>();
     ArrayList<Tareas> listaTareas = new ArrayList<>();
     String nombre;
     String descripcion;
     LocalDate fechaInicio;
     LocalDate fechaFinalizacion;
+    String colaborador;
 
-    public Projectos(ArrayList<Usuario> usuariosProyecto, ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion) {
-        this.usuariosProyecto = usuariosProyecto;
+    public Projectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, String colaborador) {
         this.listaTareas = listaTareas;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFinalizacion = fechaFinalizacion;
+        this.colaborador = colaborador;
     }
-
     public Projectos() {
-        this(new ArrayList<>(), new ArrayList<>(), "", "", null, null);
+        this(new ArrayList<>(), "", "", null, null, "");
     }
 
-    public ArrayList<Usuario> getUsuariosProyecto() {
-        return usuariosProyecto;
-    }
 
-    public void setUsuariosProyecto(ArrayList<Usuario> usuariosProyecto) {
-        this.usuariosProyecto = usuariosProyecto;
-    }
 
     public ArrayList<Tareas> getListaTareas() {
         return listaTareas;
@@ -75,15 +68,23 @@ public class Projectos implements Serializable {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 
+    public String getColaborador() {
+        return colaborador;
+    }
+
+    public void setColaborador(String colaborador) {
+        this.colaborador = colaborador;
+    }
+
     @Override
     public String toString() {
         return "Projectos{" +
-                "usuariosProyecto=" + usuariosProyecto +
-                ", listaTareas=" + listaTareas +
+                "listaTareas=" + listaTareas +
                 ", nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", fechaInicio=" + fechaInicio +
                 ", fechaFinalizacion=" + fechaFinalizacion +
+                ", colaborador='" + colaborador + '\'' +
                 '}';
     }
 }

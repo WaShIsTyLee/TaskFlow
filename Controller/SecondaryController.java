@@ -32,11 +32,11 @@ SecondaryController implements iSecondaryController {
     }
 
     public void editarEstadoTareas(Tareas tareas) {
-
+    }
         tareas.setEstadoTareas(estadoTareas.SinIniciar);
 
         tareas.imprimirEstadoTareas();
-
+  
         tareas.setEstadoTareas(estadoTareas.EnTramite);
 
         tareas.imprimirEstadoTareas();

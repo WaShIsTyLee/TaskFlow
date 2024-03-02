@@ -7,6 +7,7 @@ import java.util.List;
 
 public class RepoUsuarios extends Repository{
     List<Usuario> usuarios;
+
     private RepoUsuarios(){}
 
     public void addUsuario(Usuario usuario){
@@ -21,7 +22,6 @@ public class RepoUsuarios extends Repository{
         }
         return (RepoUsuarios) _instance;
     }
-    //CRUD
 
 
     public List<Usuario> getUsuarios(){

@@ -10,4 +10,7 @@ public interface iSecondaryController {
     void switchMenuCRUDcreador();
     void switchMenuColaborador(int opcion);
 
+    void switchMenuColaborador();
+
+
 }

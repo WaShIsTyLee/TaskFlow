@@ -7,7 +7,10 @@ import Model.Entitys.Usuario;
 import Model.Proyectos.Projectos;
 
 import java.io.Console;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 
 public class View implements iView {
@@ -134,4 +137,41 @@ public class View implements iView {
         return opcion;
     }
 
+        public Projectos añadirProjecto() {
+            Projectos aux = new Projectos();
+            String nombre = Teclado.leeString("Introduce el nombre de tu proyecto: ");
+            aux.setNombre(nombre);
+            String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
+            aux.setDescripcion(descripcion);
+            String colaborador = Teclado.leeString("Introduce el nombre del colaborador: ");
+            aux.setColaborador(colaborador);
+           // aux.getListaTareas();
+            aux.setFechaInicio(LocalDate.now());
+            aux.setFechaFinalizacion(añadirFechaFin());
+
+            System.out.println(aux);
+        return aux;
+    }
+    private static LocalDate añadirFechaFin() {
+        LocalDateTime ahora = LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fechaActualStr = formatter.format(ahora);
+
+        LocalDate fechaFinalizacion = null;
+
+        while (fechaFinalizacion == null) {
+            String fechaFinalizacionStr = Teclado.leeString("Introduce la fecha de finalización (formato AAAA-MM-DD):");
+
+            if (fechaFinalizacionStr.matches("\\d{4}-\\d{2}-\\d{2}") && fechaFinalizacionStr.compareTo(fechaActualStr) >= 0) {
+                fechaFinalizacion = LocalDate.parse(fechaFinalizacionStr, formatter);
+            } else {
+                System.out.println("Error: La fecha de finalización no puede ser anterior a la fecha actual o el formato es incorrecto. " +
+                        "Por favor, inténtalo de nuevo.");
+            }
+        }
+
+        return fechaFinalizacion;
+    }
 }
+
