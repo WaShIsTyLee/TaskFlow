@@ -1,45 +1,54 @@
 package Controller;
 
+
+import IO.Teclado;
 import Interfaces.iSecondaryController;
-import Model.Entitys.Usuario;
 import Model.Proyectos.Projectos;
+import Model.Proyectos.Tareas;
+import Model.Proyectos.estadoTareas;
+import View.View;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+public class SecondaryController implements iSecondaryController  {
+    View view = new View();
 
-public class SecondaryController implements iSecondaryController {
-
-
-    @Override
-    public void switchMenuCRUDcreador() {
-
-    }
+    Tareas tareas = new Tareas();
+SecondaryController implements iSecondaryController {
 
     @Override
-    public void switchMenuColaborador() {
+    public void switchMenuColaborador(int opcion) {
+        switch (opcion) {
+            case 1:
+                Teclado.imprimirCadena("Editando estado de la tarea...");
+                editarEstadoTareas(tareas);
+                break;
+            case 2:
+                Teclado.imprimirCadena("Añadiendo comentario...");
+                break;
+            case 3:
+                view.eleccionCRUD();
+                break;
 
-    }
-
-
-
-    /**
-     *
-     * @param nombre que se le pide al usuario y es el que usara para borrar ese nombre de la lista
-     * @param listaProyectos
-     * @return
-     */
-    @Override
-    public boolean borrarProyecto(String nombre, ArrayList<Projectos> listaProyectos) {
-        boolean result = false;
-        Iterator<Projectos> iterator = listaProyectos.iterator();
-        while (iterator.hasNext()) {
-            Projectos proyecto = iterator.next();
-            if (proyecto.getNombre().equals(nombre)) {
-                iterator.remove();
-                result = true;
-            }
         }
-        return result;
+    }
+
+    public void editarEstadoTareas(Tareas tareas) {
+
+        tareas.setEstadoTareas(estadoTareas.SinIniciar);
+
+        tareas.imprimirEstadoTareas();
+
+        tareas.setEstadoTareas(estadoTareas.EnTramite);
+
+        tareas.imprimirEstadoTareas();
+
+        tareas.setEstadoTareas(estadoTareas.Finalizada);
+
+        tareas.imprimirEstadoTareas();
+    }
+
+    public void añadirComentario(Tareas tareas, Projectos projectos, String comentario){
+        comentario = Teclado.leeString("");
+        tareas.setComentario(comentario);
 
     }
 }

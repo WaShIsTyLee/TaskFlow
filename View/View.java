@@ -120,7 +120,18 @@ public class View implements iView {
 
     @Override
     public int menuColaborador(Projectos projecto) {
-        return 0;
+        int opcion = -1;
+
+        do {
+            Teclado.imprimirCadena("Menú de Colaborador del proyecto");
+            Teclado.imprimirCadena("1. Editar estado de la tarea");
+            Teclado.imprimirCadena("2. Añadir comentario");
+            Teclado.imprimirCadena("3. Volver al menú principal");
+            opcion = Teclado.leeEntero("");
+
+        } while (opcion < 1 || opcion > 3);
+
+        return opcion;
     }
 
 }
