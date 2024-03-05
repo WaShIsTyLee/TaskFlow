@@ -64,8 +64,16 @@ public class MainController implements iController {
 
                     break;
                 case 4:
-                    Teclado.imprimirCadena("Organizando tareas...");
-                    switchEleccionTareas(view.tareasProyecto());
+                    Teclado.imprimirCadena("");
+                    Teclado.imprimirCadena("");
+                    Teclado.imprimirCadena("Lista de usuarios del proyecto:");
+                    Datos.listarUsuarios("usuariosRegistrados");
+                    Teclado.imprimirCadena("");
+                    Teclado.imprimirCadena("");
+                    switchEleccionTareas(view.eleccionCRUD());
+                   /* Teclado.imprimirCadena("Organizando tareas...");
+                    switchEleccionTareas(view.tareasProyecto());*/
+
                     break;
                 case 5:
                     Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
@@ -100,8 +108,7 @@ public class MainController implements iController {
                     break;
                 case 4:
                     // Lógica para mostrar la lista de usuarios
-                    Teclado.imprimirCadena("Lista de usuarios del proyecto:");
-                    Datos.listarUsuarios("usuariosRegistrados");
+
 
                     break;
                 case 5:
@@ -112,9 +119,8 @@ public class MainController implements iController {
 
 
             }
-            Teclado.imprimirCadena("");
-            Teclado.imprimirCadena("");
-            switchEleccionTareas(view.tareasProyecto());
+
+
 
         }while (opcion!=5);
     }

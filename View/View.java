@@ -91,8 +91,8 @@ public class View implements iView {
             Teclado.imprimirCadena("1. Listar proyecto");
             Teclado.imprimirCadena("2. Crear proyecto");
             Teclado.imprimirCadena("3. Borrar proyecto");
-            Teclado.imprimirCadena("4. Organizar proyecto");
-            Teclado.imprimirCadena("5. salir y guardar");
+            Teclado.imprimirCadena("4. Listar usuarios");
+            Teclado.imprimirCadena("5. Salir y guardar");
             opcion = Teclado.leeEntero("");
         } while (opcion < 1 || opcion > 5);
 
