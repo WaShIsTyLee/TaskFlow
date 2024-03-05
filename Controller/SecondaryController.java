@@ -13,8 +13,6 @@ public class SecondaryController implements iSecondaryController  {
 
     Tareas tareas = new Tareas();
 
-
-
     @Override
     public void switchMenuCRUDcreador() {
 
