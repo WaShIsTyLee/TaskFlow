@@ -1,6 +1,4 @@
 import Controller.MainController;
-import Model.Entitys.Usuario;
-import Model.Repository.RepoUsuarios;
 import View.View;
 
 
@@ -9,9 +7,9 @@ public class Main {
         MainController mainController = new MainController();
         View view = new View();
 
-      //  mainController.switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+          mainController.switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
 
-view.añadirProjecto();
+      //  view.añadirProjecto();
 
 
 

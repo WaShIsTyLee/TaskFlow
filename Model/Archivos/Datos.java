@@ -69,8 +69,10 @@ public class Datos {
             String linea;
                 while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-                    Teclado.imprimirCadena("nombre: "+partes[0].trim());
-                    Teclado.imprimirCadena("usuario: "+partes[1].trim());
+                    Teclado.imprimirCadena("-----------Usuario-----------");
+                    Teclado.imprimirCadena("Nombre: "+partes[0].trim());
+                    Teclado.imprimirCadena("Usuario: "+partes[1].trim());
+                    Teclado.imprimirCadena("-----------------------------");
 
                 }
         }catch(IOException e){
