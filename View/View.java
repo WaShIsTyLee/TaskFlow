@@ -3,6 +3,7 @@ package View;
 import IO.Teclado;
 import Interfaces.iView;
 import Model.Archivos.Datos;
+import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
 import Model.Proyectos.Projectos;
 
@@ -49,8 +50,6 @@ public class View implements iView {
         boolean credencialesCorrectas = false;
 
         do {
-            Teclado.imprimirCadena(" ");
-            Teclado.imprimirCadena(" ");
             String usuario = Teclado.leeString("Introduzca su Usuario:");
             String contraseña = Teclado.leeString("Introduzca su contraseña");
             credencialesCorrectas = Datos.verificarCredenciales("usuariosRegistrados", usuario, contraseña);
@@ -91,8 +90,10 @@ public class View implements iView {
             Teclado.imprimirCadena("1. Listar proyecto");
             Teclado.imprimirCadena("2. Crear proyecto");
             Teclado.imprimirCadena("3. Borrar proyecto");
-            Teclado.imprimirCadena("4. Organizar proyecto");
-            Teclado.imprimirCadena("5. salir y guardar");
+
+            Teclado.imprimirCadena("4. Listar Usuarios");
+
+            Teclado.imprimirCadena("5. Salir y guardar");
             opcion = Teclado.leeEntero("");
         } while (opcion < 1 || opcion > 5);
 
@@ -138,21 +139,41 @@ public class View implements iView {
         return opcion;
     }
 
-        public Projectos añadirProjecto() {
-            Projectos aux = new Projectos();
-            String nombre = Teclado.leeString("Introduce el nombre de tu proyecto: ");
-            aux.setNombre(nombre);
-            String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
-            aux.setDescripcion(descripcion);
-            String colaborador = Teclado.leeString("Introduce el nombre del colaborador: ");
-            aux.setColaborador(colaborador);
-           // aux.getListaTareas();
-            aux.setFechaInicio(LocalDate.now());
-            aux.setFechaFinalizacion(añadirFechaFin());
+    public Projectos viewBorrarProyecto() {
+        Projectos aux = new Projectos();
+        aux.setNombre(Teclado.leeString("Introduce el nombre del proyecto que deseas borrar"));
+        return aux;
 
-            System.out.println(aux);
+    }
+
+    public Projectos viewAñadirProjecto() {
+        Projectos aux = new Projectos();
+        String nombre = Teclado.leeString("Introduce el nombre de tu proyecto: ");
+        aux.setNombre(nombre);
+        String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
+        aux.setDescripcion(descripcion);
+        aux.setColaborador(añadirColaborador());
+        // aux.getListaTareas();
+        aux.setFechaInicio(LocalDate.now());
+        aux.setFechaFinalizacion(añadirFechaFin());
+
+        System.out.println(aux);
         return aux;
     }
+
+    private ArrayList<Colaborador> añadirColaborador() {
+        ArrayList<Colaborador> colaborador = new ArrayList<>();
+        boolean auxSN = true;
+        while (auxSN) {
+            Colaborador colaboradoraux = new Colaborador("");
+            colaboradoraux.setNombre(Teclado.leeString("Introduce el nombre del colaborador: "));
+            colaborador.add(colaboradoraux);
+            String respuesta = Teclado.leeString("Quieres añadir otro colaborador (s/n)? ");
+            auxSN = respuesta.equalsIgnoreCase("s");
+        }
+        return colaborador;
+    }
+
     private static LocalDate añadirFechaFin() {
         LocalDateTime ahora = LocalDateTime.now();
 

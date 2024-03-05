@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Datos {
 
@@ -30,7 +31,7 @@ public class Datos {
         boolean usuarioRegistrado = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
             String linea;
-            while ((linea = reader.readLine()) != null){
+            while ((linea = reader.readLine()) != null) {
                 String[] datos = linea.split(",");
                 if (datos[1].equals(nombreUsuario) || datos[3].equals(correo)) {
                     usuarioRegistrado = true;
@@ -63,18 +64,46 @@ public class Datos {
         }
         return credencialesValidas;
     }
+
     public static void listarUsuarios(String usuariosRegistrados) {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
             String linea;
-                while ((linea = reader.readLine()) != null) {
+            while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-                    Teclado.imprimirCadena("nombre: "+partes[0].trim());
-                    Teclado.imprimirCadena("usuario: "+partes[1].trim());
 
-                }
-        }catch(IOException e){
+                    Teclado.imprimirCadena("-----------Usuario-----------");
+                    Teclado.imprimirCadena("Nombre: "+partes[0].trim());
+                    Teclado.imprimirCadena("Usuario: "+partes[1].trim());
+                    Teclado.imprimirCadena("-----------------------------");
+
+
+            }
+        } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
+    }
+
+    public static void listarProyectos(ArrayList proyectos) {
+
+        for (Proyecto proyecto : proyectos) {
+            System.out.println(proyecto);
+        }
+
+
+    }
+
+    public static void listarProyectoporNombr(ArrayList proyectos) {
+        String a;
+        do {
+             a=Teclado.leeString("meta el nombre a buscar");
+            for (Proyecto proyecto : proyectos) {
+                if (proyecto.equals(a)) {
+                    System.out.println(proyecto);
+                } else {
+                    System.out.println("no existe ningun pryecto con ese nombre");
+                }
+            }
+        }while (!a.equalsIgnoreCase("salir"));
     }
 }

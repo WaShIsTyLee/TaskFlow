@@ -1,10 +1,12 @@
 package Model.Proyectos;
 
+import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Projectos implements Serializable {
     ArrayList<Tareas> listaTareas = new ArrayList<>();
@@ -12,21 +14,7 @@ public class Projectos implements Serializable {
     String descripcion;
     LocalDate fechaInicio;
     LocalDate fechaFinalizacion;
-    String colaborador;
-
-    public Projectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, String colaborador) {
-        this.listaTareas = listaTareas;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.fechaInicio = fechaInicio;
-        this.fechaFinalizacion = fechaFinalizacion;
-        this.colaborador = colaborador;
-    }
-    public Projectos() {
-        this(new ArrayList<>(), "", "", null, null, "");
-    }
-
-
+    ArrayList <Colaborador> colaborador = new ArrayList<>();
 
     public ArrayList<Tareas> getListaTareas() {
         return listaTareas;
@@ -68,12 +56,25 @@ public class Projectos implements Serializable {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 
-    public String getColaborador() {
+    public List getColaborador() {
         return colaborador;
     }
 
-    public void setColaborador(String colaborador) {
+    public void setColaborador(ArrayList<Colaborador> colaborador) {
         this.colaborador = colaborador;
+    }
+
+    public Projectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador) {
+        this.listaTareas = listaTareas;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.fechaInicio = fechaInicio;
+        this.fechaFinalizacion = fechaFinalizacion;
+        this.colaborador = colaborador;
+    }
+
+    public Projectos(){
+        this(null,"","",LocalDate.now(),null,null);
     }
 
     @Override
@@ -84,7 +85,9 @@ public class Projectos implements Serializable {
                 ", descripcion='" + descripcion + '\'' +
                 ", fechaInicio=" + fechaInicio +
                 ", fechaFinalizacion=" + fechaFinalizacion +
-                ", colaborador='" + colaborador + '\'' +
+                ", colaborador=" + colaborador +
                 '}';
     }
+
 }
+
