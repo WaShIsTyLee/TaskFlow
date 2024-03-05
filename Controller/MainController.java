@@ -62,6 +62,7 @@ public class MainController implements iController {
 
 
 
+
                 break;
             case 3:
                 Teclado.imprimirCadena("Borrando proyecto...");
@@ -82,6 +83,7 @@ public class MainController implements iController {
                 switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
                 break;
         }
+
 
 
     }
@@ -119,7 +121,9 @@ public class MainController implements iController {
 
 
             }
+
             switchEleccionTareas(view.tareasProyecto());
+
 
         } while (opcion != 5);
     }
