@@ -5,7 +5,10 @@ package IO;
 
 import Interfaces.iTeclado;
 
+import java.io.BufferedReader;
 import java.io.Console;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -23,11 +26,9 @@ public class Teclado implements iTeclado {
                 Teclado.imprimirCadena("Aqui no hay na... ponme algo niño");
                 cadenaUsuario = teclado.nextLine();
             } while (cadenaUsuario.isEmpty() || cadenaUsuario.isBlank());
-
         }
         return cadenaUsuario;
     }
-
 
     public static int leeEntero(String cadena) {
         int numeroUsuario = 0;

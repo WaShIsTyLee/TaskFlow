@@ -1,6 +1,4 @@
 import Controller.MainController;
-import Model.Entitys.Usuario;
-import Model.Repository.RepoUsuarios;
 import View.View;
 
 
@@ -8,9 +6,12 @@ public class Main {
     public static void main(String[] args) {
         MainController mainController = new MainController();
         View view = new View();
-        mainController.switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
 
-view.añadirProjecto();
+
+          mainController.switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+
+
+      //  view.añadirProjecto();
 
 
 

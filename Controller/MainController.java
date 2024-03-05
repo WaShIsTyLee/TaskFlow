@@ -3,15 +3,14 @@ package Controller;
 import IO.Teclado;
 import Interfaces.iController;
 import Model.Archivos.Datos;
-import Model.Entitys.Usuario;
-import Model.Serializador.Serializador;
+import Model.Repository.RepoProjectos;
+import Model.Repository.Repository;
 import View.View;
 
 public class MainController implements iController {
 
     View view = new View();
-
-
+    RepoProjectos repoProjectos = new RepoProjectos();
 
 
     @Override
@@ -43,45 +42,48 @@ public class MainController implements iController {
                 default:
                     Teclado.imprimirCadena("Ups... Parece que te has equivocado, prueba otra vez.");
                     Teclado.imprimirCadena(" ");
-                    opcion=view.menuRegistroInicioSesion();
+                    opcion = view.menuRegistroInicioSesion();
             }
         } while (opcion != 3);
     }
 
     public void switchEleccionCrud(int opcion) {  //LLAMAR A CADA FUNCION CUANDO ESTEN CREADAS
 
-            switch (opcion) {
-                case 1:
-                    Teclado.imprimirCadena("Listando proyectos...");
+        switch (opcion) {
+            case 1:
+                Teclado.imprimirCadena("Listando proyectos...");
 
-                    break;
-                case 2:
-                    Teclado.imprimirCadena("Crear proyecto...");
 
-                    break;
-                case 3:
-                    Teclado.imprimirCadena("Borrando proyecto...");
+                break;
+            case 2:
+                Teclado.imprimirCadena("Crear proyecto...");
+                repoProjectos.crearProjecto(view.viewAñadirProjecto());
+                switchEleccionCrud(view.eleccionCRUD());
 
-                    break;
-                case 4:
-                    Teclado.imprimirCadena("");
-                    Teclado.imprimirCadena("");
-                    Teclado.imprimirCadena("Lista de usuarios del proyecto:");
-                    Datos.listarUsuarios("usuariosRegistrados");
-                    Teclado.imprimirCadena("");
-                    Teclado.imprimirCadena("");
-                    switchEleccionTareas(view.eleccionCRUD());
-                   /* Teclado.imprimirCadena("Organizando tareas...");
-                    switchEleccionTareas(view.tareasProyecto());*/
 
-                    break;
-                case 5:
-                    Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
-                    Teclado.imprimirCadena("");
-                    Teclado.imprimirCadena("");
-                    switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
-                    break;
-            }
+
+
+                break;
+            case 3:
+                Teclado.imprimirCadena("Borrando proyecto...");
+                repoProjectos.borrarProyecto(view.viewBorrarProyecto());
+                switchEleccionCrud(view.eleccionCRUD());
+
+                break;
+            case 4:
+                Teclado.imprimirCadena("");
+                Teclado.imprimirCadena("Lista de usuarios del proyecto:");
+                Datos.listarUsuarios("usuariosRegistrados");
+                Teclado.imprimirCadena("");
+                switchEleccionCrud(view.eleccionCRUD());
+                break;
+            case 5:
+                Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
+                //SERIALIZADOR
+                switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+                break;
+        }
+
 
 
     }
@@ -120,9 +122,10 @@ public class MainController implements iController {
 
             }
 
+            switchEleccionTareas(view.tareasProyecto());
 
 
-        }while (opcion!=5);
+        } while (opcion != 5);
     }
 
 
