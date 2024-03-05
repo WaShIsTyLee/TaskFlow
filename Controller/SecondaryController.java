@@ -12,7 +12,12 @@ public class SecondaryController implements iSecondaryController  {
     View view = new View();
 
     Tareas tareas = new Tareas();
-SecondaryController implements iSecondaryController {
+
+
+    @Override
+    public void switchMenuCRUDcreador() {
+
+    }
 
     @Override
     public void switchMenuColaborador(int opcion) {
@@ -31,8 +36,13 @@ SecondaryController implements iSecondaryController {
         }
     }
 
-    public void editarEstadoTareas(Tareas tareas) {
+    @Override
+    public void switchMenuColaborador() {
+
     }
+
+    public void editarEstadoTareas(Tareas tareas) {
+
         tareas.setEstadoTareas(estadoTareas.SinIniciar);
 
         tareas.imprimirEstadoTareas();
