@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Objects;
 
+import static Model.Proyectos.estadoTareas.*;
+
 public class Tareas implements Serializable {
     static ArrayList<Tareas> tareas = new ArrayList<>();
 
@@ -91,21 +93,27 @@ public class Tareas implements Serializable {
                 '}';
     }
 
-    public void imprimirEstadoTareas() {
-        switch (this.estadoTareas) {
-            case SinIniciar:
+    public static estadoTareas imprimirEstadoTareas( int opcion) {
+        Tareas aux = new Tareas();
+        switch (opcion) {
+            case 1:
                 Teclado.imprimirCadena("La tarea aún no ha comenzado.");
+                aux.setEstadoTareas(SinIniciar);
                 break;
-            case EnTramite:
+            case 2:
                 Teclado.imprimirCadena("La tarea está en proceso.");
+                aux.setEstadoTareas(EnTramite);
                 break;
-            case Finalizada:
+            case 3:
                 Teclado.imprimirCadena("La tarea ha sido completada.");
+                aux.setEstadoTareas(Finalizada);
+
                 break;
             default:
                 Teclado.imprimirCadena("Estado desconocido.");
                 break;
         }
+        return aux.getEstadoTareas();
     }
     public void updateTarea(){
 

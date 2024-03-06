@@ -8,7 +8,6 @@ import Model.Entitys.Usuario;
 import Model.Proyectos.Proyectos;
 import Model.Proyectos.Tareas;
 
-import java.io.Console;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 
 
 public class View implements iView {
-
 
 
     @Override
@@ -199,8 +197,8 @@ public class View implements iView {
         return fechaFinalizacion;
     }
 
-    public int eleccionListarProyecto(){
-        int aux=0;
+    public int eleccionListarProyecto() {
+        int aux = 0;
         Teclado.imprimirCadena("1. Para listar todos");
         Teclado.imprimirCadena("2. Para listar por nombre");
         aux = Teclado.leeEntero("");
@@ -209,6 +207,24 @@ public class View implements iView {
 
     }
 
+    public Tareas viewAñadirTarea(){
+        Tareas aux = new Tareas();
+        aux.setNombre(Teclado.leeString("Dame el nombre de tu tarea: "));
+        aux.setDescripcion(Teclado.leeString("Dame la descripción de tu tarea: "));
+        aux.setFechaInicio(LocalDate.now());
+        aux.setFechaLimite(añadirFechaFin());
+        aux.setEstadoTareas(Tareas.imprimirEstadoTareas(estadoTareas()));
+        return aux;
+    }
+
+    public int estadoTareas(){
+        int opcion = 0;
+        Teclado.imprimirCadena("1. Tarea sin iniciar");
+        Teclado.imprimirCadena("2. Tarea en tramite");
+        Teclado.imprimirCadena("3. Tarea finalizada");
+        opcion = Teclado.leeEntero("");
+        return opcion;
+    }
 
     public int menuCrudTareas() {
         int opcion = 0;
@@ -219,6 +235,7 @@ public class View implements iView {
         opcion = Teclado.leeEntero("");
         return opcion;
     }
+
     public Tareas nombreTarea() {
         Tareas tareasaux = new Tareas();
         Teclado.leeString("Dime el nombre de la tarea que deseas eliminar: ");
