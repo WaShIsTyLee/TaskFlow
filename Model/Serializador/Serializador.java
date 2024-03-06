@@ -28,7 +28,7 @@ public class Serializador {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
             result = (T) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
-
+            e.printStackTrace();
         }
 
         return result;

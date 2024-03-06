@@ -3,7 +3,7 @@ package Controller;
 
 import IO.Teclado;
 import Interfaces.iSecondaryController;
-import Model.Proyectos.Projectos;
+import Model.Proyectos.Proyectos;
 import Model.Proyectos.Tareas;
 import Model.Proyectos.estadoTareas;
 import View.View;
@@ -55,7 +55,7 @@ public class SecondaryController implements iSecondaryController  {
         tareas.imprimirEstadoTareas();
     }
 
-    public void añadirComentario(Tareas tareas, Projectos projectos, String comentario){
+    public void añadirComentario(Tareas tareas, Proyectos proyectos, String comentario){
         comentario = Teclado.leeString("");
         tareas.setComentario(comentario);
 

@@ -1,12 +1,15 @@
 package Model.Archivos;
 
 import IO.Teclado;
+import Model.Proyectos.Proyectos;
+import Model.Repository.RepoProjectos;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Datos {
 
@@ -84,26 +87,5 @@ public class Datos {
         }
     }
 
-    public static void listarProyectos(ArrayList proyectos) {
 
-        for (Proyecto proyecto : proyectos) {
-            System.out.println(proyecto);
-        }
-
-
-    }
-
-    public static void listarProyectoporNombr(ArrayList proyectos) {
-        String a;
-        do {
-             a=Teclado.leeString("meta el nombre a buscar");
-            for (Proyecto proyecto : proyectos) {
-                if (proyecto.equals(a)) {
-                    System.out.println(proyecto);
-                } else {
-                    System.out.println("no existe ningun pryecto con ese nombre");
-                }
-            }
-        }while (!a.equalsIgnoreCase("salir"));
-    }
 }

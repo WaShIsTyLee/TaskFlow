@@ -5,7 +5,8 @@ import Interfaces.iView;
 import Model.Archivos.Datos;
 import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
-import Model.Proyectos.Projectos;
+import Model.Proyectos.Proyectos;
+import Model.Proyectos.Tareas;
 
 import java.io.Console;
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 
 public class View implements iView {
-    Console console = System.console();
+
 
 
     @Override
@@ -124,7 +125,7 @@ public class View implements iView {
     }
 
     @Override
-    public int menuColaborador(Projectos projecto) {
+    public int menuColaborador(Proyectos projecto) {
         int opcion = -1;
 
         do {
@@ -139,21 +140,21 @@ public class View implements iView {
         return opcion;
     }
 
-    public Projectos viewBorrarProyecto() {
-        Projectos aux = new Projectos();
+    public Proyectos viewBorrarProyecto() {
+        Proyectos aux = new Proyectos();
         aux.setNombre(Teclado.leeString("Introduce el nombre del proyecto que deseas borrar"));
         return aux;
 
     }
 
-    public Projectos viewAñadirProjecto() {
-        Projectos aux = new Projectos();
+    public Proyectos viewAñadirProjecto() {
+        Proyectos aux = new Proyectos();
         String nombre = Teclado.leeString("Introduce el nombre de tu proyecto: ");
         aux.setNombre(nombre);
         String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
         aux.setDescripcion(descripcion);
         aux.setColaborador(añadirColaborador());
-        // aux.getListaTareas();
+        //aux.setListaTareas(Tareas.agregarTareas());
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinalizacion(añadirFechaFin());
 
@@ -166,7 +167,7 @@ public class View implements iView {
         boolean auxSN = true;
         while (auxSN) {
             Colaborador colaboradoraux = new Colaborador("");
-            colaboradoraux.setNombre(Teclado.leeString("Introduce el nombre del colaborador: "));
+            colaboradoraux.setUsuario(Teclado.leeString("Introduce el nombre del colaborador: "));
             colaborador.add(colaboradoraux);
             String respuesta = Teclado.leeString("Quieres añadir otro colaborador (s/n)? ");
             auxSN = respuesta.equalsIgnoreCase("s");
@@ -194,6 +195,15 @@ public class View implements iView {
         }
 
         return fechaFinalizacion;
+    }
+    public int eleccionListarProyecto(){
+        int aux=0;
+        Teclado.imprimirCadena("1. Para listar todos");
+        Teclado.imprimirCadena("2. Para listar por nombre");
+        aux = Teclado.leeEntero("");
+        return aux;
+
+
     }
 }
 
