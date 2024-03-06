@@ -2,12 +2,15 @@ package Model.Archivos;
 
 import IO.Teclado;
 import Model.Proyectos.Proyectos;
+import Model.Repository.RepoProjectos;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Datos {
 
@@ -85,6 +88,7 @@ public class Datos {
         }
     }
 
+
     public static void listarProjectos(ArrayList<Proyectos> projectos) {
 
         for (Proyectos proyecto : projectos) {
@@ -107,4 +111,5 @@ public class Datos {
             }
         }while (!a.equalsIgnoreCase("salir"));
     }
+
 }

@@ -1,24 +1,26 @@
 package Model.Entitys;
 
-public class Colaborador extends Usuario {
-    String nombre;
+import java.io.Serializable;
 
-    public Colaborador(String nombre) {
-        this.nombre = nombre;
+public class Colaborador implements Serializable {
+    String Usuario;
+
+    public Colaborador(String usuario) {
+        Usuario = usuario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getUsuario() {
+        return Usuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setUsuario(String usuario) {
+        Usuario = usuario;
     }
 
     @Override
     public String toString() {
         return "Colaborador{" +
-                "nombre='" + nombre + '\'' +
+                "Usuario='" + Usuario + '\'' +
                 '}';
     }
 }

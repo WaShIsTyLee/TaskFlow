@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 
 public class View implements iView {
-    Console console = System.console();
+
 
 
     @Override
@@ -154,7 +154,9 @@ public class View implements iView {
         String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
         aux.setDescripcion(descripcion);
         aux.setColaborador(añadirColaborador());
-        //aux.setListaTareas(Tareas.agregarTarea());
+
+        //aux.setListaTareas(Tareas.agregarTareas());
+
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinalizacion(añadirFechaFin());
 
@@ -167,7 +169,7 @@ public class View implements iView {
         boolean auxSN = true;
         while (auxSN) {
             Colaborador colaboradoraux = new Colaborador("");
-            colaboradoraux.setNombre(Teclado.leeString("Introduce el nombre del colaborador: "));
+            colaboradoraux.setUsuario(Teclado.leeString("Introduce el nombre del colaborador: "));
             colaborador.add(colaboradoraux);
             String respuesta = Teclado.leeString("Quieres añadir otro colaborador (s/n)? ");
             auxSN = respuesta.equalsIgnoreCase("s");
@@ -197,6 +199,17 @@ public class View implements iView {
         return fechaFinalizacion;
     }
 
+    public int eleccionListarProyecto(){
+        int aux=0;
+        Teclado.imprimirCadena("1. Para listar todos");
+        Teclado.imprimirCadena("2. Para listar por nombre");
+        aux = Teclado.leeEntero("");
+        return aux;
+
+
+    }
+
+
     public int menuCrudTareas() {
         int opcion = 0;
         Teclado.imprimirCadena("Elige la opcion que desees usar: ");
@@ -212,6 +225,7 @@ public class View implements iView {
         tareasaux.setNombre(Teclado.leeString("Dime el nombre de la tarea: "));
         return tareasaux;
     }
+
 
 }
 

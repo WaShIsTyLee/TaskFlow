@@ -50,7 +50,9 @@ public class SecondaryController implements iSecondaryController {
         tareas.imprimirEstadoTareas();
     }
 
+
     public void añadirComentario(Tareas tareas, Proyectos proyectos, String comentario) {
+
         comentario = Teclado.leeString("");
         tareas.setComentario(comentario);
 

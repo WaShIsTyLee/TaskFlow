@@ -19,8 +19,8 @@ public class Repository implements Serializable {
         System.out.println(this.getClass());
         return Serializador.serialize(this,filename);
     }
-    public static void load(String filename){
-
-        _instance=Serializador.deserializer(filename);
+    public static Repository load(String filename){
+       return Serializador.deserializer(filename);
     }
+
 }

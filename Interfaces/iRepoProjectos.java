@@ -2,6 +2,10 @@ package Interfaces;
 
 import Model.Proyectos.Proyectos;
 
-public interface iRepoProjectos {
+
+import java.io.Serializable;
+
+public interface iRepoProjectos extends Serializable {
+
     boolean borrarProyecto(Proyectos projecto);
 }
