@@ -81,6 +81,7 @@ public class Proyectos implements Serializable {
         return  "Proyecto: " + ""+ nombre + ""+ descripcion + "" + fechaInicio + "" + fechaFinalizacion + "" + "\n" +
                  listaTareas;
 
+
     }
 
 }

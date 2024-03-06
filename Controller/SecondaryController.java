@@ -8,7 +8,7 @@ import Model.Proyectos.Tareas;
 import Model.Proyectos.estadoTareas;
 import View.View;
 
-public class SecondaryController implements iSecondaryController  {
+public class SecondaryController implements iSecondaryController {
     View view = new View();
 
     Tareas tareas = new Tareas();
@@ -35,17 +35,12 @@ public class SecondaryController implements iSecondaryController  {
         }
     }
 
-    @Override
-    public void switchMenuColaborador() {
-
-    }
-
     public void editarEstadoTareas(Tareas tareas) {
 
         tareas.setEstadoTareas(estadoTareas.SinIniciar);
 
         tareas.imprimirEstadoTareas();
-  
+
         tareas.setEstadoTareas(estadoTareas.EnTramite);
 
         tareas.imprimirEstadoTareas();
@@ -55,9 +50,28 @@ public class SecondaryController implements iSecondaryController  {
         tareas.imprimirEstadoTareas();
     }
 
-    public void añadirComentario(Tareas tareas, Proyectos proyectos, String comentario){
+
+    public void añadirComentario(Tareas tareas, Proyectos proyectos, String comentario) {
+
         comentario = Teclado.leeString("");
         tareas.setComentario(comentario);
 
+    }
+
+    public void switchMenuCrudTareas(int opcion) {
+        switch (opcion) {
+            case 1:
+                Teclado.imprimirCadena("Creando la tarea...");
+                Tareas.agregarTarea(tareas);
+                break;
+            case 2:
+                Teclado.imprimirCadena("Actualizando la tarea...");
+                //Meter el metodo y dentro de este la logica
+                break;
+            case 3:
+                Teclado.imprimirCadena("Creando la tarea...");
+                Tareas.eliminarTarea(view.nombreTarea());
+                break;
+        }
     }
 }

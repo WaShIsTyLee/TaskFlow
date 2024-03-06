@@ -154,7 +154,9 @@ public class View implements iView {
         String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
         aux.setDescripcion(descripcion);
         aux.setColaborador(añadirColaborador());
+
         //aux.setListaTareas(Tareas.agregarTareas());
+
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinalizacion(añadirFechaFin());
 
@@ -196,6 +198,7 @@ public class View implements iView {
 
         return fechaFinalizacion;
     }
+
     public int eleccionListarProyecto(){
         int aux=0;
         Teclado.imprimirCadena("1. Para listar todos");
@@ -205,5 +208,24 @@ public class View implements iView {
 
 
     }
+
+
+    public int menuCrudTareas() {
+        int opcion = 0;
+        Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+        Teclado.imprimirCadena("1. Crear una tarea ");
+        Teclado.imprimirCadena("2. Actualizar la tarea ");
+        Teclado.imprimirCadena("3. Eliminar la tarea ");
+        opcion = Teclado.leeEntero("");
+        return opcion;
+    }
+    public Tareas nombreTarea() {
+        Tareas tareasaux = new Tareas();
+        Teclado.leeString("Dime el nombre de la tarea que deseas eliminar: ");
+        tareasaux.setNombre(Teclado.leeString("Dime el nombre de la tarea: "));
+        return tareasaux;
+    }
+
+
 }
 

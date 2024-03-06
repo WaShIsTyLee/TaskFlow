@@ -5,9 +5,11 @@ import Interfaces.iRepoProjectos;
 import Model.Proyectos.Proyectos;
 import Model.Serializador.Serializador;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
+
 
 public class RepoProjectos extends Repository implements iRepoProjectos, Serializable {
 
@@ -39,6 +41,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos, Seriali
         while (iterator.hasNext()) {
             Proyectos proyectoEnLista = iterator.next();
             if (proyectoEnLista.getNombre().equals(proyecto.getNombre())) {
+
                 iterator.remove();
                 result = true;
             }
@@ -46,7 +49,9 @@ public class RepoProjectos extends Repository implements iRepoProjectos, Seriali
         return result;
     }
 
+
     public boolean crearProjecto(Proyectos proyecto) {
+
         boolean result = false;
         if (isProject(proyecto) == -1) {
             proyectos.add(proyecto);
