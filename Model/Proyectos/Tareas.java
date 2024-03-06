@@ -4,9 +4,13 @@ import IO.Teclado;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Tareas implements Serializable {
+    static ArrayList<Tareas> tareas = new ArrayList<>();
+
     String nombre;
     String descripcion;
     LocalDate fechaInicio;
@@ -70,8 +74,9 @@ public class Tareas implements Serializable {
         this.estadoTareas = estadoTareas;
         this.comentario = comentario;
     }
-    public Tareas(){
-        this("","",null,null,null,"");
+
+    public Tareas() {
+        this("", "", null, null, null, "");
     }
 
     @Override
@@ -102,4 +107,32 @@ public class Tareas implements Serializable {
                 break;
         }
     }
+
+    public static void agregarTarea(Tareas tarea) {
+        boolean tareaExistente = false;
+
+        for (Tareas tareaExiste : tareas) {
+            if (tareaExiste.getNombre().equals(tarea.getNombre())) {
+                tareaExistente = true;
+            }
+        }
+        if (!tareaExistente) {
+            tareas.add(tarea);
+        } else {
+            Teclado.imprimirCadena("La tarea ya existe en el proyecto.");
+            System.out.println(tareas);
+        }
+    }
+
+    public static void eliminarTarea(Tareas tarea) {
+        Iterator<Tareas> iterator = tareas.iterator();
+        while (iterator.hasNext()) {
+            Tareas tareasaux = iterator.next();
+            if (tareasaux.getNombre().equals(tarea.getNombre())) {
+                iterator.remove();
+            }
+        }
+    }
+
+
 }

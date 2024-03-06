@@ -1,14 +1,13 @@
 package Model.Proyectos;
 
 import Model.Entitys.Colaborador;
-import Model.Entitys.Usuario;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Projectos implements Serializable {
+public class Proyectos implements Serializable {
     ArrayList<Tareas> listaTareas = new ArrayList<>();
     String nombre;
     String descripcion;
@@ -64,7 +63,7 @@ public class Projectos implements Serializable {
         this.colaborador = colaborador;
     }
 
-    public Projectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador) {
+    public Proyectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador) {
         this.listaTareas = listaTareas;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -73,7 +72,7 @@ public class Projectos implements Serializable {
         this.colaborador = colaborador;
     }
 
-    public Projectos(){
+    public Proyectos(){
         this(null,"","",LocalDate.now(),null,null);
     }
 

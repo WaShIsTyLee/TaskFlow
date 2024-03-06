@@ -1,6 +1,7 @@
 package Model.Archivos;
 
 import IO.Teclado;
+import Model.Proyectos.Proyectos;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -72,10 +73,10 @@ public class Datos {
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
 
-                    Teclado.imprimirCadena("-----------Usuario-----------");
-                    Teclado.imprimirCadena("Nombre: "+partes[0].trim());
-                    Teclado.imprimirCadena("Usuario: "+partes[1].trim());
-                    Teclado.imprimirCadena("-----------------------------");
+                Teclado.imprimirCadena("-----------Usuario-----------");
+                Teclado.imprimirCadena("Nombre: "+partes[0].trim());
+                Teclado.imprimirCadena("Usuario: "+partes[1].trim());
+                Teclado.imprimirCadena("-----------------------------");
 
 
             }
@@ -84,22 +85,22 @@ public class Datos {
         }
     }
 
-    public static void listarProyectos(ArrayList proyectos) {
+    public static void listarProjectos(ArrayList<Proyectos> projectos) {
 
-        for (Proyecto proyecto : proyectos) {
-            System.out.println(proyecto);
+        for (Proyectos proyecto : projectos) {
+            System.out.println(projectos);
         }
 
 
     }
 
-    public static void listarProyectoporNombr(ArrayList proyectos) {
+    public static void listarProyectoporNombre(ArrayList <Proyectos>proyectos) {
         String a;
         do {
-             a=Teclado.leeString("meta el nombre a buscar");
-            for (Proyecto proyecto : proyectos) {
-                if (proyecto.equals(a)) {
-                    System.out.println(proyecto);
+            a=Teclado.leeString("meta el nombre a buscar");
+            for (Proyectos projecto : proyectos) {
+                if (projecto.equals(a)) {
+                    System.out.println(projecto);
                 } else {
                     System.out.println("no existe ningun pryecto con ese nombre");
                 }

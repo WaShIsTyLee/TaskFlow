@@ -1,20 +1,20 @@
 package Model.Repository;
 
 import Interfaces.iRepoProjectos;
-import Model.Proyectos.Projectos;
+import Model.Proyectos.Proyectos;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class RepoProjectos implements iRepoProjectos {
-    List<Projectos> projectos = new ArrayList<>();
+    List<Proyectos> projectos = new ArrayList<>();
 
-    public boolean borrarProyecto(Projectos projecto) {
+    public boolean borrarProyecto(Proyectos projecto) {
         boolean result = false;
-        Iterator<Projectos> iterator = projectos.iterator();
+        Iterator<Proyectos> iterator = projectos.iterator();
         while (iterator.hasNext()) {
-            Projectos proyectoEnLista = iterator.next();
+            Proyectos proyectoEnLista = iterator.next();
             if (proyectoEnLista.getNombre().equals(projecto.getNombre())) {
                 iterator.remove();
                 result = true;
@@ -23,7 +23,7 @@ public class RepoProjectos implements iRepoProjectos {
         return result;
     }
 
-    public boolean crearProjecto(Projectos projecto) {
+    public boolean crearProjecto(Proyectos projecto) {
         boolean result = false;
         if (isProject(projecto) == -1) {
             projectos.add(projecto);
@@ -35,7 +35,7 @@ public class RepoProjectos implements iRepoProjectos {
         return result;
     }
 
-    private int isProject(Projectos projecto) {
+    private int isProject(Proyectos projecto) {
         int index = -1;
         for (int i = 0; i < projectos.size(); i++) {
             if (projectos.get(i).getNombre().equals(projecto.getNombre())) {

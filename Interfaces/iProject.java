@@ -1,8 +1,8 @@
 package Interfaces;
 
-import Model.Proyectos.Projectos;
+import Model.Proyectos.Proyectos;
 
 public interface iProject {
 
-    void añadirColaboradores(Projectos projectos);
+    void añadirColaboradores(Proyectos proyectos);
 }
