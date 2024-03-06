@@ -107,6 +107,9 @@ public class Tareas implements Serializable {
                 break;
         }
     }
+    public void updateTarea(){
+
+    }
 
     public static void agregarTarea(Tareas tarea) {
         boolean tareaExistente = false;
@@ -133,6 +136,28 @@ public class Tareas implements Serializable {
             }
         }
     }
+    public static void upadteTarea(Tareas tarea){
+        boolean tareaExiste=false;
+        String aux = "";
+        for (Tareas tareaexisten:tareas){
+            if(tareaexisten.getNombre().equals(tarea.getNombre())){
+                tareaExiste=true;
+                aux=tarea.getNombre();
+            }
+        }
+        if (tareaExiste){
+            for (Tareas tareaUpdate: tareas){
+                if (tareaUpdate.getNombre().equals(aux)){
+                    tareaUpdate.setNombre(Teclado.leeString("elige el nuevo nombre"));
+                    tareaUpdate.setEstadoTareas(Model.Proyectos.estadoTareas.SinIniciar);
+                    tareaUpdate.setComentario(Teclado.leeString("crea un nuevo comentario"));
+                    tareaUpdate.setDescripcion("crea una nueva descripción");
+                }
+            }
+        }else {
+            Teclado.imprimirCadena("Parece que no esxiste esa tarea");
+        }
 
+    }
 
 }
