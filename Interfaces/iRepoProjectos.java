@@ -1,9 +1,7 @@
 package Interfaces;
 
-import Model.Proyectos.Projectos;
-
-import java.util.ArrayList;
+import Model.Proyectos.Proyectos;
 
 public interface iRepoProjectos {
-    boolean borrarProyecto(Projectos projecto);
+    boolean borrarProyecto(Proyectos projecto);
 }

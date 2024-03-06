@@ -1,11 +1,8 @@
 package Model.Entitys;
 
-import Model.Proyectos.Projectos;
-import Model.Proyectos.Tareas;
 import Model.Proyectos.TipoRol;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class Usuario implements Serializable {

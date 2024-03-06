@@ -1,7 +1,7 @@
 package Interfaces;
 
 import Model.Entitys.Usuario;
-import Model.Proyectos.Projectos;
+import Model.Proyectos.Proyectos;
 
 public interface iView {
 
@@ -21,7 +21,7 @@ public interface iView {
     //1. CRUD
     //2. Añadir Colaborador
 
-    int menuColaborador(Projectos projecto);
+    int menuColaborador(Proyectos projecto);
     //IMPRIMIR LAS TAREAS DEL PROYECTO
     //1. Modificar estado Tareas
     //2. Añadir cometario

@@ -5,7 +5,8 @@ import Interfaces.iView;
 import Model.Archivos.Datos;
 import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
-import Model.Proyectos.Projectos;
+import Model.Proyectos.Proyectos;
+import Model.Proyectos.Tareas;
 
 import java.io.Console;
 import java.time.LocalDate;
@@ -124,7 +125,7 @@ public class View implements iView {
     }
 
     @Override
-    public int menuColaborador(Projectos projecto) {
+    public int menuColaborador(Proyectos projecto) {
         int opcion = -1;
 
         do {
@@ -139,21 +140,21 @@ public class View implements iView {
         return opcion;
     }
 
-    public Projectos viewBorrarProyecto() {
-        Projectos aux = new Projectos();
+    public Proyectos viewBorrarProyecto() {
+        Proyectos aux = new Proyectos();
         aux.setNombre(Teclado.leeString("Introduce el nombre del proyecto que deseas borrar"));
         return aux;
 
     }
 
-    public Projectos viewAñadirProjecto() {
-        Projectos aux = new Projectos();
+    public Proyectos viewAñadirProjecto() {
+        Proyectos aux = new Proyectos();
         String nombre = Teclado.leeString("Introduce el nombre de tu proyecto: ");
         aux.setNombre(nombre);
         String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
         aux.setDescripcion(descripcion);
         aux.setColaborador(añadirColaborador());
-        // aux.getListaTareas();
+        //aux.setListaTareas(Tareas.agregarTarea());
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinalizacion(añadirFechaFin());
 
@@ -195,5 +196,22 @@ public class View implements iView {
 
         return fechaFinalizacion;
     }
+
+    public int menuCrudTareas() {
+        int opcion = 0;
+        Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+        Teclado.imprimirCadena("1. Crear una tarea ");
+        Teclado.imprimirCadena("2. Actualizar la tarea ");
+        Teclado.imprimirCadena("3. Eliminar la tarea ");
+        opcion = Teclado.leeEntero("");
+        return opcion;
+    }
+    public Tareas nombreTarea() {
+        Tareas tareasaux = new Tareas();
+        Teclado.leeString("Dime el nombre de la tarea que deseas eliminar: ");
+        tareasaux.setNombre(Teclado.leeString("Dime el nombre de la tarea: "));
+        return tareasaux;
+    }
+
 }
 
