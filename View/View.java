@@ -154,9 +154,7 @@ public class View implements iView {
         String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
         aux.setDescripcion(descripcion);
         aux.setColaborador(añadirColaborador());
-
-        //aux.setListaTareas(Tareas.agregarTareas());
-
+      //  aux.setListaTareas(Tareas.agregarTarea());
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinalizacion(añadirFechaFin());
 

@@ -99,6 +99,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos, Seriali
         return Serializador.serialize(this, FILENAME);
     }
 
+
     public static RepoProjectos loadData() {
         return (RepoProjectos) Serializador.deserializer(FILENAME);
     }

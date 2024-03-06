@@ -16,7 +16,6 @@ public class Repository implements Serializable {
     }
 
     public boolean save(String filename){
-        System.out.println(this.getClass());
         return Serializador.serialize(this,filename);
     }
     public static Repository load(String filename){
