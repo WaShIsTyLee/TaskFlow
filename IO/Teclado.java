@@ -33,7 +33,7 @@ public class Teclado implements iTeclado {
     public static int leeEntero(String cadena) {
         int numeroUsuario = 0;
         boolean entradaValida = false;
-
+        imprimirCadena(cadena);
         do {
             try {
                 numeroUsuario = teclado.nextInt();

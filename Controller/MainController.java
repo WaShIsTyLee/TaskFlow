@@ -38,6 +38,7 @@ public class MainController implements iController {
 
                 case 3:
                     Teclado.imprimirCadena("Adios");
+                    view.definitivamente_no_es_un_tanque();
                     break;
 
                 default:
