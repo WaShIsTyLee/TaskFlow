@@ -1,6 +1,7 @@
 package View;
 
 import IO.Teclado;
+import IO.Utils;
 import Interfaces.iView;
 import Model.Archivos.Datos;
 import Model.Entitys.Colaborador;
@@ -8,6 +9,7 @@ import Model.Entitys.Usuario;
 import Model.Proyectos.Proyectos;
 import Model.Proyectos.Tareas;
 
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -117,9 +119,11 @@ public class View implements iView {
             Teclado.imprimirCadena("");
         }
         contraseña = Teclado.leeString("Introduzca su contraseña");
+       contraseña=Utils.hashPassword(contraseña);
         Teclado.imprimirCadena("");
         Teclado.imprimirCadena("*********************************");
         Teclado.imprimirCadena("");
+
         Datos.guardarEnArchivo(nombre, usuario, correo, contraseña, "usuariosRegistrados");
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
         Teclado.imprimirCadena("");
@@ -258,45 +262,21 @@ public class View implements iView {
         Teclado.imprimirCadena("*********************************");
         Teclado.imprimirCadena("");
         aux.setDescripcion(descripcion);
-        aux.setColaborador(añadirColaborador());
-
-        //aux.setListaTareas(Tareas.agregarTareas());
-
+        aux.setColaborador(aux.añadirColaborador());
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinalizacion(añadirFechaFin());
+        aux.setCreador(Datos.obtenerUltimoUsuario("usuariosRegistrados"));
+        String respuesta;
+        do{
+            aux.setListaTareas(Tareas.agregarTarea(Tareas.crearTarea()));
+            respuesta = Teclado.leeString("¿Desea añadir otra tarea? Si/No");
+        }while(respuesta.equalsIgnoreCase("Si"));
+                System.out.println(aux);
 
-        System.out.println(aux);
-        Teclado.imprimirCadena("");
-        Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
-        Teclado.imprimirCadena("");
+
         return aux;
     }
 
-    private ArrayList<Colaborador> añadirColaborador() {
-        ArrayList<Colaborador> colaborador = new ArrayList<>();
-        boolean auxSN = true;
-        while (auxSN) {
-            Teclado.imprimirCadena("");
-            Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
-            Colaborador colaboradoraux = new Colaborador("");
-            Teclado.imprimirCadena("");
-            Teclado.imprimirCadena("*********************************");
-            Teclado.imprimirCadena("");
-            colaboradoraux.setUsuario(Teclado.leeString("Introduce el nombre del colaborador: "));
-            Teclado.imprimirCadena("");
-            Teclado.imprimirCadena("*********************************");
-            Teclado.imprimirCadena("");
-            colaborador.add(colaboradoraux);
-            String respuesta = Teclado.leeString("Quieres añadir otro colaborador (s/n)? ");
-            Teclado.imprimirCadena("");
-            Teclado.imprimirCadena("*********************************");
-            auxSN = respuesta.equalsIgnoreCase("s");
-            Teclado.imprimirCadena("");
-            Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
-            Teclado.imprimirCadena("");
-        }
-        return colaborador;
-    }
 
     private static LocalDate añadirFechaFin() {
         LocalDateTime ahora = LocalDateTime.now();
@@ -417,6 +397,17 @@ public class View implements iView {
         Teclado.imprimirCadena("");
         return opcion;
     }
+
+
+    public int estadoTareas() {
+        int opcion = 0;
+        Teclado.imprimirCadena("1. Tarea sin iniciar");
+        Teclado.imprimirCadena("2. Tarea en tramite");
+        Teclado.imprimirCadena("3. Tarea finalizada");
+        opcion = Teclado.leeEntero("");
+        return opcion;
+    }
+
 
     public Tareas nombreTarea() {
         Tareas tareasaux = new Tareas();

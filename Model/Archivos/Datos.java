@@ -1,6 +1,8 @@
 package Model.Archivos;
 
 import IO.Teclado;
+import IO.Utils;
+import Model.Entitys.Usuario;
 import Model.Proyectos.Proyectos;
 import Model.Repository.RepoProjectos;
 
@@ -57,7 +59,7 @@ public class Datos {
                 if (partes.length >= 3) {
                     String usuarioRegistrado = partes[1].trim();
                     String contraseñaRegistrada = partes[2].trim();
-                    if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(contraseña)) {
+                    if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(Utils.hashPassword(contraseña))) {
                         credencialesValidas = true;
                         break;
                     }
@@ -67,6 +69,23 @@ public class Datos {
             System.out.println("Error al leer el archivo: " + e.getMessage());
         }
         return credencialesValidas;
+    }
+
+    public static String obtenerUltimoUsuario(String nombreArchivo) {
+        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+            String linea;
+            String ultimoUsuario = null;
+
+            while ((linea = br.readLine()) != null) {
+                String[] partes = linea.split(",");
+                ultimoUsuario = partes[1];
+            }
+
+            return ultimoUsuario;
+        } catch (IOException e) {
+            System.err.println("Error al leer el archivo: " + e.getMessage());
+            return null;
+        }
     }
 
     public static void listarUsuarios(String usuariosRegistrados) {

@@ -23,7 +23,6 @@ public class SecondaryController implements iSecondaryController {
         switch (opcion) {
             case 1:
                 Teclado.imprimirCadena("Editando estado de la tarea...");
-
                 break;
             case 2:
                 Teclado.imprimirCadena("Añadiendo comentario...");
@@ -36,7 +35,9 @@ public class SecondaryController implements iSecondaryController {
         }
     }
 
+
     public String añadirComentario(Tareas tareas, Proyectos proyectos, String comentario) {
+
 
         comentario = Teclado.leeString("");
         tareas.setComentario(comentario);

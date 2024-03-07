@@ -1,5 +1,6 @@
 package Model.Proyectos;
 
+import IO.Teclado;
 import Model.Entitys.Colaborador;
 
 import java.io.Serializable;
@@ -13,7 +14,16 @@ public class Proyectos implements Serializable {
     String descripcion;
     LocalDate fechaInicio;
     LocalDate fechaFinalizacion;
-    ArrayList <Colaborador> colaborador = new ArrayList<>();
+    ArrayList <Colaborador> colaborador;
+    String creador;
+
+    public String getCreador() {
+        return creador;
+    }
+
+    public void setCreador(String creador) {
+        this.creador = creador;
+    }
 
     public ArrayList<Tareas> getListaTareas() {
         return listaTareas;
@@ -63,26 +73,44 @@ public class Proyectos implements Serializable {
         this.colaborador = colaborador;
     }
 
-    public Proyectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador) {
+    public Proyectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador, String creador) {
         this.listaTareas = listaTareas;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFinalizacion = fechaFinalizacion;
         this.colaborador = colaborador;
+        this.creador = creador;
     }
 
     public Proyectos(){
-        this(null,"","",LocalDate.now(),null,null);
+        this(null,"","",LocalDate.now(),null,null,"");
     }
 
     @Override
     public String toString() {
-        return  "Proyecto: " + ""+ nombre + ""+ descripcion + "" + fechaInicio + "" + fechaFinalizacion + "" + "\n" +
-                 listaTareas;
-
-
+        return "Proyectos{" +
+                "listaTareas=" + listaTareas +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaInicio=" + fechaInicio +
+                ", fechaFinalizacion=" + fechaFinalizacion +
+                ", colaborador=" + colaborador +
+                ", creador='" + creador + '\'' +
+                '}';
     }
-
+    public ArrayList<Colaborador> añadirColaborador() {
+        ArrayList<Colaborador> colaborador = new ArrayList<>();
+        boolean auxSN = true;
+        while (auxSN) {
+            Colaborador colaboradoraux = new Colaborador("");
+            colaboradoraux.setUsuario(Teclado.leeString("Introduce el nombre del colaborador: "));
+            colaborador.add(colaboradoraux);
+            String respuesta = Teclado.leeString("Quieres añadir otro colaborador (s/n)? ");
+            auxSN = respuesta.equalsIgnoreCase("s");
+        }
+        return colaborador;
+    }
 }
+
 

@@ -10,7 +10,6 @@ public class Main {
         View view = new View();
         SecondaryController secondaryController = new SecondaryController();
 
-
         mainController.startApp();
 
     }

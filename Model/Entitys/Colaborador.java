@@ -23,4 +23,5 @@ public class Colaborador implements Serializable {
                 "Usuario='" + Usuario + '\'' +
                 '}';
     }
+
 }

@@ -1,16 +1,19 @@
 package Model.Proyectos;
 
 import IO.Teclado;
+import View.View;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Objects;
+
+import static Model.Proyectos.estadoTareas.*;
 
 import static Model.Proyectos.estadoTareas.*;
 
 public class Tareas implements Serializable {
+    static View view = new View();
     static ArrayList<Tareas> tareas = new ArrayList<>();
 
     String nombre;
@@ -93,7 +96,9 @@ public class Tareas implements Serializable {
                 '}';
     }
 
-    public static estadoTareas imprimirEstadoTareas( int opcion) {
+
+    public static estadoTareas imprimirEstadoTareas(int opcion) {
+
         Tareas aux = new Tareas();
         switch (opcion) {
             case 1:
@@ -107,32 +112,35 @@ public class Tareas implements Serializable {
             case 3:
                 Teclado.imprimirCadena("La tarea ha sido completada.");
                 aux.setEstadoTareas(Finalizada);
-
                 break;
             default:
                 Teclado.imprimirCadena("Estado desconocido.");
                 break;
         }
         return aux.getEstadoTareas();
+
     }
     public void updateTarea(){
 
     }
 
-    public static void agregarTarea(Tareas tarea) {
+    public static ArrayList<Tareas> agregarTarea(Tareas tarea) {
         boolean tareaExistente = false;
 
         for (Tareas tareaExiste : tareas) {
             if (tareaExiste.getNombre().equals(tarea.getNombre())) {
                 tareaExistente = true;
+                break;
             }
         }
+
         if (!tareaExistente) {
             tareas.add(tarea);
         } else {
             Teclado.imprimirCadena("La tarea ya existe en el proyecto.");
-            System.out.println(tareas);
         }
+
+        return tareas;
     }
 
     public static void eliminarTarea(Tareas tarea) {
@@ -166,6 +174,15 @@ public class Tareas implements Serializable {
             Teclado.imprimirCadena("Parece que no esxiste esa tarea");
         }
 
-    }
 
+    public static Tareas crearTarea() {
+
+
+        Tareas aux = new Tareas();
+        aux.setNombre(Teclado.leeString("Introduce nombre Tarea"));
+        aux.setDescripcion(Teclado.leeString("Introduce descripcion par la tarea"));
+        aux.setEstadoTareas(imprimirEstadoTareas(view.estadoTareas()));
+        Tareas.agregarTarea(aux);
+        return aux;
+    }
 }
