@@ -8,7 +8,6 @@ import Model.Entitys.Usuario;
 import Model.Proyectos.Proyectos;
 import Model.Proyectos.Tareas;
 
-import java.io.Console;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -153,27 +152,20 @@ public class View implements iView {
         aux.setNombre(nombre);
         String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
         aux.setDescripcion(descripcion);
-        aux.setColaborador(añadirColaborador());
-      //  aux.setListaTareas(Tareas.agregarTarea());
+        aux.setColaborador(aux.añadirColaborador());
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinalizacion(añadirFechaFin());
+        aux.setCreador(Datos.obtenerUltimoUsuario("usuariosRegistrados"));
+        String respuesta;
+        do{
+            aux.setListaTareas(Tareas.agregarTarea(Tareas.crearTarea()));
+            respuesta = Teclado.leeString("¿Desea añadir otra tarea? Si/No");
+        }while(respuesta.equalsIgnoreCase("Si"));
+                System.out.println(aux);
 
-        System.out.println(aux);
         return aux;
     }
 
-    private ArrayList<Colaborador> añadirColaborador() {
-        ArrayList<Colaborador> colaborador = new ArrayList<>();
-        boolean auxSN = true;
-        while (auxSN) {
-            Colaborador colaboradoraux = new Colaborador("");
-            colaboradoraux.setUsuario(Teclado.leeString("Introduce el nombre del colaborador: "));
-            colaborador.add(colaboradoraux);
-            String respuesta = Teclado.leeString("Quieres añadir otro colaborador (s/n)? ");
-            auxSN = respuesta.equalsIgnoreCase("s");
-        }
-        return colaborador;
-    }
 
     private static LocalDate añadirFechaFin() {
         LocalDateTime ahora = LocalDateTime.now();
@@ -197,8 +189,8 @@ public class View implements iView {
         return fechaFinalizacion;
     }
 
-    public int eleccionListarProyecto(){
-        int aux=0;
+    public int eleccionListarProyecto() {
+        int aux = 0;
         Teclado.imprimirCadena("1. Para listar todos");
         Teclado.imprimirCadena("2. Para listar por nombre");
         aux = Teclado.leeEntero("");
@@ -217,6 +209,16 @@ public class View implements iView {
         opcion = Teclado.leeEntero("");
         return opcion;
     }
+
+    public int estadoTareas() {
+        int opcion = 0;
+        Teclado.imprimirCadena("1. Tarea sin iniciar");
+        Teclado.imprimirCadena("2. Tarea en tramite");
+        Teclado.imprimirCadena("3. Tarea finalizada");
+        opcion = Teclado.leeEntero("");
+        return opcion;
+    }
+
     public Tareas nombreTarea() {
         Tareas tareasaux = new Tareas();
         Teclado.leeString("Dime el nombre de la tarea que deseas eliminar: ");

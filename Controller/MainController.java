@@ -136,6 +136,7 @@ public class MainController implements iController {
                 break;
             case 2:
                 RepoProjectos.listarProyectoporNombre(rp.getProyectos());
+                System.out.println(Datos.obtenerUltimoUsuario("usuariosRegistrados"));
 
         }
 

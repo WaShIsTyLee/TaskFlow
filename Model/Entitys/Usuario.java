@@ -1,6 +1,5 @@
 package Model.Entitys;
 
-import Model.Proyectos.TipoRol;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,20 +9,19 @@ public class Usuario implements Serializable {
     private String usuario;
     private String contraseña;
     private String correo;
-    private String codigo;
-    private TipoRol tipoRol;
 
 
-    public Usuario(String nombre, String usuario, String contraseña, String correo, String codigo, TipoRol tipoRol) {
+
+    public Usuario(String nombre, String usuario, String contraseña, String correo) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.correo = correo;
-        this.codigo = codigo;
-        this.tipoRol = tipoRol;
+
+
     }
     public Usuario(){
-        this("","","","","",null);
+        this("","","","");
     }
 
     public static boolean validarCorreo(String email) {
@@ -64,21 +62,6 @@ public class Usuario implements Serializable {
         this.correo = correo;
     }
 
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public TipoRol getTipoRol() {
-        return tipoRol;
-    }
-
-    public void setTipoRol(TipoRol tipoRol) {
-        this.tipoRol = tipoRol;
-    }
 
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,8 +80,6 @@ public class Usuario implements Serializable {
                 ", usuario='" + usuario + '\'' +
                 ", contraseña='" + contraseña + '\'' +
                 ", correo='" + correo + '\'' +
-                ", codigo='" + codigo + '\'' +
-                ", tipoRol=" + tipoRol +
                 '}';
     }
 }
