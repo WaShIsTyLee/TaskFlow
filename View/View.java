@@ -16,12 +16,6 @@ import java.util.ArrayList;
 
 public class View implements iView {
 
-    public void definitivamente_no_es_un_tanque(){
-        System.out.println("   ███████████]▄▄▄▄▄▄▄▄▄▄▄▄▃                      ▃▄▄▄▄▄▄▄▄▄▄▄▄[███████████\n"+
-                           "  ▂▄▅█████████▅▄▃▂              definitivamete               ▂▃▄▅█████████▅▄▂\n"+
-                           " ████████████████████         esto no son tanques          ████████████████████ \n"+
-                           " ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤                                      ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤");
-    }
     @Override
     public void mensajesDeInicio() {
 
