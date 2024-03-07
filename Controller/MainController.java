@@ -7,6 +7,8 @@ import Model.Repository.RepoProjectos;
 import Model.Repository.Repository;
 import View.View;
 
+import java.security.NoSuchAlgorithmException;
+
 
 public class MainController implements iController {
 
@@ -21,7 +23,7 @@ public class MainController implements iController {
 
 
     @Override
-    public void switchMenuRegistroInicioSesion(int opcion) {
+    public void switchMenuRegistroInicioSesion(int opcion)  {
         do {
 
             switch (opcion) {

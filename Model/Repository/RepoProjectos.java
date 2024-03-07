@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
-public class RepoProjectos extends Repository implements iRepoProjectos, Serializable {
+public class RepoProjectos extends Repository implements iRepoProjectos {
 
     private ArrayList<Proyectos> proyectos;
     private final static String FILENAME = "Repositorio.bin";
