@@ -1,6 +1,7 @@
 package View;
 
 import IO.Teclado;
+import IO.Utils;
 import Interfaces.iView;
 import Model.Archivos.Datos;
 import Model.Entitys.Colaborador;
@@ -8,6 +9,7 @@ import Model.Entitys.Usuario;
 import Model.Proyectos.Proyectos;
 import Model.Proyectos.Tareas;
 
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -77,6 +79,9 @@ public class View implements iView {
             correo = Teclado.leeString("Introduzca su email");
         }
         contraseña = Teclado.leeString("Introduzca su contraseña");
+
+            contraseña=Utils.hashPassword(contraseña);
+
         Datos.guardarEnArchivo(nombre, usuario, correo, contraseña, "usuariosRegistrados");
 
         return usuarioRegistrado;

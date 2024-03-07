@@ -2,9 +2,17 @@ package Model.Repository;
 
 import Model.Serializador.Serializador;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Repository implements Serializable {
+    /**
+     * Serial sirve para que cuando serializemos desde varias versiones no nos de un error,
+     * le añadimos un numero serializable y debera serializar sobre este numero
+     */
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     protected static Repository _instance;
     protected Repository(){
     }

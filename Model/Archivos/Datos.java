@@ -1,6 +1,7 @@
 package Model.Archivos;
 
 import IO.Teclado;
+import IO.Utils;
 import Model.Entitys.Usuario;
 import Model.Proyectos.Proyectos;
 import Model.Repository.RepoProjectos;
@@ -58,7 +59,7 @@ public class Datos {
                 if (partes.length >= 3) {
                     String usuarioRegistrado = partes[1].trim();
                     String contraseñaRegistrada = partes[2].trim();
-                    if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(contraseña)) {
+                    if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(Utils.hashPassword(contraseña))) {
                         credencialesValidas = true;
                         break;
                     }

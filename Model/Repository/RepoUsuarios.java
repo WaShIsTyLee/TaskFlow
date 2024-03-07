@@ -2,10 +2,12 @@ package Model.Repository;
 
 import Model.Entitys.Usuario;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RepoUsuarios extends Repository{
+
     List<Usuario> usuarios;
 
     private RepoUsuarios(){}
