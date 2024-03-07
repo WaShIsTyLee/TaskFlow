@@ -10,6 +10,8 @@ import java.util.Iterator;
 
 import static Model.Proyectos.estadoTareas.*;
 
+import static Model.Proyectos.estadoTareas.*;
+
 public class Tareas implements Serializable {
     static View view = new View();
     static ArrayList<Tareas> tareas = new ArrayList<>();
@@ -94,7 +96,9 @@ public class Tareas implements Serializable {
                 '}';
     }
 
+
     public static estadoTareas imprimirEstadoTareas(int opcion) {
+
         Tareas aux = new Tareas();
         switch (opcion) {
             case 1:
@@ -114,6 +118,10 @@ public class Tareas implements Serializable {
                 break;
         }
         return aux.getEstadoTareas();
+
+    }
+    public void updateTarea(){
+
     }
 
     public static ArrayList<Tareas> agregarTarea(Tareas tarea) {
@@ -144,8 +152,31 @@ public class Tareas implements Serializable {
             }
         }
     }
+    public static void upadteTarea(Tareas tarea){
+        boolean tareaExiste=false;
+        String aux = "";
+        for (Tareas tareaexisten:tareas){
+            if(tareaexisten.getNombre().equals(tarea.getNombre())){
+                tareaExiste=true;
+                aux=tarea.getNombre();
+            }
+        }
+        if (tareaExiste){
+            for (Tareas tareaUpdate: tareas){
+                if (tareaUpdate.getNombre().equals(aux)){
+                    tareaUpdate.setNombre(Teclado.leeString("elige el nuevo nombre"));
+                    tareaUpdate.setEstadoTareas(Model.Proyectos.estadoTareas.SinIniciar);
+                    tareaUpdate.setComentario(Teclado.leeString("crea un nuevo comentario"));
+                    tareaUpdate.setDescripcion("crea una nueva descripción");
+                }
+            }
+        }else {
+            Teclado.imprimirCadena("Parece que no esxiste esa tarea");
+        }
+
 
     public static Tareas crearTarea() {
+
 
         Tareas aux = new Tareas();
         aux.setNombre(Teclado.leeString("Introduce nombre Tarea"));

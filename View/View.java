@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class View implements iView {
 
 
-
     @Override
     public void mensajesDeInicio() {
 
@@ -199,6 +198,24 @@ public class View implements iView {
 
     }
 
+    public Tareas viewAñadirTarea(){
+        Tareas aux = new Tareas();
+        aux.setNombre(Teclado.leeString("Dame el nombre de tu tarea: "));
+        aux.setDescripcion(Teclado.leeString("Dame la descripción de tu tarea: "));
+        aux.setFechaInicio(LocalDate.now());
+        aux.setFechaLimite(añadirFechaFin());
+        aux.setEstadoTareas(Tareas.imprimirEstadoTareas(estadoTareas()));
+        return aux;
+    }
+
+    public int estadoTareas(){
+        int opcion = 0;
+        Teclado.imprimirCadena("1. Tarea sin iniciar");
+        Teclado.imprimirCadena("2. Tarea en tramite");
+        Teclado.imprimirCadena("3. Tarea finalizada");
+        opcion = Teclado.leeEntero("");
+        return opcion;
+    }
 
     public int menuCrudTareas() {
         int opcion = 0;
@@ -210,6 +227,7 @@ public class View implements iView {
         return opcion;
     }
 
+
     public int estadoTareas() {
         int opcion = 0;
         Teclado.imprimirCadena("1. Tarea sin iniciar");
@@ -218,6 +236,7 @@ public class View implements iView {
         opcion = Teclado.leeEntero("");
         return opcion;
     }
+
 
     public Tareas nombreTarea() {
         Tareas tareasaux = new Tareas();
