@@ -17,6 +17,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos, Seriali
     private final static String FILENAME = "Repositorio.bin";
     private static RepoProjectos _instance;
 
+
     private RepoProjectos() {
         this.proyectos = new ArrayList<>();
     }
@@ -41,9 +42,9 @@ public class RepoProjectos extends Repository implements iRepoProjectos, Seriali
         while (iterator.hasNext()) {
             Proyectos proyectoEnLista = iterator.next();
             if (proyectoEnLista.getNombre().equals(proyecto.getNombre())) {
-
                 iterator.remove();
                 result = true;
+                System.out.println("pROYECTO bORRADO");
             }
         }
         return result;
@@ -98,6 +99,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos, Seriali
     public boolean saveData() {
         return Serializador.serialize(this, FILENAME);
     }
+
 
     public static RepoProjectos loadData() {
         return (RepoProjectos) Serializador.deserializer(FILENAME);
