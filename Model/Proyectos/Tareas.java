@@ -106,7 +106,6 @@ public class Tareas implements Serializable {
         for (Tareas tareaExiste : tareas) {
             if (tareaExiste.getNombre().equals(tarea.getNombre())) {
                 tareaExistente = true;
-                break;
             }
         }
 
@@ -151,6 +150,7 @@ public class Tareas implements Serializable {
         }
         if (!tareaEncontrada) {
             Teclado.imprimirCadena("La tarea no fue encontrada.");
+
         }
     }
 

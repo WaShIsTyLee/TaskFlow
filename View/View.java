@@ -43,6 +43,7 @@ public class View implements iView {
         Teclado.imprimirCadena(purple+"◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥"+d);
         Teclado.imprimirCadena("Bienvenido a TaskFlow.");
         Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+
         Teclado.imprimirCadena("1. Iniciar Sesión ");
         Teclado.imprimirCadena("2. Registrarse ");
         Teclado.imprimirCadena("3. Salir ");
@@ -68,6 +69,7 @@ public class View implements iView {
                 Teclado.imprimirCadena("Credenciales incorrectas. Inténtalo de nuevo.");
             } else {
                 usuario = new Usuario(nombreUsuario, contraseña, "", "");
+
             }
         } while (!credencialesCorrectas);
 
@@ -92,6 +94,7 @@ public class View implements iView {
         Datos.guardarEnArchivo(nombre, usuario, correo, contraseña, "usuariosRegistrados");
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
 
+
         return usuarioRegistrado;
     }
 
@@ -99,9 +102,9 @@ public class View implements iView {
     public int eleccionCRUD() {
         int opcion = -1;
         do {
-            Teclado.imprimirCadena("");
             Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
             Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+
             Teclado.imprimirCadena("1. Listar proyecto");
             Teclado.imprimirCadena("2. Crear proyecto");
             Teclado.imprimirCadena("3. Borrar proyecto");
@@ -109,6 +112,7 @@ public class View implements iView {
             Teclado.imprimirCadena("5. Salir y guardar");
             Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
             opcion = Teclado.leeEntero("Esperando respuesta: ");
+
         } while (opcion < 1 || opcion > 5);
 
         return opcion;
@@ -121,6 +125,7 @@ public class View implements iView {
         do {
             Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
             Teclado.imprimirCadena("Menú de Creador Proyecto");
+
             Teclado.imprimirCadena("1. Crear tarea");
             Teclado.imprimirCadena("2. Editar estado tarea");
             Teclado.imprimirCadena("3. Eliminar tarea");
@@ -128,6 +133,7 @@ public class View implements iView {
             Teclado.imprimirCadena("5. Volver al menú principal");
             Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
             opcion = Teclado.leeEntero("Esperando respuesta: ");
+
 
         } while (opcion < 1 || opcion > 5);
 
@@ -142,12 +148,13 @@ public class View implements iView {
         do {
             Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
             Teclado.imprimirCadena("MENU COLABORADOR");
+
             Teclado.imprimirCadena("1. Editar estado de la tarea");
             Teclado.imprimirCadena("2. Añadir comentario");
             Teclado.imprimirCadena("3. Volver al menú principal");
+
             opcion = Teclado.leeEntero("Esperando respuesta: ");
             Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
-            Teclado.imprimirCadena("");
 
         } while (opcion < 1 || opcion > 3);
 
@@ -159,7 +166,6 @@ public class View implements iView {
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
         aux.setNombre(Teclado.leeString("Introduce el nombre del proyecto que deseas borrar: "));
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
-        Teclado.imprimirCadena("");
         return aux;
 
     }
@@ -171,6 +177,7 @@ public class View implements iView {
         String nombre = Teclado.leeString("Introduce el nombre de tu proyecto: ");
         aux.setNombre(nombre);
         String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
+
         aux.setDescripcion(descripcion);
         aux.setColaborador(aux.añadirColaborador());
         aux.setFechaInicio(LocalDate.now());
@@ -182,6 +189,7 @@ public class View implements iView {
             respuesta = Teclado.leeString("¿Desea añadir otra tarea? Si/No");
         } while (respuesta.equalsIgnoreCase("Si"));
         System.out.println(aux);
+
 
 
         return aux;
@@ -197,6 +205,7 @@ public class View implements iView {
         Teclado.imprimirCadena("2. Para listar por nombre");
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
         aux = Teclado.leeEntero("Esperando respuesta: ");
+
         return aux;
 
 
@@ -215,10 +224,13 @@ public class View implements iView {
     }
 
 
+        Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
+
     public String nombreTarea() {
         Tareas tareasaux = new Tareas();
         tareasaux.setNombre(Teclado.leeString("Dime el nombre de la tarea: "));
         return tareasaux.getNombre();
+
     }
 
 
