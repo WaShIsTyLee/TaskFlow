@@ -49,7 +49,7 @@ public class MainController implements iController {
         } while (opcion < 1 || opcion > 3);
     }
 
-
+    @Override
     public void switchEleccionCrud(int opcion) {
         switch (opcion) {
             case 1:
@@ -83,7 +83,7 @@ public class MainController implements iController {
         }
     }
 
-
+    @Override
     public void switchListar(int opcion) {
         switch (opcion) {
             case 1:

@@ -2,6 +2,7 @@ package Model.Entitys;
 
 
 import IO.Teclado;
+import Interfaces.iUsuario;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +10,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements Serializable {
+public class Usuario implements iUsuario, Serializable {
     private String nombre;
     private String usuario;
     private String contraseña;

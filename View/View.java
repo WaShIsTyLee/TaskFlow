@@ -160,7 +160,7 @@ public class View implements iView {
 
         return opcion;
     }
-
+    @Override
     public Proyectos viewBorrarProyecto() {
         Proyectos aux = new Proyectos();
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
@@ -169,7 +169,7 @@ public class View implements iView {
         return aux;
 
     }
-
+    @Override
     public Proyectos viewAñadirProjecto() {
         Proyectos aux = new Proyectos();
 
@@ -197,7 +197,7 @@ public class View implements iView {
 
 
 
-
+    @Override
     public int eleccionListarProyecto() {
         int aux = 0;
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
@@ -211,8 +211,8 @@ public class View implements iView {
 
     }
 
-
-    public  int estadoTareas() {
+    @Override
+    public int estadoTareas() {
         int opcion = 0;
         Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
         Teclado.imprimirCadena("1. Tarea sin iniciar");
@@ -224,8 +224,7 @@ public class View implements iView {
     }
 
 
-        Teclado.imprimirCadena("◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥");
-
+    @Override
     public String nombreTarea() {
         Tareas tareasaux = new Tareas();
         tareasaux.setNombre(Teclado.leeString("Dime el nombre de la tarea: "));

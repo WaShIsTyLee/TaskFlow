@@ -1,10 +1,10 @@
 package Model.Entitys;
 
 import Model.Proyectos.Proyectos;
-
+import Interfaces.iColaborador;
 import java.io.Serializable;
 
-public class Colaborador extends Usuario implements Serializable {
+public class Colaborador extends Usuario implements iColaborador, Serializable{
     private String Usuario;
 
     public Colaborador(String usuario) {
@@ -27,6 +27,7 @@ public class Colaborador extends Usuario implements Serializable {
                 "Usuario='" + Usuario + '\'' +
                 '}';
     }
+
     public static Colaborador encontrarColaborador(Proyectos aux, Usuario usuario) {
         Colaborador colaboradora = null;
         for (Colaborador colaborador : aux.getColaborador()) {

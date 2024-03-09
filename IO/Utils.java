@@ -1,10 +1,12 @@
 package IO;
 
+import Interfaces.iUtils;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class Utils {
+public class Utils implements iUtils {
 
 
     private static String bytesToHex(byte[] hash) {

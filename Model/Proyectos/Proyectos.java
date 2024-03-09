@@ -1,6 +1,7 @@
 package Model.Proyectos;
 
 import IO.Teclado;
+import Interfaces.iProject;
 import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
 
@@ -11,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Proyectos implements Serializable {
+public class Proyectos implements iProject, Serializable {
     ArrayList<Tareas> listaTareas = new ArrayList<>();
     String nombre;
     String descripcion;
@@ -102,7 +103,7 @@ public class Proyectos implements Serializable {
                 ", creador='" + creador + '\'' +
                 '}';
     }
-
+    @Override
     public ArrayList<Colaborador> añadirColaborador() {
         ArrayList <Colaborador> colaborador = new ArrayList<>();
 
