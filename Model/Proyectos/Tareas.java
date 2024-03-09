@@ -20,6 +20,24 @@ public class Tareas implements Serializable {
     String descripcion;
     estadoTareas estadoTareas;
     String comentario;
+    LocalDate fechaInicio;
+    LocalDate fechaFinaliazacion;
+
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public LocalDate getFechaFinaliazacion() {
+        return fechaFinaliazacion;
+    }
+
+    public void setFechaFinaliazacion(LocalDate fechaFinaliazacion) {
+        this.fechaFinaliazacion = fechaFinaliazacion;
+    }
 
     public String getNombre() {
         return nombre;
@@ -66,12 +84,14 @@ public class Tareas implements Serializable {
 
     @Override
     public String toString() {
-        return "Tareas{" +
-                "nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", estadoTareas=" + estadoTareas +
-                ", comentario='" + comentario + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nombre de la tarea: ").append(nombre).append("\n");
+        sb.append("     Descripción: ").append(descripcion).append("\n");
+        sb.append("     Estado: ").append(estadoTareas).append("\n");
+        sb.append("     Comentario: ").append(comentario).append("\n");
+        sb.append("     Fecha inicio: ").append(fechaInicio).append("\n");
+        sb.append("     Fecha fin: ").append(fechaFinaliazacion).append("\n");
+        return sb.toString();
     }
 
 
@@ -108,11 +128,8 @@ public class Tareas implements Serializable {
                 tareaExistente = true;
             }
         }
-
         if (!tareaExistente) {
             tareas.add(tarea);
-        } else {
-            Teclado.imprimirCadena("La tarea ya existe en el proyecto.");
         }
 
         return tareas;
@@ -173,6 +190,8 @@ public class Tareas implements Serializable {
         aux.setNombre(Teclado.leeString("Introduce nombre Tarea"));
         aux.setDescripcion(Teclado.leeString("Introduce descripcion par la tarea"));
         aux.setEstadoTareas(imprimirEstadoTareas(view.estadoTareas()));
+        aux.setFechaInicio(LocalDate.now());
+        aux.setFechaFinaliazacion(Proyectos.añadirFechaFin());
         Tareas.agregarTarea(aux);
         return aux;
     }
