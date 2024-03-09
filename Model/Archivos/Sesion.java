@@ -2,8 +2,9 @@ package Model.Archivos;
 
 import Model.Entitys.Usuario;
 import View.View;
+import Interfaces.iSesion;
 
-public class Sesion {
+public class Sesion implements iSesion {
     private static Sesion _instance;
     private static Usuario usuarioIniciado;
 
@@ -17,8 +18,8 @@ public class Sesion {
         }
         return _instance;
     }
-
-    private void iniciarSesion() {
+    @Override
+    public void iniciarSesion() {
         this.usuarioIniciado = View.menuIniciarSesion();
     }
 

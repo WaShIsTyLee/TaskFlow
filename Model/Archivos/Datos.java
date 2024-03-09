@@ -1,20 +1,16 @@
 package Model.Archivos;
 
-import IO.Teclado;
+
 import IO.Utils;
-import Model.Entitys.Usuario;
-import Model.Proyectos.Proyectos;
-import Model.Repository.RepoProjectos;
+import Interfaces.iDatos;
 
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Datos {
+public class Datos implements iDatos {
 
     public static void guardarEnArchivo(String nombre, String nombreUsuario, String correo, String contraseña, String usuariosRegistrados) {
 

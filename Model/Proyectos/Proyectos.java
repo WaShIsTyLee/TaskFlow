@@ -1,6 +1,7 @@
 package Model.Proyectos;
 
 import IO.Teclado;
+import Interfaces.iProject;
 import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
 
@@ -11,10 +12,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Proyectos implements Serializable {
+
+public class Proyectos implements iProject, Serializable {
+
     static String d = "\u001B[0m"; // Stop print the color // Parar el color establecido
     static String red = "\033[31m"; // Rojo
     static String purple = "\033[35m";
+
 
     ArrayList<Tareas> listaTareas = new ArrayList<>();
     String nombre;
@@ -122,7 +126,7 @@ public class Proyectos implements Serializable {
         return sb.toString();
     }
 
-
+    @Override
     public ArrayList<Colaborador> añadirColaborador() {
         ArrayList <Colaborador> colaborador = new ArrayList<>();
 
