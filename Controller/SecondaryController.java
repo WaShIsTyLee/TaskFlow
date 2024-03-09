@@ -5,10 +5,7 @@ import IO.Teclado;
 import Interfaces.iSecondaryController;
 import Model.Proyectos.Proyectos;
 import Model.Proyectos.Tareas;
-import Model.Proyectos.estadoTareas;
 import View.View;
-
-import java.util.Iterator;
 
 public class SecondaryController implements iSecondaryController {
     View view = new View();
@@ -19,8 +16,7 @@ public class SecondaryController implements iSecondaryController {
         switch (opcion) {
             case 1:
                 Teclado.imprimirCadena("Creando la tarea...");
-                tareas = Tareas.crearTarea();
-                proyectos.getListaTareas().add(tareas);
+                proyectos.getListaTareas().add(tareas = Tareas.crearTarea());
                 break;
             case 2:
                 Teclado.imprimirCadena("Actualizando estado de la tarea...");
