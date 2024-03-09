@@ -2,9 +2,12 @@ package Model.Proyectos;
 
 import IO.Teclado;
 import Model.Entitys.Colaborador;
+import Model.Entitys.Usuario;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,14 +17,14 @@ public class Proyectos implements Serializable {
     String descripcion;
     LocalDate fechaInicio;
     LocalDate fechaFinalizacion;
-    ArrayList <Colaborador> colaborador;
-    String creador;
+    ArrayList <Colaborador> colaborador = new ArrayList<>();
+    Usuario creador;
 
-    public String getCreador() {
+    public Usuario getCreador() {
         return creador;
     }
 
-    public void setCreador(String creador) {
+    public void setCreador(Usuario creador) {
         this.creador = creador;
     }
 
@@ -65,7 +68,7 @@ public class Proyectos implements Serializable {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 
-    public List getColaborador() {
+    public ArrayList<Colaborador> getColaborador() {
         return colaborador;
     }
 
@@ -73,7 +76,7 @@ public class Proyectos implements Serializable {
         this.colaborador = colaborador;
     }
 
-    public Proyectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador, String creador) {
+    public Proyectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador, Usuario creador) {
         this.listaTareas = listaTareas;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -84,7 +87,7 @@ public class Proyectos implements Serializable {
     }
 
     public Proyectos(){
-        this(null,"","",LocalDate.now(),null,null,"");
+        this(null,"","",LocalDate.now(),null,null,null);
     }
 
     @Override
@@ -99,8 +102,10 @@ public class Proyectos implements Serializable {
                 ", creador='" + creador + '\'' +
                 '}';
     }
+
     public ArrayList<Colaborador> añadirColaborador() {
-        ArrayList<Colaborador> colaborador = new ArrayList<>();
+        ArrayList <Colaborador> colaborador = new ArrayList<>();
+
         boolean auxSN = true;
         while (auxSN) {
             Colaborador colaboradoraux = new Colaborador("");
@@ -110,6 +115,27 @@ public class Proyectos implements Serializable {
             auxSN = respuesta.equalsIgnoreCase("s");
         }
         return colaborador;
+    }
+    public static LocalDate añadirFechaFin() {
+        LocalDateTime ahora = LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String fechaActualStr = formatter.format(ahora);
+
+        LocalDate fechaFinalizacion = null;
+
+        while (fechaFinalizacion == null) {
+            String fechaFinalizacionStr = Teclado.leeString("Introduce la fecha de finalización (formato AAAA-MM-DD):");
+
+            if (fechaFinalizacionStr.matches("\\d{4}-\\d{2}-\\d{2}") && fechaFinalizacionStr.compareTo(fechaActualStr) >= 0) {
+                fechaFinalizacion = LocalDate.parse(fechaFinalizacionStr, formatter);
+            } else {
+                System.out.println("Error: La fecha de finalización no puede ser anterior a la fecha actual o el formato es incorrecto. " +
+                        "Por favor, inténtalo de nuevo.");
+            }
+        }
+
+        return fechaFinalizacion;
     }
 }
 

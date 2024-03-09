@@ -7,7 +7,6 @@ public interface iController {
 
     void switchEleccionCrud(int opcion);
 
-    void switchEleccionTareas(int opcion);
 
     void startApp();
 

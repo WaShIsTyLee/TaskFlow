@@ -18,8 +18,6 @@ public class Tareas implements Serializable {
 
     String nombre;
     String descripcion;
-    LocalDate fechaInicio;
-    LocalDate fechaLimite;
     estadoTareas estadoTareas;
     String comentario;
 
@@ -39,22 +37,6 @@ public class Tareas implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public LocalDate getFechaInicio() {
-        return fechaInicio;
-    }
-
-    public void setFechaInicio(LocalDate fechaInicio) {
-        this.fechaInicio = fechaInicio;
-    }
-
-    public LocalDate getFechaLimite() {
-        return fechaLimite;
-    }
-
-    public void setFechaLimite(LocalDate fechaLimite) {
-        this.fechaLimite = fechaLimite;
-    }
-
     public Model.Proyectos.estadoTareas getEstadoTareas() {
         return estadoTareas;
     }
@@ -71,17 +53,15 @@ public class Tareas implements Serializable {
         this.comentario = comentario;
     }
 
-    public Tareas(String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaLimite, Model.Proyectos.estadoTareas estadoTareas, String comentario) {
+    public Tareas(String nombre, String descripcion, Model.Proyectos.estadoTareas estadoTareas, String comentario) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaInicio = fechaInicio;
-        this.fechaLimite = fechaLimite;
         this.estadoTareas = estadoTareas;
         this.comentario = comentario;
     }
 
     public Tareas() {
-        this("", "", null, null, null, "");
+        this("", "",  null, "");
     }
 
     @Override
@@ -89,8 +69,6 @@ public class Tareas implements Serializable {
         return "Tareas{" +
                 "nombre='" + nombre + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", fechaInicio=" + fechaInicio +
-                ", fechaLimite=" + fechaLimite +
                 ", estadoTareas=" + estadoTareas +
                 ", comentario='" + comentario + '\'' +
                 '}';
@@ -120,9 +98,7 @@ public class Tareas implements Serializable {
         return aux.getEstadoTareas();
 
     }
-    public void updateTarea(){
 
-    }
 
     public static ArrayList<Tareas> agregarTarea(Tareas tarea) {
         boolean tareaExistente = false;
@@ -142,42 +118,57 @@ public class Tareas implements Serializable {
 
         return tareas;
     }
+    public static estadoTareas actualizarEstadoTarea(Proyectos proyectos, String nombreTarea, estadoTareas nuevoEstado) {
+        Tareas tareaEncontrada = null;
+        estadoTareas estadoAnterior = null;
 
-    public static void eliminarTarea(Tareas tarea) {
-        Iterator<Tareas> iterator = tareas.iterator();
-        while (iterator.hasNext()) {
-            Tareas tareasaux = iterator.next();
-            if (tareasaux.getNombre().equals(tarea.getNombre())) {
-                iterator.remove();
+        for (Tareas tarea : proyectos.getListaTareas()) {
+            if (tarea.getNombre().equals(nombreTarea)) {
+                tareaEncontrada = tarea;
+                estadoAnterior = tarea.getEstadoTareas();
+                tareaEncontrada.setEstadoTareas(nuevoEstado);
             }
+
+        }
+        estadoTareas estadoResultado = null;
+        if (tareaEncontrada != null) {
+            estadoResultado = estadoAnterior;
+        }
+        return estadoResultado;
+    }
+
+
+    public static void eliminarTarea(Proyectos proyectos, String nombreTarea) {
+        boolean tareaEncontrada = false;
+        Iterator<Tareas> iterator = proyectos.getListaTareas().iterator();
+        while (iterator.hasNext()) {
+            Tareas tarea = iterator.next();
+            if (tarea.getNombre().equals(nombreTarea)) {
+                iterator.remove();
+                Teclado.imprimirCadena("Tarea eliminada exitosamente.");
+                tareaEncontrada = true;
+            }
+        }
+        if (!tareaEncontrada) {
+            Teclado.imprimirCadena("La tarea no fue encontrada.");
         }
     }
-    public static void upadteTarea(Tareas tarea){
-        boolean tareaExiste=false;
-        String aux = "";
-        for (Tareas tareaexisten:tareas){
-            if(tareaexisten.getNombre().equals(tarea.getNombre())){
-                tareaExiste=true;
-                aux=tarea.getNombre();
-            }
-        }
-        if (tareaExiste){
-            for (Tareas tareaUpdate: tareas){
-                if (tareaUpdate.getNombre().equals(aux)){
-                    tareaUpdate.setNombre(Teclado.leeString("elige el nuevo nombre"));
-                    tareaUpdate.setEstadoTareas(Model.Proyectos.estadoTareas.SinIniciar);
-                    tareaUpdate.setComentario(Teclado.leeString("crea un nuevo comentario"));
-                    tareaUpdate.setDescripcion("crea una nueva descripción");
-                }
-            }
-        }else {
-            Teclado.imprimirCadena("Parece que no esxiste esa tarea");
-        }
 
+    public static void añadirComentario(Proyectos proyectos, String nombreTarea, String comentario) {
+        Tareas tareaEncontrada = null;
+        String resultado;
+
+        for (Tareas tarea : proyectos.getListaTareas()) {
+            if (tarea.getNombre().equals(nombreTarea)) {
+                tareaEncontrada = tarea;
+                resultado = tareaEncontrada.getComentario();
+                tareaEncontrada.setComentario(comentario);
+            }
+
+        }
+    }
 
     public static Tareas crearTarea() {
-
-
         Tareas aux = new Tareas();
         aux.setNombre(Teclado.leeString("Introduce nombre Tarea"));
         aux.setDescripcion(Teclado.leeString("Introduce descripcion par la tarea"));

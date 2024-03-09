@@ -1,9 +1,11 @@
 package Interfaces;
 
+import Model.Proyectos.Proyectos;
+
 public interface iSecondaryController {
 
-    void switchMenuCRUDcreador();
-    void switchMenuColaborador(int opcion);
+    void switchMenuCRUDcreador(int opcion, Proyectos proyectos);
+    void switchMenuColaborador(int opcion, Proyectos proyectos);
 
 
 
