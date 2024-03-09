@@ -41,7 +41,6 @@ public class Datos {
                 String[] datos = linea.split(",");
                 if (datos[1].equals(nombreUsuario) || datos[3].equals(correo)) {
                     usuarioRegistrado = true;
-                    break;
                 }
             }
         } catch (IOException e) {
@@ -61,7 +60,6 @@ public class Datos {
                     String contraseñaRegistrada = partes[2].trim();
                     if (usuarioRegistrado.equals(nombreUsuario) && contraseñaRegistrada.equals(Utils.hashPassword(contraseña))) {
                         credencialesValidas = true;
-                        break;
                     }
                 }
             }
@@ -71,64 +69,7 @@ public class Datos {
         return credencialesValidas;
     }
 
-    public static String obtenerUltimoUsuario(String nombreArchivo) {
-        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
-            String linea;
-            String ultimoUsuario = null;
-
-            while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(",");
-                ultimoUsuario = partes[1];
-            }
-
-            return ultimoUsuario;
-        } catch (IOException e) {
-            System.err.println("Error al leer el archivo: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public static void listarUsuarios(String usuariosRegistrados) {
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                String[] partes = linea.split(",");
-
-                Teclado.imprimirCadena("-----------Usuario-----------");
-                Teclado.imprimirCadena("Nombre: "+partes[0].trim());
-                Teclado.imprimirCadena("Usuario: "+partes[1].trim());
-                Teclado.imprimirCadena("-----------------------------");
 
 
-            }
-        } catch (IOException e) {
-            System.out.println("Error al leer el archivo: " + e.getMessage());
-        }
-    }
-
-
-    public static void listarProjectos(ArrayList<Proyectos> projectos) {
-
-        for (Proyectos proyecto : projectos) {
-            System.out.println(projectos);
-        }
-
-
-    }
-
-    public static void listarProyectoporNombre(ArrayList <Proyectos>proyectos) {
-        String a;
-        do {
-            a=Teclado.leeString("meta el nombre a buscar");
-            for (Proyectos projecto : proyectos) {
-                if (projecto.equals(a)) {
-                    System.out.println(projecto);
-                } else {
-                    System.out.println("no existe ningun pryecto con ese nombre");
-                }
-            }
-        }while (!a.equalsIgnoreCase("salir"));
-    }
 
 }

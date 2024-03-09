@@ -12,5 +12,5 @@ public class Main {
 
         mainController.startApp();
 
-    }
+ }
 }

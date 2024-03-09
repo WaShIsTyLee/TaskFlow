@@ -1,6 +1,11 @@
 package Model.Entitys;
 
 
+import IO.Teclado;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -70,9 +75,6 @@ public class Usuario implements Serializable {
         return Objects.equals(getUsuario(), usuario.getUsuario()) ||
                 Objects.equals(getCorreo(), usuario.getCorreo());    }
 
-    //Falta un hashcode para la contraseña
-
-
     @Override
     public String toString() {
         return "Usuario{" +
@@ -81,5 +83,21 @@ public class Usuario implements Serializable {
                 ", contraseña='" + contraseña + '\'' +
                 ", correo='" + correo + '\'' +
                 '}';
+    }
+
+
+    public static void listarUsuarios(String usuariosRegistrados) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] partes = linea.split(",");
+                Teclado.imprimirCadena("-----------Usuario-----------");
+                Teclado.imprimirCadena("Nombre: "+partes[0].trim());
+                Teclado.imprimirCadena("Usuario: "+partes[1].trim());
+                Teclado.imprimirCadena("-----------------------------");
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
     }
 }

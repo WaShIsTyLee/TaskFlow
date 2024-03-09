@@ -1,8 +1,5 @@
 package IO;
 
-// Funciones de teclado como LeerString, LeerEntero, CambiarContraseña escrita por cmd a Asteriscos,
-// Imprmir por cmd algo
-
 import Interfaces.iTeclado;
 
 import java.io.BufferedReader;
@@ -23,7 +20,7 @@ public class Teclado implements iTeclado {
         cadenaUsuario = teclado.nextLine();
         if (cadenaUsuario.isEmpty() || cadenaUsuario.isBlank()) {
             do {
-                Teclado.imprimirCadena("Aqui no hay na... ponme algo niño");
+                Teclado.imprimirCadena("No intentes meter un espacio en blanco");
                 cadenaUsuario = teclado.nextLine();
             } while (cadenaUsuario.isEmpty() || cadenaUsuario.isBlank());
         }
@@ -44,7 +41,6 @@ public class Teclado implements iTeclado {
                 teclado.nextLine();
             }
         } while (!entradaValida);
-
 
         return numeroUsuario;
     }
