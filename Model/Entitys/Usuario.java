@@ -78,12 +78,7 @@ public class Usuario implements iUsuario, Serializable {
 
     @Override
     public String toString() {
-        return "Usuario{" +
-                "nombre='" + nombre + '\'' +
-                ", usuario='" + usuario + '\'' +
-                ", contraseña='" + contraseña + '\'' +
-                ", correo='" + correo + '\'' +
-                '}';
+        return  nombre;
     }
 
 

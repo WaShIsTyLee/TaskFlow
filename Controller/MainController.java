@@ -10,12 +10,26 @@ import Model.Proyectos.Proyectos;
 import Model.Repository.RepoProjectos;
 import View.View;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public class MainController implements iController {
 
     View view = new View();
     RepoProjectos rp = RepoProjectos.getInstance();
     SecondaryController secondaryController = new SecondaryController();
+
+    private boolean esCreador(Proyectos proyecto){
+        Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
+        boolean aux = false;
+        if (proyecto.getCreador().getNombre().equals(ultimoUsuario.getNombre())) {
+            aux = true;
+        }else{
+            Teclado.imprimirCadena("No eres creador del proyecto");
+        }
+        return aux;
+    }
 
 
     @Override
@@ -65,12 +79,17 @@ public class MainController implements iController {
                 break;
             case 3:
                 Teclado.imprimirCadena("Borrando proyecto...");
-                rp.borrarProyecto(view.viewBorrarProyecto());
+                Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
+                Proyectos aux = RepoProjectos.listarProyectoporNombre(rp.getProyectos());
+                if (esCreador(aux)){
+                    rp.borrarProyecto(aux);
+                    switchEleccionCrud(view.eleccionCRUD());
+                }
                 switchEleccionCrud(view.eleccionCRUD());
                 break;
             case 4:
                 Teclado.imprimirCadena("");
-                Teclado.imprimirCadena("Lista de usuarios del proyecto:");
+                Teclado.imprimirCadena("Lista de usuarios de la app:");
                 Usuario.listarUsuarios("usuariosRegistrados");
                 Teclado.imprimirCadena("");
                 switchEleccionCrud(view.eleccionCRUD());
@@ -90,8 +109,8 @@ public class MainController implements iController {
                 RepoProjectos.listarProyectos(rp.getProyectos());
                 break;
             case 2:
-                Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
                 Proyectos aux = RepoProjectos.listarProyectoporNombre(rp.getProyectos());
+                Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
                 if (aux.getCreador().getNombre().equals(ultimoUsuario.getNombre())) {
                     Teclado.imprimirCadena(aux.toString());
                     secondaryController.switchMenuCRUDcreador(view.menuCreador(),aux);
@@ -104,8 +123,36 @@ public class MainController implements iController {
                         Teclado.imprimirCadena("No perteneces a ningun proyecto");
                     }
                 }
+            case 3:
+                Usuario ultimoUsuario1 = Sesion.getUsuarioIniciado();
+                listarProyectosCreador(rp.getProyectos(),ultimoUsuario1);
+                break;
+            case 4:
+                Usuario ultimoUsuario2 = Sesion.getUsuarioIniciado();
+                listarProyectosColaborador(rp.getProyectos(),ultimoUsuario2);
+                break;
             default:
                 break;
+        }
+    }
+    public static void listarProyectosCreador(ArrayList<Proyectos> proyectos, Usuario usuario) {
+        Iterator<Proyectos> iterador = proyectos.iterator();
+        while (iterador.hasNext()) {
+            Proyectos proyecto = iterador.next();
+            if (proyecto.getCreador().getNombre().equals(usuario.getNombre())) {
+                Teclado.imprimirCadena(proyecto.toString());
+            }
+        }
+    }
+    public static void listarProyectosColaborador(ArrayList<Proyectos> proyectos, Usuario usuario) {
+        Iterator<Proyectos> iterador = proyectos.iterator();
+        while (iterador.hasNext()) {
+            Proyectos proyecto = iterador.next();
+            for (Colaborador colaborador : proyecto.getColaborador()) {
+                if (colaborador.getUsuario().equals(usuario.getNombre())) {
+                    Teclado.imprimirCadena(proyecto.toString());
+                }
+            }
         }
     }
 }

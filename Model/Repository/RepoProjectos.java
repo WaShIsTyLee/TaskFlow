@@ -44,7 +44,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
             if (proyectoEnLista.getNombre().equals(proyecto.getNombre())) {
                 iterator.remove();
                 result = true;
-                System.out.println("pROYECTO bORRADO");
+                System.out.println("Proyecto borrado");
             }
         }
         return result;

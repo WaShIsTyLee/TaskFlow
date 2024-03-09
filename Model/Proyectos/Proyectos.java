@@ -12,7 +12,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Proyectos implements iProject, Serializable {
+
+    static String d = "\u001B[0m"; // Stop print the color // Parar el color establecido
+    static String red = "\033[31m"; // Rojo
+    static String purple = "\033[35m";
+
+
     ArrayList<Tareas> listaTareas = new ArrayList<>();
     String nombre;
     String descripcion;
@@ -93,16 +100,32 @@ public class Proyectos implements iProject, Serializable {
 
     @Override
     public String toString() {
-        return "Proyectos{" +
-                "listaTareas=" + listaTareas +
-                ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
-                ", fechaInicio=" + fechaInicio +
-                ", fechaFinalizacion=" + fechaFinalizacion +
-                ", colaborador=" + colaborador +
-                ", creador='" + creador + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d+"\n");
+        sb.append(red + "\n"+
+                "  _____                                         _                 \n" +
+                " |  __ \\                                       | |                \n" +
+                " | |__) |  _ __    ___    _   _    ___    ___  | |_    ___    ___ \n" +
+                " |  ___/  | '__|  / _ \\  | | | |  / _ \\  / __| | __|  / _ \\  / __|\n" +
+                " | |      | |    | (_) | | |_| | |  __/ | (__  | |_  | (_) | \\__ \\\n" +
+                " |_|      |_|     \\___/   \\__, |  \\___|  \\___|  \\__|  \\___/  |___/\n" +
+                "                           __/ |                                  \n" +
+                "                          |___/                                   \n" + d  );
+        sb.append("Nombre del proyecto: ").append(nombre).append("\n");
+        sb.append("Descripción: ").append(descripcion).append("\n");
+        sb.append("Fecha de Inicio: ").append(fechaInicio).append("\n");
+        sb.append("Fecha de Finalización: ").append(fechaFinalizacion).append("\n");
+        sb.append("Creador: ").append(creador).append("\n");
+        sb.append("Colaborador: ").append(colaborador).append("\n");
+        sb.append("Tareas: \n");
+        for (Tareas tarea : listaTareas) {
+            sb.append("\t ").append(tarea).append("\n");
+        }
+        sb.append(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d+"\n");
+
+        return sb.toString();
     }
+
     @Override
     public ArrayList<Colaborador> añadirColaborador() {
         ArrayList <Colaborador> colaborador = new ArrayList<>();

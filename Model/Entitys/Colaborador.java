@@ -23,9 +23,7 @@ public class Colaborador extends Usuario implements iColaborador, Serializable{
 
     @Override
     public String toString() {
-        return "Colaborador{" +
-                "Usuario='" + Usuario + '\'' +
-                '}';
+        return Usuario;
     }
 
     public static Colaborador encontrarColaborador(Proyectos aux, Usuario usuario) {
