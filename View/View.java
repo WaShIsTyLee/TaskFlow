@@ -126,12 +126,13 @@ public class View implements iView {
             Teclado.imprimirCadena("2. Editar estado tarea");
             Teclado.imprimirCadena("3. Eliminar tarea");
             Teclado.imprimirCadena("4. Añadir comentario");
-            Teclado.imprimirCadena("5. Volver al menú principal");
+           Teclado.imprimirCadena(" 5. Añadir colaboradores");
+            Teclado.imprimirCadena("6. Volver al menú principal");
             Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
             opcion = Teclado.leeEntero("Esperando respuesta: ");
 
 
-        } while (opcion < 1 || opcion > 5);
+        } while (opcion < 1 || opcion > 6);
 
         return opcion;
     }

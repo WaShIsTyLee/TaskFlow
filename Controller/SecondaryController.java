@@ -3,6 +3,7 @@ package Controller;
 
 import IO.Teclado;
 import Interfaces.iSecondaryController;
+import Model.Entitys.Colaborador;
 import Model.Proyectos.Proyectos;
 import Model.Proyectos.Tareas;
 import View.View;
@@ -30,6 +31,14 @@ public class SecondaryController implements iSecondaryController {
                 Teclado.imprimirCadena("Estableciendo comentario..");
                 String comentario1 = Teclado.leeString("Introduzca comentario");
                 Tareas.añadirComentario(proyectos, view.nombreTarea(), comentario1);
+                break;
+            case 5:
+                Teclado.imprimirCadena("Añadiendo colaboradores...");
+                String nombreColaborador = Teclado.leeString("Introduce nombre del colaborador a añadir");
+                Colaborador colaborador = new Colaborador(nombreColaborador);
+                proyectos.getColaborador().add(colaborador);
+                break;
+            case 6:
                 break;
 
         }
