@@ -8,6 +8,6 @@ public interface iController {
 
     void switchListar(int opcion);
 
-    void startApp();
+     void startApp();
 
 }

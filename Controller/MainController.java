@@ -33,7 +33,7 @@ public class MainController implements iController {
 
 
     @Override
-    public void startApp() {
+    public  void startApp() {
         switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
     }
 
@@ -58,7 +58,7 @@ public class MainController implements iController {
                     break;
                 default:
                     Teclado.imprimirCadena("Ups... Parece que te has equivocado, prueba otra vez.");
-                    opcion = view.menuRegistroInicioSesion();
+
             }
         } while (opcion < 1 || opcion > 3);
     }
