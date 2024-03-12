@@ -21,9 +21,9 @@ public class MainController implements iController {
     SecondaryController secondaryController = new SecondaryController();
 
     /**
-     *
+     * Indica si es creador
      * @param proyecto el proyecto en cuestion
-     * @return
+     * @return booleano que indica si el usuario conectado es el creador del proyecto
      */
     private boolean esCreador(Proyectos proyecto){
         Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
@@ -43,8 +43,9 @@ public class MainController implements iController {
     }
 
     /**
+     * Maneja el menú de registro e inicio de sesión.
      *
-     * @param opcion la opcion que eliges
+     * @param opcion la opción que eliges
      */
     @Override
     public void switchMenuRegistroInicioSesion(int opcion) {
@@ -72,8 +73,8 @@ public class MainController implements iController {
     }
 
     /**
-     *
-     * @param opcion la opcion que eliges
+     * Maneja la elección del usuario en el menú CRUD.
+     * @param opcion la opción que el usuario elige
      */
     @Override
     public void switchEleccionCrud(int opcion) {
@@ -115,9 +116,10 @@ public class MainController implements iController {
     }
 
     /**
-     *
-     * @param opcion la opcion que eliges
+     * Maneja las opciones de listado dentro del menú CRUD.
+     * @param opcion la opción que el usuario elige para listar proyectos
      */
+
     @Override
     public void switchListar(int opcion) {
         switch (opcion) {
@@ -153,9 +155,9 @@ public class MainController implements iController {
     }
 
     /**
-     *
-     * @param proyectos lista de proyectos
-     * @param usuario nombre de usuario
+     * Lista todos los proyectos creados por un usuario específico.
+     * @param proyectos la lista de todos los proyectos
+     * @param usuario el usuario cuyos proyectos se van a listar
      */
     public static void listarProyectosCreador(ArrayList<Proyectos> proyectos, Usuario usuario) {
         Iterator<Proyectos> iterador = proyectos.iterator();
@@ -168,9 +170,9 @@ public class MainController implements iController {
     }
 
     /**
-     *
-     * @param proyectos lista de proyectos
-     * @param usuario nombre de usuario
+     * Lista todos los proyectos en los que el usuario es colaborador.
+     * @param proyectos la lista de todos los proyectos
+     * @param usuario el usuario cuyos proyectos como colaborador se van a listar
      */
     public static void listarProyectosColaborador(ArrayList<Proyectos> proyectos, Usuario usuario) {
         Iterator<Proyectos> iterador = proyectos.iterator();
