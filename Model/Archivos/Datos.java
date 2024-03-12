@@ -9,15 +9,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+/**
+ * Metodos relacionados con el manejo de datos dentro del progrma.
+ *
+ */
 public class Datos implements iDatos {
-    /**
-     * Metodos relacionados con el manejo de datos dentro del progrma.
-     *
-     */
 
     /**
-     *
      * @param nombre un nombre de una persona (por ejemplo paquito)
      * @param nombreUsuario el nombre de un usuario, dato unico
      * @param correo un correo, sige la estructura de ...@gmail.com, dato unico
