@@ -1,14 +1,13 @@
 package Interfaces;
 
-import Model.Entitys.Colaborador;
-import Model.Proyectos.Proyectos;
+import Model.Entitys.Collaborator;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public interface iProject {
 
-    ArrayList<Colaborador> añadirColaborador();
+    ArrayList<Collaborator> addColaborator();
 
     static LocalDate añadirFechaFin() {
         return null;

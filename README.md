@@ -7,7 +7,7 @@ _Es el proyecto de segunda evaluación realizador por [Washistylee](https://gith
 
 ___
 
-_TaskFlow es una aplicación de gestión de proyectos que funciona en tu máquina local que incluye persistencia de datos en inicio de sesión. Permite a los usuarios crear proyectos personalizados con diversas tareas a realizar, de las cuales se podrá indicar su progreso. Los usuarios pueden tener diferentes roles: los creadores tienen más funciones que los colaboradores. Los creadores pueden añadir y eliminar colaboradores, asignar tareas a los colaboradores del proyecto, establecer fechas de vencimiento y el estado actual de las tareas, además de agregar comentarios en las mismas. Mientras tanto, los colaboradores solo pueden marcar el progreso de las tareas y añadir comentarios en las mismas._
+_TaskFlow es una aplicación de gestión de project que funciona en tu máquina local que incluye persistencia de datos en inicio de sesión. Permite a los usuarios crear project personalizados con diversas tareas a realizar, de las cuales se podrá indicar su progreso. Los usuarios pueden tener diferentes roles: los creadores tienen más funciones que los colaboradores. Los creadores pueden añadir y eliminar colaboradores, asignar tareas a los colaboradores del proyecto, establecer fechas de vencimiento y el estado actual de las tareas, además de agregar comentarios en las mismas. Mientras tanto, los colaboradores solo pueden marcar el progreso de las tareas y añadir comentarios en las mismas._
 
 ## Autores ✒️
 

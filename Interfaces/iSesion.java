@@ -1,16 +1,16 @@
 package Interfaces;
 
 import Model.Archivos.Sesion;
-import Model.Entitys.Usuario;
+import Model.Entitys.User;
 
 public interface iSesion {
 
     static Sesion getInstancia() {
         return null;
     }
-    void iniciarSesion();
+    void logIn();
 
-    static Usuario getUsuarioIniciado() {
+    static User getUsuarioIniciado() {
         return null;
     }
 }

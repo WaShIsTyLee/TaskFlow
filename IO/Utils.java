@@ -10,6 +10,7 @@ public class Utils implements iUtils {
 
     /**
      * Convierte un array de bytes en una cadena hexadecimal.
+     * Converts an array of bytes to a hexadecimal string.
      * @param hash El array de bytes a convertir.
      * @return La cadena hexadecimal resultante.
      */
@@ -26,6 +27,7 @@ public class Utils implements iUtils {
     }
     /**
      * Crea un hash para una contraseña utilizando el algoritmo SHA3-256.
+     * Creates a hash for a password using the SHA3-256 algorithm.
      * @param password La contraseña a ser hasheada.
      * @return El hash de la contraseña en formato hexadecimal, o null si el algoritmo no está disponible.
      */

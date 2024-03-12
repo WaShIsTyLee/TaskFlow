@@ -1,6 +1,6 @@
 package Interfaces;
 
-import Model.Proyectos.Proyectos;
+import Model.Proyectos.Project;
 import Model.Repository.RepoProjectos;
 
 
@@ -9,21 +9,21 @@ import java.util.ArrayList;
 
 public interface iRepoProjectos extends Serializable {
 
-    boolean borrarProyecto(Proyectos projecto);
-    boolean crearProjecto(Proyectos proyecto);
+    boolean deleteProjec(Project projecto);
+    boolean createProject(Project proyecto);
 
-    private int isProject(Proyectos projecto) {
+    private int isProject(Project projecto) {
         return 0;
     }
 
     static RepoProjectos getInstance() {
         return null;
     }
-    static void listarProyectos(ArrayList<Proyectos> repoProjectos) {
+    static void listarProyectos(ArrayList<Project> repoProjectos) {
 
     }
 
-    static Proyectos listarProyectoporNombre(ArrayList<Proyectos> proyectos) {
+    static Project listarProyectoporNombre(ArrayList<Project> proyectos) {
         return null;
     }
     boolean saveData();
