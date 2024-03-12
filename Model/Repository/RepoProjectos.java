@@ -12,6 +12,10 @@ import java.util.Iterator;
 
 
 public class RepoProjectos extends Repository implements iRepoProjectos {
+    /**
+     * Metodos relacionados con la creacion y destruccuin y guardado  de repositorios  dentro y fuera del progrma.
+     *
+     */
 
     private ArrayList<Proyectos> proyectos;
     private final static String FILENAME = "Repositorio.bin";
@@ -35,6 +39,12 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
     public ArrayList<Proyectos> getProyectos() {
         return proyectos;
     }
+
+    /**
+     *
+     * @param proyecto el proyecto en cuestion
+     * @return
+     */
     @Override
     public boolean borrarProyecto(Proyectos proyecto) {
         boolean result = false;
@@ -50,6 +60,11 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
         return result;
     }
 
+    /**
+     *
+     * @param proyecto el proyecto en cuestion
+     * @return
+     */
     @Override
     public boolean crearProjecto(Proyectos proyecto) {
 
@@ -64,6 +79,11 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
         return result;
     }
 
+    /**
+     *
+     * @param projecto el proyecto en cuestion
+     * @return
+     */
     private int isProject(Proyectos projecto) {
         int index = -1;
         for (int i = 0; i < proyectos.size(); i++) {
@@ -75,10 +95,19 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
         return index;
     }
 
+    /**
+     *
+     * @param repoProjectos el repositorio de proyectos
+     */
     public static void listarProyectos(ArrayList<Proyectos> repoProjectos) {
         System.out.println(repoProjectos);
     }
 
+    /**
+     *
+     * @param proyectos el proyecto en cuestion
+     * @return
+     */
     public static Proyectos listarProyectoporNombre(ArrayList<Proyectos> proyectos) {
         String nombreProyecto;
         Proyectos proyectoEncontrado = null;

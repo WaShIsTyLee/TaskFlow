@@ -14,6 +14,10 @@ import java.util.List;
 
 
 public class Proyectos implements iProject, Serializable {
+    /**
+     * Metodos relacionados con el manejo de los proyectos dentro del progrma.
+     *
+     */
 
     static String d = "\u001B[0m"; // Stop print the color // Parar el color establecido
     static String red = "\033[31m"; // Rojo

@@ -12,6 +12,11 @@ public class SecondaryController implements iSecondaryController {
     View view = new View();
     Tareas tareas = new Tareas();
 
+    /**
+     *
+     * @param opcion la opcion que eliges
+     * @param proyectos el proyecto en cuestion
+     */
     @Override
     public void switchMenuCRUDcreador(int opcion, Proyectos proyectos) {
         switch (opcion) {
@@ -45,6 +50,11 @@ public class SecondaryController implements iSecondaryController {
 
     }
 
+    /**
+     *
+     * @param opcion la opcion que eliges
+     * @param proyectos el proyecto en cuestion
+     */
     @Override
     public void switchMenuColaborador(int opcion, Proyectos proyectos) {
         switch (opcion) {

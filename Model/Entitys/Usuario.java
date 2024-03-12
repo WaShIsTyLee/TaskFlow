@@ -10,7 +10,11 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements iUsuario, Serializable {
+public class Usuario implements iUsuario, Serializable {/**
+ * Metodos relacionados con el manejo de la clase usuario dentro del progrma.
+ *
+ */
+
     private String nombre;
     private String usuario;
     private String contraseña;
@@ -30,6 +34,11 @@ public class Usuario implements iUsuario, Serializable {
         this("","","","");
     }
 
+    /**
+     *
+     * @param email  un correo
+     * @return
+     */
     public static boolean validarCorreo(String email) {
 
         return email.matches("^([\\w-]+\\.)*?[\\w-]+@[\\w-]+\\.([\\w-]+\\.)*?[\\w]+$");
@@ -81,7 +90,10 @@ public class Usuario implements iUsuario, Serializable {
         return  nombre;
     }
 
-
+    /**
+     *
+     * @param usuariosRegistrados el archivo donde se encuaentran guardados los usuarios
+     */
     public static void listarUsuarios(String usuariosRegistrados) {
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
             String linea;

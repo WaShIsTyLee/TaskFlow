@@ -5,6 +5,10 @@ import Interfaces.iColaborador;
 import java.io.Serializable;
 
 public class Colaborador extends Usuario implements iColaborador, Serializable{
+    /**
+     * Metodos relacionados con el manejo de la clase colaborador dentro del progrma.
+     *
+     */
     private String Usuario;
 
     public Colaborador(String usuario) {
@@ -26,6 +30,12 @@ public class Colaborador extends Usuario implements iColaborador, Serializable{
         return Usuario;
     }
 
+    /**
+     *
+     * @param aux un proyecto declarado como dato auxiliar
+     * @param usuario un usuario
+     * @return
+     */
     public static Colaborador encontrarColaborador(Proyectos aux, Usuario usuario) {
         Colaborador colaboradora = null;
         for (Colaborador colaborador : aux.getColaborador()) {

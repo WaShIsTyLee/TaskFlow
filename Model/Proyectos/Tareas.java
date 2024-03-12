@@ -13,6 +13,10 @@ import static Model.Proyectos.estadoTareas.*;
 import static Model.Proyectos.estadoTareas.*;
 
 public class Tareas implements Serializable {
+    /**
+     * Metodos relacionados con el manejo de las tareas dentro del progrma.
+     *
+     */
     static View view = new View();
     static ArrayList<Tareas> tareas = new ArrayList<>();
 
@@ -95,6 +99,11 @@ public class Tareas implements Serializable {
     }
 
 
+    /**
+     *
+     * @param opcion es un numero entero que viene desde la vista
+     * @return
+     */
     public static estadoTareas imprimirEstadoTareas(int opcion) {
 
         Tareas aux = new Tareas();
@@ -119,7 +128,11 @@ public class Tareas implements Serializable {
 
     }
 
-
+    /**
+     *
+     * @param tarea es la lista de tareas
+     * @return
+     */
     public static ArrayList<Tareas> agregarTarea(Tareas tarea) {
         boolean tareaExistente = false;
 
@@ -134,6 +147,14 @@ public class Tareas implements Serializable {
 
         return tareas;
     }
+
+    /**
+     *
+     * @param proyectos es la lista de proyectos
+     * @param nombreTarea es el nombre de la tarea a actualizar
+     * @param nuevoEstado es el estado al cual quieres que cambie
+     * @return
+     */
     public static estadoTareas actualizarEstadoTarea(Proyectos proyectos, String nombreTarea, estadoTareas nuevoEstado) {
         Tareas tareaEncontrada = null;
         estadoTareas estadoAnterior = null;
@@ -153,7 +174,11 @@ public class Tareas implements Serializable {
         return estadoResultado;
     }
 
-
+    /**
+     *
+     * @param proyectos es la lista de proyectos
+     * @param nombreTarea es el nombre de la tarea
+     */
     public static void eliminarTarea(Proyectos proyectos, String nombreTarea) {
         boolean tareaEncontrada = false;
         Iterator<Tareas> iterator = proyectos.getListaTareas().iterator();
@@ -171,6 +196,12 @@ public class Tareas implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param proyectos es la lista de proyectos
+     * @param nombreTarea es el nombre de la tarea
+     * @param comentario es el comentario en si
+     */
     public static void añadirComentario(Proyectos proyectos, String nombreTarea, String comentario) {
         Tareas tareaEncontrada = null;
         String resultado;
@@ -184,6 +215,7 @@ public class Tareas implements Serializable {
 
         }
     }
+
 
     public static Tareas crearTarea() {
         Tareas aux = new Tareas();
