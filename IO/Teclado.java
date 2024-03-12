@@ -13,6 +13,11 @@ import java.util.Scanner;
 public class Teclado implements iTeclado {
     private static Scanner teclado = new Scanner(System.in);
 
+    /**
+     * Lee una cadena de texto desde la entrada estándar, asegurándose de que no esté vacía.
+     * @param cadena El mensaje que se muestra al usuario antes de pedir la entrada.
+     * @return La cadena de texto introducida por el usuario.
+     */
     public static String leeString(String cadena) {
 
         String cadenaUsuario;
@@ -27,6 +32,12 @@ public class Teclado implements iTeclado {
         return cadenaUsuario;
     }
 
+
+    /**
+     * Lee un número entero desde la entrada estándar, asegurándose de que la entrada sea válida.
+     * @param cadena El mensaje que se muestra al usuario antes de pedir la entrada.
+     * @return El número entero introducido por el usuario.
+     */
     public static int leeEntero(String cadena) {
         int numeroUsuario = 0;
         boolean entradaValida = false;
