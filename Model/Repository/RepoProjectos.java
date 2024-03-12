@@ -110,20 +110,19 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
      */
     public static Proyectos listarProyectoporNombre(ArrayList<Proyectos> proyectos) {
         String nombreProyecto;
-        Proyectos proyectoEncontrado =null;
-        String confir;
-
+        Proyectos proyectoEncontrado = null;
         do {
-            nombreProyecto = Teclado.leeString("Introduce el nombre del proyecto a buscar");
+            nombreProyecto = Teclado.leeString("Introduce el nombre del proyecto a buscar o pulse 'salir': ");
             for (Proyectos proyecto : proyectos) {
                 if (proyecto.getNombre().equalsIgnoreCase(nombreProyecto)) {
-                    proyectoEncontrado = proyecto;
+                    proyectoEncontrado = proyecto; 
                 }
             }
-            confir = Teclado.leeString("¿Desea salir s/n?");
-
-        } while (!confir.equalsIgnoreCase("s"));
-        return proyectoEncontrado;
+            if (proyectoEncontrado == null) {
+                System.out.println("No se encontró ningún proyecto con ese nombre.");
+            }
+        } while (!nombreProyecto.equalsIgnoreCase("salir") && proyectoEncontrado == null);
+        return proyectoEncontrado; 
     }
 
     @Override
