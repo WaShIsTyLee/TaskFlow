@@ -5,6 +5,9 @@ import View.View;
 import Interfaces.iSesion;
 
 public class Sesion implements iSesion {
+    /**
+     * Metodos relacionados con el manejo de la sesión dentro del progrma.
+     */
     private static Sesion _instance;
     private static User userIniciado;
 

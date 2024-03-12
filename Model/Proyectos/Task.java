@@ -16,13 +16,17 @@ public class Task implements Serializable {
     private static final long serialVersionUID = 1L;
     static View view = new View();//desapararecer
     static ArrayList<Task> tareas = new ArrayList<>();
-
     private  String nombre;
     private  String descripcion;
     private  StateTask StateTask;
     private String comentario;
     private  LocalDate fechaInicio;
     private  LocalDate fechaFinaliazacion;
+    /**
+     * Metodos relacionados con el manejo de las tareas dentro del progrma.
+     *
+     */
+
 
     public LocalDate getFechaInicio() {
         return fechaInicio;
@@ -97,6 +101,12 @@ public class Task implements Serializable {
 
 
     public static StateTask StateTasks(int opcion) {
+    /**
+     *
+     * @param opcion es un numero entero que viene desde la vista
+     * @return
+     */
+
 
         Task aux = new Task();
         switch (opcion) {
@@ -122,6 +132,12 @@ public class Task implements Serializable {
 
 
     public static ArrayList<Task> addTask(Task tarea) {
+    /**
+     *
+     * @param tarea es la lista de tareas
+     * @return
+     */
+
         boolean tareaExistente = false;
 
         for (Task tareaExiste : tareas) {
@@ -135,6 +151,15 @@ public class Task implements Serializable {
 
         return tareas;
     }
+
+
+    /**
+     *
+     * @param proyectos es la lista de proyectos
+     * @param nombreTarea es el nombre de la tarea a actualizar
+     * @param nuevoEstado es el estado al cual quieres que cambie
+     * @return
+     */
 
     public static StateTask updateStateTask(Proyectos proyectos, String nombreTarea, StateTask nuevoEstado) {
         Task tareaEncontrada = null;
@@ -157,6 +182,12 @@ public class Task implements Serializable {
 
 
     public static void deleteTask(Proyectos proyectos, String nombreTarea) {
+    /**
+     *
+     * @param proyectos es la lista de proyectos
+     * @param nombreTarea es el nombre de la tarea
+     */
+
         boolean tareaEncontrada = false;
         Iterator<Task> iterator = proyectos.getListaTareas().iterator();
         while (iterator.hasNext()) {
@@ -175,6 +206,13 @@ public class Task implements Serializable {
 
     public static void addComment(Proyectos proyectos, String nombreTarea, String comentario) {
         Task tareaEncontrada = null;
+    /**
+     *
+     * @param proyectos es la lista de proyectos
+     * @param nombreTarea es el nombre de la tarea
+     * @param comentario es el comentario en si
+     */
+
         String resultado;
 
         for (Task tarea : proyectos.getListaTareas()) {

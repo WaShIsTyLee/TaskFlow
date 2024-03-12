@@ -10,6 +10,11 @@ public class Keyboard implements iTeclado {
     private static Scanner teclado = new Scanner(System.in);
 
     public static String readString(String cadena) {
+    /**
+     * Lee una cadena de texto desde la entrada estándar, asegurándose de que no esté vacía.
+     * @param cadena El mensaje que se muestra al usuario antes de pedir la entrada.
+     * @return La cadena de texto introducida por el usuario.
+     */
 
         String cadenaUsuario;
         System.out.println(cadena);
@@ -24,6 +29,13 @@ public class Keyboard implements iTeclado {
     }
 
     public static int readInt(String cadena) {
+
+    /**
+     * Lee un número entero desde la entrada estándar, asegurándose de que la entrada sea válida.
+     * @param cadena El mensaje que se muestra al usuario antes de pedir la entrada.
+     * @return El número entero introducido por el usuario.
+     */
+
         int numeroUsuario = 0;
         boolean entradaValida = false;
         printString(cadena);

@@ -16,6 +16,10 @@ import java.util.ArrayList;
 public class Proyectos implements iProject, Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
+    /**
+     * Metodos relacionados con el manejo de los proyectos dentro del progrma.
+     *
+     */
 
     static String d = "\u001B[0m"; // Stop print the color // Parar el color establecido
     static String red = "\033[31m"; // Rojo

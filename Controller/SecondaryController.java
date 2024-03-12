@@ -12,6 +12,11 @@ public class SecondaryController implements iSecondaryController {
     View view = new View();
     Task task = new Task();
 
+    /**
+     * Gestiona las acciones CRUD para las tareas de un proyecto específico.
+     * @param opcion la opción que el usuario elige en el menú CRUD del creador
+     * @param proyectos el proyecto sobre el cual se realizan las acciones CRUD
+     */
     @Override
     public void switchMenuCRUDcreator(int opcion, Proyectos proyectos) {
         switch (opcion) {
@@ -44,7 +49,11 @@ public class SecondaryController implements iSecondaryController {
         }
 
     }
-
+    /**
+     * Gestiona las opciones del menú para colaboradores en un proyecto.
+     * @param opcion la opción que el usuario elige en el menú de colaborador
+     * @param proyectos el proyecto sobre el cual se realizan las acciones
+     */
     @Override
     public void switchMenuColaborator(int opcion, Proyectos proyectos) {
         switch (opcion) {

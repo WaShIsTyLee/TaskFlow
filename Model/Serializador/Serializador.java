@@ -23,6 +23,12 @@ public class Serializador {
         return result;
     }
 
+    /**
+     *
+     * @param filename nombre del archivo donde serializar el objeto
+     * @return
+     * @param <T> Tipo de objeto a serializar
+     */
     public static <T> T deserializer(String filename) {
         T result = null;
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {

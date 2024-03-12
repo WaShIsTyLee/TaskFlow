@@ -20,6 +20,9 @@ public class View implements iView {
     static String blue = "\033[34m"; // Blue
     static String purple = "\033[35m"; // Morado
 
+    /**
+     * Imprime un mensaje gigante de incio
+     */
     @Override
     public void startMessage() {
         Keyboard.printString("");
@@ -34,7 +37,10 @@ public class View implements iView {
         Keyboard.printString("");
     }
 
-
+    /**
+     * Imprime el menu de registro y de inicio de  sesion
+     * @return
+     */
     @Override
     public int menuRegisterLoginSession() {
         int opcion = 0;
@@ -52,6 +58,10 @@ public class View implements iView {
 
 
     public static User menuLogin() {
+    /**
+     * imprime el menu de incio de sesion
+     * @return
+     */
         boolean credencialesCorrectas = false;
         User user = null;
 
@@ -74,7 +84,10 @@ public class View implements iView {
         return user;
     }
 
-
+    /**
+     * imprime el menu de registro de usuario
+     * @return
+     */
     @Override
     public User menuRegister() {
         Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
@@ -95,6 +108,10 @@ public class View implements iView {
         return userRegistrado;
     }
 
+    /**
+     * Imprime el menu de elecion crud
+     * @return
+     */
     @Override
     public int choiceCRUD() {
         int opcion = -1;
@@ -114,6 +131,10 @@ public class View implements iView {
         return opcion;
     }
 
+    /**
+     * imprime el menu de creador
+     * @return
+     */
     @Override
     public int menuCreator() {
         int opcion = -1;
@@ -126,7 +147,7 @@ public class View implements iView {
             Keyboard.printString("2. Editar estado tarea");
             Keyboard.printString("3. Eliminar tarea");
             Keyboard.printString("4. Añadir comentario");
-           Keyboard.printString(" 5. Añadir colaboradores");
+            Keyboard.printString("5. Añadir colaboradores");
             Keyboard.printString("6. Volver al menú principal");
             Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
             opcion = Keyboard.readInt("Esperando respuesta: ");
@@ -137,7 +158,10 @@ public class View implements iView {
         return opcion;
     }
 
-
+    /**
+     * imprime el menu de colaborador
+     * @return
+     */
     @Override
     public int menuColaborator() {
         int opcion = -1;
@@ -157,8 +181,26 @@ public class View implements iView {
         return opcion;
     }
 
+    /**
+     * imprime el menu para borrar proyectos
+     * @return
+     */
+    public Proyectos viewBorrarProyecto() {
+        Proyectos aux = new Proyectos();
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        aux.setNombre(Keyboard.readString("Introduce el nombre del proyecto que deseas borrar: "));
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        return aux;
+
+    }
+
+    /**
+     * imprime el menu para añadir proyecto
+     * @return
+     */
     @Override
     public Proyectos viewAddProject() {
+
         Proyectos aux = new Proyectos();
 
         Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
@@ -183,8 +225,10 @@ public class View implements iView {
     }
 
 
-
-
+    /**
+     * imprime el menu para listar los proyectos
+     * @return
+     */
     @Override
     public int choiceListProject() {
         int aux = 0;
@@ -201,7 +245,10 @@ public class View implements iView {
 
     }
 
-
+    /**
+     * imprime el menu de estado de tareas
+     * @return
+     */
     @Override
     public int statusTasks() {
         int opcion = 0;
@@ -214,7 +261,10 @@ public class View implements iView {
     }
 
 
-
+    /**
+     * imprime el nombre de la tarea
+     * @return
+     */
     @Override
     public String taskName() {
         Task tareasaux = new Task();
