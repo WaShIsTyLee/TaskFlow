@@ -20,7 +20,9 @@ public class View implements iView {
     static String blue = "\033[34m"; // Blue
     static String purple = "\033[35m"; // Morado
 
-
+    /**
+     * Imprime un mensaje gigante de incio
+     */
     @Override
     public void mensajesDeInicio() {
         Teclado.imprimirCadena("");
@@ -35,7 +37,10 @@ public class View implements iView {
         Teclado.imprimirCadena("");
     }
 
-
+    /**
+     * Imprime el menu de registro y de inicio de  sesion
+     * @return
+     */
     @Override
     public int menuRegistroInicioSesion() {
         int opcion = 0;
@@ -51,7 +56,10 @@ public class View implements iView {
         return opcion;
     }
 
-
+    /**
+     * imprime el menu de incio de sesion
+     * @return
+     */
     public static Usuario menuIniciarSesion() {
         boolean credencialesCorrectas = false;
         Usuario usuario = null;
@@ -75,7 +83,10 @@ public class View implements iView {
         return usuario;
     }
 
-
+    /**
+     * imprime el menu de registro de usuario
+     * @return
+     */
     @Override
     public Usuario menuRegistroUsuario() {
         Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
@@ -96,6 +107,10 @@ public class View implements iView {
         return usuarioRegistrado;
     }
 
+    /**
+     * Imprime el menu de elecion crud
+     * @return
+     */
     @Override
     public int eleccionCRUD() {
         int opcion = -1;
@@ -115,6 +130,10 @@ public class View implements iView {
         return opcion;
     }
 
+    /**
+     * imprime el menu de creador
+     * @return
+     */
     @Override
     public int menuCreador() {
         int opcion = -1;
@@ -138,7 +157,10 @@ public class View implements iView {
         return opcion;
     }
 
-
+    /**
+     * imprime el menu de colaborador
+     * @return
+     */
     @Override
     public int menuColaborador() {
         int opcion = -1;
@@ -158,6 +180,10 @@ public class View implements iView {
         return opcion;
     }
 
+    /**
+     * imprime el menu para borrar proyectos
+     * @return
+     */
     @Override
     public Proyectos viewBorrarProyecto() {
         Proyectos aux = new Proyectos();
@@ -167,6 +193,11 @@ public class View implements iView {
         return aux;
 
     }
+
+    /**
+     * imprime el menu para añadir proyecto
+     * @return
+     */
     @Override
     public Proyectos viewAñadirProjecto() {
         Proyectos aux = new Proyectos();
@@ -193,8 +224,10 @@ public class View implements iView {
     }
 
 
-
-
+    /**
+     * imprime el menu para listar los proyectos
+     * @return
+     */
     @Override
     public int eleccionListarProyecto() {
         int aux = 0;
@@ -211,7 +244,10 @@ public class View implements iView {
 
     }
 
-
+    /**
+     * imprime el menu de estado de tareas
+     * @return
+     */
     @Override
     public int estadoTareas() {
         int opcion = 0;
@@ -224,7 +260,10 @@ public class View implements iView {
     }
 
 
-
+    /**
+     * imprime el nombre de la tarea
+     * @return
+     */
     @Override
     public String nombreTarea() {
         Tareas tareasaux = new Tareas();
