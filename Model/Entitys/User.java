@@ -1,7 +1,7 @@
 package Model.Entitys;
 
 
-import IO.Teclado;
+import IO.Keyboard;
 import Interfaces.iUsuario;
 
 import java.io.BufferedReader;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements iUsuario, Serializable {
+public class User implements iUsuario, Serializable {
     private String nombre;
     private String usuario;
     private String contraseña;
@@ -18,7 +18,7 @@ public class Usuario implements iUsuario, Serializable {
 
 
 
-    public Usuario(String nombre, String usuario, String contraseña, String correo) {
+    public User(String nombre, String usuario, String contraseña, String correo) {
         this.nombre = nombre;
         this.usuario = usuario;
         this.contraseña = contraseña;
@@ -26,7 +26,7 @@ public class Usuario implements iUsuario, Serializable {
 
 
     }
-    public Usuario(){
+    public User(){
         this("","","","");
     }
 
@@ -72,9 +72,9 @@ public class Usuario implements iUsuario, Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario = (Usuario) o;
-        return Objects.equals(getUsuario(), usuario.getUsuario()) ||
-                Objects.equals(getCorreo(), usuario.getCorreo());    }
+        User user = (User) o;
+        return Objects.equals(getUsuario(), user.getUsuario()) ||
+                Objects.equals(getCorreo(), user.getCorreo());    }
 
     @Override
     public String toString() {
@@ -82,15 +82,15 @@ public class Usuario implements iUsuario, Serializable {
     }
 
 
-    public static void listarUsuarios(String usuariosRegistrados) {
+    public static void listUsers(String usuariosRegistrados) {
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
                 String[] partes = linea.split(",");
-                Teclado.imprimirCadena("-----------Usuario-----------");
-                Teclado.imprimirCadena("Nombre: "+partes[0].trim());
-                Teclado.imprimirCadena("Usuario: "+partes[1].trim());
-                Teclado.imprimirCadena("-----------------------------");
+                Keyboard.printString("-----------User-----------");
+                Keyboard.printString("Nombre: "+partes[0].trim());
+                Keyboard.printString("User: "+partes[1].trim());
+                Keyboard.printString("-----------------------------");
             }
         } catch (IOException e) {
             System.out.println("Error al leer el archivo: " + e.getMessage());

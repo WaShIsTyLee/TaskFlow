@@ -10,17 +10,17 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Datos implements iDatos {
+public class Data implements iDatos {
 
-    public static void guardarEnArchivo(String nombre, String nombreUsuario, String correo, String contraseña, String usuariosRegistrados) {
+    public static void saveToFile(String nombre, String nombreUsuario, String correo, String contraseña, String usuariosRegistrados) {
 
-        if (usuarioRegistrado(nombreUsuario, correo, usuariosRegistrados)) {
+        if (registeredUser(nombreUsuario, correo, usuariosRegistrados)) {
             System.out.println("El nombre de usuario o el correo ya están registrados.");
 
         } else {
             try (FileWriter writer = new FileWriter(usuariosRegistrados, true)) {
                 writer.write(nombre + "," + nombreUsuario + "," + contraseña + "," + correo + "\n");
-                System.out.println("Usuario registrado correctamente.");
+                System.out.println("User registrado correctamente.");
 
             } catch (IOException e) {
                 System.out.println("Error al guardar usuario en el archivo: " + e.getMessage());
@@ -29,7 +29,7 @@ public class Datos implements iDatos {
 
     }
 
-    private static boolean usuarioRegistrado(String nombreUsuario, String correo, String usuariosRegistrados) {
+    private static boolean registeredUser(String nombreUsuario, String correo, String usuariosRegistrados) {
         boolean usuarioRegistrado = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
             String linea;
@@ -45,7 +45,7 @@ public class Datos implements iDatos {
         return usuarioRegistrado;
     }
 
-    public static boolean verificarCredenciales(String usuariosRegistrados, String nombreUsuario, String contraseña) {
+    public static boolean verifyCredentials(String usuariosRegistrados, String nombreUsuario, String contraseña) {
         boolean credencialesValidas = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(usuariosRegistrados))) {
             String linea;

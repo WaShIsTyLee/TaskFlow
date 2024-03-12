@@ -2,15 +2,15 @@ package Interfaces;
 
 public interface iDatos {
 
-    static void guardarEnArchivo(String nombre, String nombreUsuario, String correo, String contraseña, String usuariosRegistrados) {
+    static void saveToFile(String nombre, String nombreUsuario, String correo, String contraseña, String usuariosRegistrados) {
 
     }
 
-    static boolean usuarioRegistrado(String nombreUsuario, String correo, String usuariosRegistrados) {
+    static boolean registeredUser(String nombreUsuario, String correo, String usuariosRegistrados) {
         return false;
     }
 
-    static boolean verificarCredenciales(String usuariosRegistrados, String nombreUsuario, String contraseña){
+    static boolean verifyCredentials(String usuariosRegistrados, String nombreUsuario, String contraseña){
         return false;
     }
 

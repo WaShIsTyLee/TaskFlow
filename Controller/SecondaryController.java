@@ -1,42 +1,42 @@
 package Controller;
 
 
-import IO.Teclado;
+import IO.Keyboard;
 import Interfaces.iSecondaryController;
-import Model.Entitys.Colaborador;
+import Model.Entitys.Colaborator;
 import Model.Proyectos.Proyectos;
-import Model.Proyectos.Tareas;
+import Model.Proyectos.Task;
 import View.View;
 
 public class SecondaryController implements iSecondaryController {
     View view = new View();
-    Tareas tareas = new Tareas();
+    Task task = new Task();
 
     @Override
-    public void switchMenuCRUDcreador(int opcion, Proyectos proyectos) {
+    public void switchMenuCRUDcreator(int opcion, Proyectos proyectos) {
         switch (opcion) {
             case 1:
-                Teclado.imprimirCadena("Creando la tarea...");
-                proyectos.getListaTareas().add(tareas = Tareas.crearTarea());
+                Keyboard.printString("Creando la tarea...");
+                proyectos.getListaTareas().add(task = Task.makeTask());
                 break;
             case 2:
-                Teclado.imprimirCadena("Actualizando estado de la tarea...");
-                Tareas.actualizarEstadoTarea(proyectos, view.nombreTarea(), Tareas.imprimirEstadoTareas(view.estadoTareas()));
+                Keyboard.printString("Actualizando estado de la tarea...");
+                Task.updateStateTask(proyectos, view.taskName(), Task.StateTasks(view.statusTasks()));
                 break;
             case 3:
-                Teclado.imprimirCadena("Elimando la tarea...");
-                Tareas.eliminarTarea(proyectos, view.nombreTarea());
+                Keyboard.printString("Elimando la tarea...");
+                Task.deleteTask(proyectos, view.taskName());
                 break;
             case 4:
-                Teclado.imprimirCadena("Estableciendo comentario..");
-                String comentario1 = Teclado.leeString("Introduzca comentario");
-                Tareas.añadirComentario(proyectos, view.nombreTarea(), comentario1);
+                Keyboard.printString("Estableciendo comentario..");
+                String comentario1 = Keyboard.readString("Introduzca comentario");
+                Task.addComment(proyectos, view.taskName(), comentario1);
                 break;
             case 5:
-                Teclado.imprimirCadena("Añadiendo colaboradores...");
-                String nombreColaborador = Teclado.leeString("Introduce nombre del colaborador a añadir");
-                Colaborador colaborador = new Colaborador(nombreColaborador);
-                proyectos.getColaborador().add(colaborador);
+                Keyboard.printString("Añadiendo colaboradores...");
+                String nombreColaborador = Keyboard.readString("Introduce nombre del colaborator a añadir");
+                Colaborator colaborator = new Colaborator(nombreColaborador);
+                proyectos.getColaborador().add(colaborator);
                 break;
             case 6:
                 break;
@@ -46,19 +46,19 @@ public class SecondaryController implements iSecondaryController {
     }
 
     @Override
-    public void switchMenuColaborador(int opcion, Proyectos proyectos) {
+    public void switchMenuColaborator(int opcion, Proyectos proyectos) {
         switch (opcion) {
             case 1:
-                Teclado.imprimirCadena("Editando estado de la tarea...");
-                Tareas.actualizarEstadoTarea(proyectos, view.nombreTarea(), Tareas.imprimirEstadoTareas(view.estadoTareas()));
+                Keyboard.printString("Editando estado de la tarea...");
+                Task.updateStateTask(proyectos, view.taskName(), Task.StateTasks(view.statusTasks()));
                 break;
             case 2:
-                Teclado.imprimirCadena("Añadiendo comentario...");
-                String comentario1 = Teclado.leeString("Introduzca comentario");
-                Tareas.añadirComentario(proyectos, view.nombreTarea(), comentario1);
+                Keyboard.printString("Añadiendo comentario...");
+                String comentario1 = Keyboard.readString("Introduzca comentario");
+                Task.addComment(proyectos, view.taskName(), comentario1);
                 break;
             case 3:
-                view.eleccionCRUD();
+                view.choiceCRUD();
                 break;
 
         }

@@ -1,32 +1,31 @@
 package Interfaces;
 
-import Model.Entitys.Usuario;
+import Model.Entitys.User;
 import Model.Proyectos.Proyectos;
 
 public interface iView {
 
-    void mensajesDeInicio();
+    void startMessage();
 
-    int menuRegistroInicioSesion();
+    int menuRegisterLoginSession();
 
-    static Usuario menuIniciarSesion() {
+    static User menuLogin() {
         return null;
     }
-    Usuario menuRegistroUsuario();
+    User menuRegister();
 
-    int eleccionCRUD();
+    int choiceCRUD();
 
-    int menuCreador();
+    int menuCreator();
 
-    int menuColaborador();
+    int menuColaborator();
 
-    Proyectos viewBorrarProyecto();
 
-    Proyectos viewAñadirProjecto();
+    Proyectos viewAddProject();
 
-    int eleccionListarProyecto();
+    int choiceListProject();
 
-    int estadoTareas();
-    String nombreTarea();
+    int statusTasks();
+    String taskName();
 
 }

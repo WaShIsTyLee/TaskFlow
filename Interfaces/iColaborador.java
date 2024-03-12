@@ -1,11 +1,11 @@
 package Interfaces;
 
-import Model.Entitys.Colaborador;
-import Model.Entitys.Usuario;
+import Model.Entitys.Colaborator;
+import Model.Entitys.User;
 import Model.Proyectos.Proyectos;
 
 public interface iColaborador {
-    static Colaborador encontrarColaborador(Proyectos aux, Usuario usuario) {
+    static Colaborator findCollaborator(Proyectos aux, User user) {
         return null;
     }
 }

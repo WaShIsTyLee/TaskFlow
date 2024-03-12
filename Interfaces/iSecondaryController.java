@@ -4,8 +4,8 @@ import Model.Proyectos.Proyectos;
 
 public interface iSecondaryController {
 
-    void switchMenuCRUDcreador(int opcion, Proyectos proyectos);
-    void switchMenuColaborador(int opcion, Proyectos proyectos);
+    void switchMenuCRUDcreator(int opcion, Proyectos proyectos);
+    void switchMenuColaborator(int opcion, Proyectos proyectos);
 
 
 

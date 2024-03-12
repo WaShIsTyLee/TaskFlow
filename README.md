@@ -26,7 +26,7 @@ ___
 
 ## Wiki 📖
 ___
-Puedes ver y descargar en nuestro proyecto [TaskFlow](https://github.com/WaShIsTyLee/TaskFlow).
+Puedes ver y descargar en nuestro proyecto [TaskFlow](https://github.com/WaShIsTyLee/TaskFlow). Ademas ejecutando el comando: " docker run -it washistylee/taskfloww ".
 
 
 ## Gracias profes 🎁

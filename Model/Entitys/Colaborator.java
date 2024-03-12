@@ -2,12 +2,16 @@ package Model.Entitys;
 
 import Model.Proyectos.Proyectos;
 import Interfaces.iColaborador;
+
+import java.io.Serial;
 import java.io.Serializable;
 
-public class Colaborador extends Usuario implements iColaborador, Serializable{
+public class Colaborator extends User implements iColaborador, Serializable{
+    @Serial
+    private static final long serialVersionUID = 1L;
     private String Usuario;
 
-    public Colaborador(String usuario) {
+    public Colaborator(String usuario) {
         Usuario = usuario;
     }
 
@@ -26,11 +30,11 @@ public class Colaborador extends Usuario implements iColaborador, Serializable{
         return Usuario;
     }
 
-    public static Colaborador encontrarColaborador(Proyectos aux, Usuario usuario) {
-        Colaborador colaboradora = null;
-        for (Colaborador colaborador : aux.getColaborador()) {
-            if (usuario.getNombre().equals(colaborador.getUsuario())) {
-                colaboradora = colaborador;
+    public static Colaborator findCollaborator(Proyectos aux, User user) {
+        Colaborator colaboradora = null;
+        for (Colaborator colaborator : aux.getColaborador()) {
+            if (user.getNombre().equals(colaborator.getUsuario())) {
+                colaboradora = colaborator;
             }
         }
         System.out.println(colaboradora);

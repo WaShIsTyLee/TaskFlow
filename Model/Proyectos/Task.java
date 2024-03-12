@@ -1,24 +1,25 @@
 package Model.Proyectos;
 
-import IO.Teclado;
+import IO.Keyboard;
 import View.View;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import static Model.Proyectos.estadoTareas.*;
+import static Model.Proyectos.StateTask.*;
 
-import static Model.Proyectos.estadoTareas.*;
-
-public class Tareas implements Serializable {
-    static View view = new View();
-    static ArrayList<Tareas> tareas = new ArrayList<>();
+public class Task implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+    static View view = new View();//desapararecer
+    static ArrayList<Task> tareas = new ArrayList<>();
 
     String nombre;
     String descripcion;
-    estadoTareas estadoTareas;
+    StateTask StateTask;
     String comentario;
     LocalDate fechaInicio;
     LocalDate fechaFinaliazacion;
@@ -55,12 +56,12 @@ public class Tareas implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Model.Proyectos.estadoTareas getEstadoTareas() {
-        return estadoTareas;
+    public StateTask getEstadoTareas() {
+        return StateTask;
     }
 
-    public void setEstadoTareas(Model.Proyectos.estadoTareas estadoTareas) {
-        this.estadoTareas = estadoTareas;
+    public void setEstadoTareas(StateTask StateTask) {
+        this.StateTask = StateTask;
     }
 
     public String getComentario() {
@@ -71,14 +72,14 @@ public class Tareas implements Serializable {
         this.comentario = comentario;
     }
 
-    public Tareas(String nombre, String descripcion, Model.Proyectos.estadoTareas estadoTareas, String comentario) {
+    public Task(String nombre, String descripcion, StateTask StateTask, String comentario) {
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.estadoTareas = estadoTareas;
+        this.StateTask = StateTask;
         this.comentario = comentario;
     }
 
-    public Tareas() {
+    public Task() {
         this("", "",  null, "");
     }
 
@@ -87,7 +88,7 @@ public class Tareas implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("Nombre de la tarea: ").append(nombre).append("\n");
         sb.append("     Descripción: ").append(descripcion).append("\n");
-        sb.append("     Estado: ").append(estadoTareas).append("\n");
+        sb.append("     Estado: ").append(StateTask).append("\n");
         sb.append("     Comentario: ").append(comentario).append("\n");
         sb.append("     Fecha inicio: ").append(fechaInicio).append("\n");
         sb.append("     Fecha fin: ").append(fechaFinaliazacion).append("\n");
@@ -95,24 +96,24 @@ public class Tareas implements Serializable {
     }
 
 
-    public static estadoTareas imprimirEstadoTareas(int opcion) {
+    public static StateTask StateTasks(int opcion) {
 
-        Tareas aux = new Tareas();
+        Task aux = new Task();
         switch (opcion) {
             case 1:
-                Teclado.imprimirCadena("La tarea aún no ha comenzado.");
+                Keyboard.printString("La tarea aún no ha comenzado.");
                 aux.setEstadoTareas(SinIniciar);
                 break;
             case 2:
-                Teclado.imprimirCadena("La tarea está en proceso.");
+                Keyboard.printString("La tarea está en proceso.");
                 aux.setEstadoTareas(EnTramite);
                 break;
             case 3:
-                Teclado.imprimirCadena("La tarea ha sido completada.");
+                Keyboard.printString("La tarea ha sido completada.");
                 aux.setEstadoTareas(Finalizada);
                 break;
             default:
-                Teclado.imprimirCadena("Estado desconocido.");
+                Keyboard.printString("Estado desconocido.");
                 break;
         }
         return aux.getEstadoTareas();
@@ -120,10 +121,10 @@ public class Tareas implements Serializable {
     }
 
 
-    public static ArrayList<Tareas> agregarTarea(Tareas tarea) {
+    public static ArrayList<Task> addTask(Task tarea) {
         boolean tareaExistente = false;
 
-        for (Tareas tareaExiste : tareas) {
+        for (Task tareaExiste : tareas) {
             if (tareaExiste.getNombre().equals(tarea.getNombre())) {
                 tareaExistente = true;
             }
@@ -134,11 +135,12 @@ public class Tareas implements Serializable {
 
         return tareas;
     }
-    public static estadoTareas actualizarEstadoTarea(Proyectos proyectos, String nombreTarea, estadoTareas nuevoEstado) {
-        Tareas tareaEncontrada = null;
-        estadoTareas estadoAnterior = null;
 
-        for (Tareas tarea : proyectos.getListaTareas()) {
+    public static StateTask updateStateTask(Proyectos proyectos, String nombreTarea, StateTask nuevoEstado) {
+        Task tareaEncontrada = null;
+        StateTask estadoAnterior = null;
+
+        for (Task tarea : proyectos.getListaTareas()) {
             if (tarea.getNombre().equals(nombreTarea)) {
                 tareaEncontrada = tarea;
                 estadoAnterior = tarea.getEstadoTareas();
@@ -146,7 +148,7 @@ public class Tareas implements Serializable {
             }
 
         }
-        estadoTareas estadoResultado = null;
+        StateTask estadoResultado = null;
         if (tareaEncontrada != null) {
             estadoResultado = estadoAnterior;
         }
@@ -154,28 +156,28 @@ public class Tareas implements Serializable {
     }
 
 
-    public static void eliminarTarea(Proyectos proyectos, String nombreTarea) {
+    public static void deleteTask(Proyectos proyectos, String nombreTarea) {
         boolean tareaEncontrada = false;
-        Iterator<Tareas> iterator = proyectos.getListaTareas().iterator();
+        Iterator<Task> iterator = proyectos.getListaTareas().iterator();
         while (iterator.hasNext()) {
-            Tareas tarea = iterator.next();
+            Task tarea = iterator.next();
             if (tarea.getNombre().equals(nombreTarea)) {
                 iterator.remove();
-                Teclado.imprimirCadena("Tarea eliminada exitosamente.");
+                Keyboard.printString("Tarea eliminada exitosamente.");
                 tareaEncontrada = true;
             }
         }
         if (!tareaEncontrada) {
-            Teclado.imprimirCadena("La tarea no fue encontrada.");
+            Keyboard.printString("La tarea no fue encontrada.");
 
         }
     }
 
-    public static void añadirComentario(Proyectos proyectos, String nombreTarea, String comentario) {
-        Tareas tareaEncontrada = null;
+    public static void addComment(Proyectos proyectos, String nombreTarea, String comentario) {
+        Task tareaEncontrada = null;
         String resultado;
 
-        for (Tareas tarea : proyectos.getListaTareas()) {
+        for (Task tarea : proyectos.getListaTareas()) {
             if (tarea.getNombre().equals(nombreTarea)) {
                 tareaEncontrada = tarea;
                 resultado = tareaEncontrada.getComentario();
@@ -185,14 +187,14 @@ public class Tareas implements Serializable {
         }
     }
 
-    public static Tareas crearTarea() {
-        Tareas aux = new Tareas();
-        aux.setNombre(Teclado.leeString("Introduce nombre Tarea"));
-        aux.setDescripcion(Teclado.leeString("Introduce descripcion par la tarea"));
-        aux.setEstadoTareas(imprimirEstadoTareas(view.estadoTareas()));
+    public static Task makeTask() {
+        Task aux = new Task();
+        aux.setNombre(Keyboard.readString("Introduce nombre Tarea"));
+        aux.setDescripcion(Keyboard.readString("Introduce descripcion par la tarea"));
+        aux.setEstadoTareas(StateTasks(view.statusTasks()));
         aux.setFechaInicio(LocalDate.now());
-        aux.setFechaFinaliazacion(Proyectos.añadirFechaFin());
-        Tareas.agregarTarea(aux);
+        aux.setFechaFinaliazacion(Proyectos.addEndDate());
+        Task.addTask(aux);
         return aux;
     }
 }

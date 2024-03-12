@@ -1,13 +1,13 @@
 package View;
 
-import IO.Teclado;
+import IO.Keyboard;
 import IO.Utils;
 import Interfaces.iView;
-import Model.Archivos.Datos;
+import Model.Archivos.Data;
 import Model.Archivos.Sesion;
-import Model.Entitys.Usuario;
+import Model.Entitys.User;
 import Model.Proyectos.Proyectos;
-import Model.Proyectos.Tareas;
+import Model.Proyectos.Task;
 
 import java.time.LocalDate;
 
@@ -21,93 +21,93 @@ public class View implements iView {
     static String purple = "\033[35m"; // Morado
 
     @Override
-    public void mensajesDeInicio() {
-        Teclado.imprimirCadena("");
-        Teclado.imprimirCadena("");
-        Teclado.imprimirCadena(
+    public void startMessage() {
+        Keyboard.printString("");
+        Keyboard.printString("");
+        Keyboard.printString(
                 red + "■■■■■■■     ■       ■■■■■     ■    ■          ■■■■■     ■          ■■■■      ■       ■■       ■ \n" +
                         "   ■       ■ ■      ■         ■   ■           ■         ■         ■    ■      ■     ■  ■     ■  \n" +
                         "   ■      ■■■■■     ■■■■■     ■ ■             ■■■■■     ■         ■    ■       ■   ■    ■   ■  \n" +
                         "   ■     ■     ■        ■     ■   ■           ■         ■         ■    ■        ■ ■      ■ ■   \n" +
                         "   ■    ■       ■   ■■■■■     ■     ■         ■         ■■■■■■     ■■■■          ■        ■     \n" + d);
 
-        Teclado.imprimirCadena("");
+        Keyboard.printString("");
     }
 
 
     @Override
-    public int menuRegistroInicioSesion() {
+    public int menuRegisterLoginSession() {
         int opcion = 0;
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        Teclado.imprimirCadena("Bienvenido a TaskFlow.");
-        Teclado.imprimirCadena("Elige la opcion que desees usar: ");
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        Keyboard.printString("Bienvenido a TaskFlow.");
+        Keyboard.printString("Elige la opcion que desees usar: ");
 
-        Teclado.imprimirCadena("1. Iniciar Sesión ");
-        Teclado.imprimirCadena("2. Registrarse ");
-        Teclado.imprimirCadena("3. Salir ");
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        opcion = Teclado.leeEntero("Esperando respuesta: ");
+        Keyboard.printString("1. Iniciar Sesión ");
+        Keyboard.printString("2. Registrarse ");
+        Keyboard.printString("3. Salir ");
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        opcion = Keyboard.readInt("Esperando respuesta: ");
         return opcion;
     }
 
 
-    public static Usuario menuIniciarSesion() {
+    public static User menuLogin() {
         boolean credencialesCorrectas = false;
-        Usuario usuario = null;
+        User user = null;
 
         do {
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-            String nombreUsuario = Teclado.leeString("Introduzca su Usuario:");
-            String contraseña = Teclado.leeString("Introduzca su contraseña");
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            String nombreUsuario = Keyboard.readString("Introduzca su User:");
+            String contraseña = Keyboard.readString("Introduzca su contraseña");
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
 
-            credencialesCorrectas = Datos.verificarCredenciales("usuariosRegistrados", nombreUsuario, contraseña);
+            credencialesCorrectas = Data.verifyCredentials("usuariosRegistrados", nombreUsuario, contraseña);
 
             if (!credencialesCorrectas) {
-                Teclado.imprimirCadena("Credenciales incorrectas. Inténtalo de nuevo.");
+                Keyboard.printString("Credenciales incorrectas. Inténtalo de nuevo.");
             } else {
-                usuario = new Usuario(nombreUsuario, contraseña, "", "");
+                user = new User(nombreUsuario, contraseña, "", "");
 
             }
         } while (!credencialesCorrectas);
 
-        return usuario;
+        return user;
     }
 
 
     @Override
-    public Usuario menuRegistroUsuario() {
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        Teclado.imprimirCadena("Introduzca los siguientes datos");
+    public User menuRegister() {
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        Keyboard.printString("Introduzca los siguientes datos");
         String nombre, usuario, correo, contraseña;
-        Usuario usuarioRegistrado = null;
-        nombre = Teclado.leeString("Introduzca su nombre completo");
-        usuario = Teclado.leeString("Introduzca su nombre de Usuario");
-        correo = Teclado.leeString("Introduzca su email");
-        while (!Usuario.validarCorreo(correo)) {
-            Teclado.imprimirCadena("Correo no válido");
-            correo = Teclado.leeString("Introduzca su email");
+        User userRegistrado = null;
+        nombre = Keyboard.readString("Introduzca su nombre completo");
+        usuario = Keyboard.readString("Introduzca su nombre de User");
+        correo = Keyboard.readString("Introduzca su email");
+        while (!User.validarCorreo(correo)) {
+            Keyboard.printString("Correo no válido");
+            correo = Keyboard.readString("Introduzca su email");
         }
-        contraseña = Teclado.leeString("Introduzca su contraseña");
+        contraseña = Keyboard.readString("Introduzca su contraseña");
         contraseña = Utils.hashPassword(contraseña);
-        Datos.guardarEnArchivo(nombre, usuario, correo, contraseña, "usuariosRegistrados");
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        return usuarioRegistrado;
+        Data.saveToFile(nombre, usuario, correo, contraseña, "usuariosRegistrados");
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        return userRegistrado;
     }
 
     @Override
-    public int eleccionCRUD() {
+    public int choiceCRUD() {
         int opcion = -1;
         do {
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-            Teclado.imprimirCadena("Elige la opcion que desees usar: ");
-            Teclado.imprimirCadena("1. Listar proyecto");
-            Teclado.imprimirCadena("2. Crear proyecto");
-            Teclado.imprimirCadena("3. Borrar proyecto");
-            Teclado.imprimirCadena("4. Listar Usuarios");
-            Teclado.imprimirCadena("5. Salir y guardar");
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-            opcion = Teclado.leeEntero("Esperando respuesta: ");
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            Keyboard.printString("Elige la opcion que desees usar: ");
+            Keyboard.printString("1. Listar proyecto");
+            Keyboard.printString("2. Crear proyecto");
+            Keyboard.printString("3. Borrar proyecto");
+            Keyboard.printString("4. Listar Usuarios");
+            Keyboard.printString("5. Salir y guardar");
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            opcion = Keyboard.readInt("Esperando respuesta: ");
 
         } while (opcion < 1 || opcion > 5);
 
@@ -115,21 +115,21 @@ public class View implements iView {
     }
 
     @Override
-    public int menuCreador() {
+    public int menuCreator() {
         int opcion = -1;
 
         do {
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-            Teclado.imprimirCadena("Menú de Creador Proyecto");
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            Keyboard.printString("Menú de Creador Proyecto");
 
-            Teclado.imprimirCadena("1. Crear tarea");
-            Teclado.imprimirCadena("2. Editar estado tarea");
-            Teclado.imprimirCadena("3. Eliminar tarea");
-            Teclado.imprimirCadena("4. Añadir comentario");
-           Teclado.imprimirCadena(" 5. Añadir colaboradores");
-            Teclado.imprimirCadena("6. Volver al menú principal");
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-            opcion = Teclado.leeEntero("Esperando respuesta: ");
+            Keyboard.printString("1. Crear tarea");
+            Keyboard.printString("2. Editar estado tarea");
+            Keyboard.printString("3. Eliminar tarea");
+            Keyboard.printString("4. Añadir comentario");
+           Keyboard.printString(" 5. Añadir colaboradores");
+            Keyboard.printString("6. Volver al menú principal");
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            opcion = Keyboard.readInt("Esperando respuesta: ");
 
 
         } while (opcion < 1 || opcion > 6);
@@ -139,17 +139,17 @@ public class View implements iView {
 
 
     @Override
-    public int menuColaborador() {
+    public int menuColaborator() {
         int opcion = -1;
 
         do {
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-            Teclado.imprimirCadena("MENU COLABORADOR");
-            Teclado.imprimirCadena("1. Editar estado de la tarea");
-            Teclado.imprimirCadena("2. Añadir comentario");
-            Teclado.imprimirCadena("3. Volver al menú principal");
-            Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-            opcion = Teclado.leeEntero("Esperando respuesta: ");
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            Keyboard.printString("MENU COLABORADOR");
+            Keyboard.printString("1. Editar estado de la tarea");
+            Keyboard.printString("2. Añadir comentario");
+            Keyboard.printString("3. Volver al menú principal");
+            Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+            opcion = Keyboard.readInt("Esperando respuesta: ");
 
 
         } while (opcion < 1 || opcion > 3);
@@ -158,32 +158,23 @@ public class View implements iView {
     }
 
     @Override
-    public Proyectos viewBorrarProyecto() {
-        Proyectos aux = new Proyectos();
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        aux.setNombre(Teclado.leeString("Introduce el nombre del proyecto que deseas borrar: "));
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        return aux;
-
-    }
-    @Override
-    public Proyectos viewAñadirProjecto() {
+    public Proyectos viewAddProject() {
         Proyectos aux = new Proyectos();
 
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        String nombre = Teclado.leeString("Introduce el nombre de tu proyecto: ");
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        String nombre = Keyboard.readString("Introduce el nombre de tu proyecto: ");
         aux.setNombre(nombre);
-        String descripcion = Teclado.leeString("Introduce una descripcion de tu proyecto: ");
+        String descripcion = Keyboard.readString("Introduce una descripcion de tu proyecto: ");
 
         aux.setDescripcion(descripcion);
-        aux.setColaborador(aux.añadirColaborador());
+        aux.setColaborador(aux.addColaborator());
         aux.setFechaInicio(LocalDate.now());
-        aux.setFechaFinalizacion(Proyectos.añadirFechaFin());
-        aux.setCreador(Sesion.getUsuarioIniciado());
+        aux.setFechaFinalizacion(Proyectos.addEndDate());
+        aux.setCreador(Sesion.getStartedUser());
         String respuesta;
         do {
-            aux.setListaTareas(Tareas.agregarTarea(Tareas.crearTarea()));
-            respuesta = Teclado.leeString("¿Desea añadir otra tarea? Si/No");
+            aux.setListaTareas(Task.addTask(Task.makeTask()));
+            respuesta = Keyboard.readString("¿Desea añadir otra tarea? Si/No");
         } while (respuesta.equalsIgnoreCase("Si"));
         System.out.println(aux);
 
@@ -195,15 +186,15 @@ public class View implements iView {
 
 
     @Override
-    public int eleccionListarProyecto() {
+    public int choiceListProject() {
         int aux = 0;
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        Teclado.imprimirCadena("1. Para listar todos");
-        Teclado.imprimirCadena("2. Para listar por nombre");
-        Teclado.imprimirCadena("3. Para listar por Creador");
-        Teclado.imprimirCadena("4. Para listar por Colaborador");
-        Teclado.imprimirCadena(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
-        aux = Teclado.leeEntero("Esperando respuesta: ");
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        Keyboard.printString("1. Para listar todos");
+        Keyboard.printString("2. Para listar por nombre");
+        Keyboard.printString("3. Para listar por Creador");
+        Keyboard.printString("4. Para listar por Colaborator");
+        Keyboard.printString(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d);
+        aux = Keyboard.readInt("Esperando respuesta: ");
 
         return aux;
 
@@ -212,12 +203,12 @@ public class View implements iView {
 
 
     @Override
-    public int estadoTareas() {
+    public int statusTasks() {
         int opcion = 0;
-        Teclado.imprimirCadena("1. Tarea sin iniciar");
-        Teclado.imprimirCadena("2. Tarea en tramite");
-        Teclado.imprimirCadena("3. Tarea finalizada");
-        opcion = Teclado.leeEntero("Esperando respuesta: ");
+        Keyboard.printString("1. Tarea sin iniciar");
+        Keyboard.printString("2. Tarea en tramite");
+        Keyboard.printString("3. Tarea finalizada");
+        opcion = Keyboard.readInt("Esperando respuesta: ");
 
         return opcion;
     }
@@ -225,9 +216,9 @@ public class View implements iView {
 
 
     @Override
-    public String nombreTarea() {
-        Tareas tareasaux = new Tareas();
-        tareasaux.setNombre(Teclado.leeString("Dime el nombre de la tarea: "));
+    public String taskName() {
+        Task tareasaux = new Task();
+        tareasaux.setNombre(Keyboard.readString("Dime el nombre de la tarea: "));
         return tareasaux.getNombre();
 
     }

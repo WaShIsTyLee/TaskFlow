@@ -3,6 +3,6 @@ package Model.Proyectos;
 /**
  *
  */
-public enum estadoTareas {
+public enum StateTask {
     SinIniciar, EnTramite, Finalizada
 }

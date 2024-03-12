@@ -7,10 +7,10 @@ import Model.Repository.RepoProjectos;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public interface iRepoProjectos extends Serializable {
+public interface iRepoProjectos {
 
-    boolean borrarProyecto(Proyectos projecto);
-    boolean crearProjecto(Proyectos proyecto);
+    boolean deleteProject(Proyectos projecto);
+    boolean createProject(Proyectos proyecto);
 
     private int isProject(Proyectos projecto) {
         return 0;
@@ -19,11 +19,11 @@ public interface iRepoProjectos extends Serializable {
     static RepoProjectos getInstance() {
         return null;
     }
-    static void listarProyectos(ArrayList<Proyectos> repoProjectos) {
+    static void listProject(ArrayList<Proyectos> repoProjectos) {
 
     }
 
-    static Proyectos listarProyectoporNombre(ArrayList<Proyectos> proyectos) {
+    static Proyectos listByName(ArrayList<Proyectos> proyectos) {
         return null;
     }
     boolean saveData();

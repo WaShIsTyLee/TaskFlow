@@ -1,22 +1,22 @@
 package Interfaces;
 
 import Model.Proyectos.Proyectos;
-import Model.Proyectos.Tareas;
-import Model.Proyectos.estadoTareas;
+import Model.Proyectos.Task;
+import Model.Proyectos.StateTask;
 
 import java.util.ArrayList;
 
 public interface iTareas {
 
-    static estadoTareas imprimirEstadoTareas(int opcion) {
+    static StateTask imprimirEstadoTareas(int opcion) {
         return null;
     }
 
-    static ArrayList<Tareas> agregarTarea(Tareas tarea) {
+    static ArrayList<Task> agregarTarea(Task tarea) {
         return null;
     }
 
-    static estadoTareas actualizarEstadoTarea(Proyectos proyectos, String nombreTarea, estadoTareas nuevoEstado) {
+    static StateTask actualizarEstadoTarea(Proyectos proyectos, String nombreTarea, StateTask nuevoEstado) {
         return null;
     }
 
@@ -28,7 +28,7 @@ public interface iTareas {
 
     }
 
-    static Tareas crearTarea() {
+    static Task crearTarea() {
         return null;
     }
 

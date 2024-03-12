@@ -1,11 +1,10 @@
 package Controller;
 
-import IO.Teclado;
+import IO.Keyboard;
 import Interfaces.iController;
-import Model.Archivos.Datos;
 import Model.Archivos.Sesion;
-import Model.Entitys.Colaborador;
-import Model.Entitys.Usuario;
+import Model.Entitys.Colaborator;
+import Model.Entitys.User;
 import Model.Proyectos.Proyectos;
 import Model.Repository.RepoProjectos;
 import View.View;
@@ -20,13 +19,13 @@ public class MainController implements iController {
     RepoProjectos rp = RepoProjectos.getInstance();
     SecondaryController secondaryController = new SecondaryController();
 
-    private boolean esCreador(Proyectos proyecto){
-        Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
+    private boolean isCreator(Proyectos proyecto){
+        User ultimoUser = Sesion.getStartedUser();
         boolean aux = false;
-        if (proyecto.getCreador().getNombre().equals(ultimoUsuario.getNombre())) {
+        if (proyecto.getCreador().getNombre().equals(ultimoUser.getNombre())) {
             aux = true;
         }else{
-            Teclado.imprimirCadena("No eres creador del proyecto");
+            Keyboard.printString("No eres creador del proyecto");
         }
         return aux;
     }
@@ -34,68 +33,70 @@ public class MainController implements iController {
 
     @Override
     public  void startApp() {
-        switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+        switchMenuRegisterHomeSession(view.menuRegisterLoginSession());
     }
 
 
     @Override
-    public void switchMenuRegistroInicioSesion(int opcion) {
+    public void
+    switchMenuRegisterHomeSession(int opcion) {
         do {
             switch (opcion) {
                 case 1:
                     RepoProjectos.load("Repositorio.bin");
                     Sesion.getInstancia();
-                    view.mensajesDeInicio();
-                    switchEleccionCrud(view.eleccionCRUD());
+                    view.startMessage();
+                    switchElectionCrud(view.choiceCRUD());
                     break;
                 case 2:
-                    view.menuRegistroUsuario();
-                    switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
+                    view.menuRegister();
+
+                    switchMenuRegisterHomeSession(view.menuRegisterLoginSession());
                     break;
 
                 case 3:
-                    Teclado.imprimirCadena("Adios y gracias por usar TaskFlow");
+                    Keyboard.printString("Adios y gracias por usar TaskFlow");
                     break;
                 default:
-                    Teclado.imprimirCadena("Ups... Parece que te has equivocado, prueba otra vez.");
+                    Keyboard.printString("Ups... Parece que te has equivocado, prueba otra vez.");
 
             }
         } while (opcion < 1 || opcion > 3);
     }
 
     @Override
-    public void switchEleccionCrud(int opcion) {
+    public void switchElectionCrud(int opcion) {
         switch (opcion) {
             case 1:
-                Teclado.imprimirCadena("Listando proyectos...");
-                switchListar(view.eleccionListarProyecto());
-                switchEleccionCrud(view.eleccionCRUD());
+                Keyboard.printString("Listando proyectos...");
+                switchList(view.choiceListProject());
+                switchElectionCrud(view.choiceCRUD());
                 break;
             case 2:
-                Teclado.imprimirCadena("Crear proyecto...");
-                rp.crearProjecto(view.viewAñadirProjecto());
+                Keyboard.printString("Crear proyecto...");
+                rp.createProject(view.viewAddProject());
                 rp.saveData();
-                switchEleccionCrud(view.eleccionCRUD());
+                switchElectionCrud(view.choiceCRUD());
                 break;
             case 3:
-                Teclado.imprimirCadena("Borrando proyecto...");
-                Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
-                Proyectos aux = RepoProjectos.listarProyectoporNombre(rp.getProyectos());
-                if (esCreador(aux)){
-                    rp.borrarProyecto(aux);
-                    switchEleccionCrud(view.eleccionCRUD());
+                Keyboard.printString("Borrando proyecto...");
+                User ultimoUser = Sesion.getStartedUser();
+                Proyectos aux = RepoProjectos.listByName(rp.getProyectos());
+                if (isCreator(aux)){
+                    rp.deleteProject(aux);
+                    switchElectionCrud(view.choiceCRUD());
                 }
-                switchEleccionCrud(view.eleccionCRUD());
+                switchElectionCrud(view.choiceCRUD());
                 break;
             case 4:
-                Teclado.imprimirCadena("");
-                Teclado.imprimirCadena("Lista de usuarios de la app:");
-                Usuario.listarUsuarios("usuariosRegistrados");
-                Teclado.imprimirCadena("");
-                switchEleccionCrud(view.eleccionCRUD());
+                Keyboard.printString("");
+                Keyboard.printString("Lista de usuarios de la app:");
+                User.listUsers("usuariosRegistrados");
+                Keyboard.printString("");
+                switchElectionCrud(view.choiceCRUD());
                 break;
             case 5:
-                Teclado.imprimirCadena("Saliendo, los cambios se han guardado correctamente.");
+                Keyboard.printString("Saliendo, los cambios se han guardado correctamente.");
                 rp.saveData();
                 rp.save("Repositorio.bin");
                 break;
@@ -103,54 +104,54 @@ public class MainController implements iController {
     }
 
     @Override
-    public void switchListar(int opcion) {
+    public void switchList(int opcion) {
         switch (opcion) {
             case 1:
-                RepoProjectos.listarProyectos(rp.getProyectos());
+                RepoProjectos.listProject(rp.getProyectos());
                 break;
             case 2:
-                Proyectos aux = RepoProjectos.listarProyectoporNombre(rp.getProyectos());
-                Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
-                if (aux.getCreador().getNombre().equals(ultimoUsuario.getNombre())) {
-                    Teclado.imprimirCadena(aux.toString());
-                    secondaryController.switchMenuCRUDcreador(view.menuCreador(),aux);
+                Proyectos aux = RepoProjectos.listByName(rp.getProyectos());
+                User ultimoUser = Sesion.getStartedUser();
+                if (aux.getCreador().getNombre().equals(ultimoUser.getNombre())) {
+                    Keyboard.printString(aux.toString());
+                    secondaryController.switchMenuCRUDcreator(view.menuCreator(),aux);
                 } else {
-                    Colaborador colaborador = Colaborador.encontrarColaborador(aux, ultimoUsuario);
-                    if (colaborador != null && colaborador.getUsuario().equals(ultimoUsuario.getNombre())) {
-                        Teclado.imprimirCadena(aux.toString());
-                        secondaryController.switchMenuColaborador(view.menuColaborador(), aux);
+                    Colaborator colaborator = Colaborator.findCollaborator(aux, ultimoUser);
+                    if (colaborator != null && colaborator.getUsuario().equals(ultimoUser.getNombre())) {
+                        Keyboard.printString(aux.toString());
+                        secondaryController.switchMenuColaborator(view.menuColaborator(), aux);
                     } else {
-                        Teclado.imprimirCadena("No perteneces a ningun proyecto");
+                        Keyboard.printString("No perteneces a ningun proyecto");
                     }
                 }
             case 3:
-                Usuario ultimoUsuario1 = Sesion.getUsuarioIniciado();
-                listarProyectosCreador(rp.getProyectos(),ultimoUsuario1);
+                User ultimoUser1 = Sesion.getStartedUser();
+                listProjectsCreator(rp.getProyectos(), ultimoUser1);
                 break;
             case 4:
-                Usuario ultimoUsuario2 = Sesion.getUsuarioIniciado();
-                listarProyectosColaborador(rp.getProyectos(),ultimoUsuario2);
+                User ultimoUser2 = Sesion.getStartedUser();
+                listProjectsCollaborator(rp.getProyectos(), ultimoUser2);
                 break;
             default:
                 break;
         }
     }
-    public static void listarProyectosCreador(ArrayList<Proyectos> proyectos, Usuario usuario) {
+    public static void listProjectsCreator(ArrayList<Proyectos> proyectos, User user) {
         Iterator<Proyectos> iterador = proyectos.iterator();
         while (iterador.hasNext()) {
             Proyectos proyecto = iterador.next();
-            if (proyecto.getCreador().getNombre().equals(usuario.getNombre())) {
-                Teclado.imprimirCadena(proyecto.toString());
+            if (proyecto.getCreador().getNombre().equals(user.getNombre())) {
+                Keyboard.printString(proyecto.toString());
             }
         }
     }
-    public static void listarProyectosColaborador(ArrayList<Proyectos> proyectos, Usuario usuario) {
+    public static void listProjectsCollaborator(ArrayList<Proyectos> proyectos, User user) {
         Iterator<Proyectos> iterador = proyectos.iterator();
         while (iterador.hasNext()) {
             Proyectos proyecto = iterador.next();
-            for (Colaborador colaborador : proyecto.getColaborador()) {
-                if (colaborador.getUsuario().equals(usuario.getNombre())) {
-                    Teclado.imprimirCadena(proyecto.toString());
+            for (Colaborator colaborator : proyecto.getColaborador()) {
+                if (colaborator.getUsuario().equals(user.getNombre())) {
+                    Keyboard.printString(proyecto.toString());
                 }
             }
         }

@@ -1,17 +1,19 @@
 package Model.Repository;
 
-import IO.Teclado;
+import IO.Keyboard;
 import Interfaces.iRepoProjectos;
 import Model.Proyectos.Proyectos;
 import Model.Serializador.Serializador;
 
 
-import java.io.Serializable;
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
 public class RepoProjectos extends Repository implements iRepoProjectos {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private ArrayList<Proyectos> proyectos;
     private final static String FILENAME = "Repositorio.bin";
@@ -36,7 +38,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
         return proyectos;
     }
     @Override
-    public boolean borrarProyecto(Proyectos proyecto) {
+    public boolean deleteProject(Proyectos proyecto) {
         boolean result = false;
         Iterator<Proyectos> iterator = proyectos.iterator();
         while (iterator.hasNext()) {
@@ -51,7 +53,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
     }
 
     @Override
-    public boolean crearProjecto(Proyectos proyecto) {
+    public boolean createProject(Proyectos proyecto) {
 
         boolean result = false;
         if (isProject(proyecto) == -1) {
@@ -75,15 +77,15 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
         return index;
     }
 
-    public static void listarProyectos(ArrayList<Proyectos> repoProjectos) {
+    public static void listProject(ArrayList<Proyectos> repoProjectos) {
         System.out.println(repoProjectos);
     }
 
-    public static Proyectos listarProyectoporNombre(ArrayList<Proyectos> proyectos) {
+    public static Proyectos listByName(ArrayList<Proyectos> proyectos) {
         String nombreProyecto;
         Proyectos proyectoEncontrado = null;
         do {
-            nombreProyecto = Teclado.leeString("Introduce el nombre del proyecto a buscar o pulse 'salir': ");
+            nombreProyecto = Keyboard.readString("Introduce el nombre del proyecto a buscar o pulse 'salir': ");
             for (Proyectos proyecto : proyectos) {
                 if (proyecto.getNombre().equalsIgnoreCase(nombreProyecto)) {
                     proyectoEncontrado = proyecto; // Asigna el proyecto encontrado

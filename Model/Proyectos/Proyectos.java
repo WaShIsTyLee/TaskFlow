@@ -1,46 +1,48 @@
 package Model.Proyectos;
 
-import IO.Teclado;
+import IO.Keyboard;
 import Interfaces.iProject;
-import Model.Entitys.Colaborador;
-import Model.Entitys.Usuario;
+import Model.Entitys.Colaborator;
+import Model.Entitys.User;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class Proyectos implements iProject, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     static String d = "\u001B[0m"; // Stop print the color // Parar el color establecido
     static String red = "\033[31m"; // Rojo
     static String purple = "\033[35m";
 
 
-    ArrayList<Tareas> listaTareas = new ArrayList<>();
+    ArrayList<Task> listaTareas = new ArrayList<>();
     String nombre;
     String descripcion;
     LocalDate fechaInicio;
     LocalDate fechaFinalizacion;
-    ArrayList <Colaborador> colaborador = new ArrayList<>();
-    Usuario creador;
+    ArrayList <Colaborator> colaborator = new ArrayList<>();
+    User creador;
 
-    public Usuario getCreador() {
+    public User getCreador() {
         return creador;
     }
 
-    public void setCreador(Usuario creador) {
+    public void setCreador(User creador) {
         this.creador = creador;
     }
 
-    public ArrayList<Tareas> getListaTareas() {
+    public ArrayList<Task> getListaTareas() {
         return listaTareas;
     }
 
-    public void setListaTareas(ArrayList<Tareas> listaTareas) {
+    public void setListaTareas(ArrayList<Task> listaTareas) {
         this.listaTareas = listaTareas;
     }
 
@@ -76,21 +78,21 @@ public class Proyectos implements iProject, Serializable {
         this.fechaFinalizacion = fechaFinalizacion;
     }
 
-    public ArrayList<Colaborador> getColaborador() {
-        return colaborador;
+    public ArrayList<Colaborator> getColaborador() {
+        return colaborator;
     }
 
-    public void setColaborador(ArrayList<Colaborador> colaborador) {
-        this.colaborador = colaborador;
+    public void setColaborador(ArrayList<Colaborator> colaborator) {
+        this.colaborator = colaborator;
     }
 
-    public Proyectos(ArrayList<Tareas> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborador> colaborador, Usuario creador) {
+    public Proyectos(ArrayList<Task> listaTareas, String nombre, String descripcion, LocalDate fechaInicio, LocalDate fechaFinalizacion, ArrayList<Colaborator> colaborator, User creador) {
         this.listaTareas = listaTareas;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaInicio = fechaInicio;
         this.fechaFinalizacion = fechaFinalizacion;
-        this.colaborador = colaborador;
+        this.colaborator = colaborator;
         this.creador = creador;
     }
 
@@ -116,9 +118,9 @@ public class Proyectos implements iProject, Serializable {
         sb.append("Fecha de Inicio: ").append(fechaInicio).append("\n");
         sb.append("Fecha de Finalización: ").append(fechaFinalizacion).append("\n");
         sb.append("Creador: ").append(creador).append("\n");
-        sb.append("Colaborador: ").append(colaborador).append("\n");
-        sb.append("Tareas: \n");
-        for (Tareas tarea : listaTareas) {
+        sb.append("Colaborator: ").append(colaborator).append("\n");
+        sb.append("Task: \n");
+        for (Task tarea : listaTareas) {
             sb.append("\t ").append(tarea).append("\n");
         }
         sb.append(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d+"\n");
@@ -127,20 +129,20 @@ public class Proyectos implements iProject, Serializable {
     }
 
     @Override
-    public ArrayList<Colaborador> añadirColaborador() {
-        ArrayList <Colaborador> colaborador = new ArrayList<>();
+    public ArrayList<Colaborator> addColaborator() {
+        ArrayList <Colaborator> colaborator = new ArrayList<>();
 
         boolean auxSN = true;
         while (auxSN) {
-            Colaborador colaboradoraux = new Colaborador("");
-            colaboradoraux.setUsuario(Teclado.leeString("Introduce el nombre del colaborador: "));
-            colaborador.add(colaboradoraux);
-            String respuesta = Teclado.leeString("Quieres añadir otro colaborador (s/n)? ");
+            Colaborator colaboradoraux = new Colaborator("");
+            colaboradoraux.setUsuario(Keyboard.readString("Introduce el nombre del colaborator: "));
+            colaborator.add(colaboradoraux);
+            String respuesta = Keyboard.readString("Quieres añadir otro colaborator (s/n)? ");
             auxSN = respuesta.equalsIgnoreCase("s");
         }
-        return colaborador;
+        return colaborator;
     }
-    public static LocalDate añadirFechaFin() {
+    public static LocalDate addEndDate() {
         LocalDateTime ahora = LocalDateTime.now();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -149,7 +151,7 @@ public class Proyectos implements iProject, Serializable {
         LocalDate fechaFinalizacion = null;
 
         while (fechaFinalizacion == null) {
-            String fechaFinalizacionStr = Teclado.leeString("Introduce la fecha de finalización (formato AAAA-MM-DD):");
+            String fechaFinalizacionStr = Keyboard.readString("Introduce la fecha de finalización (formato AAAA-MM-DD):");
 
             if (fechaFinalizacionStr.matches("\\d{4}-\\d{2}-\\d{2}") && fechaFinalizacionStr.compareTo(fechaActualStr) >= 0) {
                 fechaFinalizacion = LocalDate.parse(fechaFinalizacionStr, formatter);
