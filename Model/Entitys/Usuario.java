@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Usuario implements iUsuario, Serializable {/**
+public class Usuario implements iUsuario, Serializable { /**
  * Metodos relacionados con el manejo de la clase usuario dentro del progrma.
  *
  */

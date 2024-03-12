@@ -6,12 +6,16 @@ import Model.Proyectos.Proyectos;
 import Model.Serializador.Serializador;
 
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 
 public class RepoProjectos extends Repository implements iRepoProjectos {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     /**
      * Metodos relacionados con la creacion y destruccuin y guardado  de repositorios  dentro y fuera del progrma.
      *
@@ -115,6 +119,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
             nombreProyecto = Teclado.leeString("Introduce el nombre del proyecto a buscar o pulse 'salir': ");
             for (Proyectos proyecto : proyectos) {
                 if (proyecto.getNombre().equalsIgnoreCase(nombreProyecto)) {
+
                     proyectoEncontrado = proyecto; 
                 }
             }
@@ -122,9 +127,9 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
                 System.out.println("No se encontró ningún proyecto con ese nombre.");
             }
         } while (!nombreProyecto.equalsIgnoreCase("salir") && proyectoEncontrado == null);
+
         return proyectoEncontrado; 
     }
-
     @Override
     public boolean saveData() {
         return Serializador.serialize(this, FILENAME);

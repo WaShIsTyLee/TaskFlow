@@ -26,7 +26,7 @@ public class SecondaryController implements iSecondaryController {
                 break;
             case 2:
                 Teclado.imprimirCadena("Actualizando estado de la tarea...");
-                Tareas.actualizarEstadoTarea(proyectos, view.nombreTarea(), Tareas.imprimirEstadoTareas(view.estadoTareas()));
+                Tareas.actualizarEstadoTarea(proyectos, view.nombreTarea(), Tareas.imprimirEstadoTareas(Tareas.estadoTareas()));
                 break;
             case 3:
                 Teclado.imprimirCadena("Elimando la tarea...");
@@ -59,7 +59,7 @@ public class SecondaryController implements iSecondaryController {
         switch (opcion) {
             case 1:
                 Teclado.imprimirCadena("Editando estado de la tarea...");
-                Tareas.actualizarEstadoTarea(proyectos, view.nombreTarea(), Tareas.imprimirEstadoTareas(view.estadoTareas()));
+                Tareas.actualizarEstadoTarea(proyectos, view.nombreTarea(), Tareas.imprimirEstadoTareas(Tareas.estadoTareas()));
                 break;
             case 2:
                 Teclado.imprimirCadena("Añadiendo comentario...");

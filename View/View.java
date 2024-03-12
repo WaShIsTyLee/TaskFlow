@@ -244,24 +244,9 @@ public class View implements iView {
 
     }
 
-    /**
-     * imprime el menu de estado de tareas
-     * @return
-     */
-    @Override
-    public int estadoTareas() {
-        int opcion = 0;
-        Teclado.imprimirCadena("1. Tarea sin iniciar");
-        Teclado.imprimirCadena("2. Tarea en tramite");
-        Teclado.imprimirCadena("3. Tarea finalizada");
-        opcion = Teclado.leeEntero("Esperando respuesta: ");
-
-        return opcion;
-    }
-
 
     /**
-     * imprime el nombre de la tarea
+     * Imprime el nombre de la tarea
      * @return
      */
     @Override
