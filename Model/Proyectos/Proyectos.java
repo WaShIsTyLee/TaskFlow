@@ -22,13 +22,13 @@ public class Proyectos implements iProject, Serializable {
     static String purple = "\033[35m";
 
 
-    ArrayList<Task> listaTareas = new ArrayList<>();
-    String nombre;
-    String descripcion;
-    LocalDate fechaInicio;
-    LocalDate fechaFinalizacion;
-    ArrayList <Colaborator> colaborator = new ArrayList<>();
-    User creador;
+    private ArrayList<Task> listaTareas = new ArrayList<>();
+    private String nombre;
+    private String descripcion;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFinalizacion;
+    private ArrayList<Colaborator> colaborator = new ArrayList<>();
+    private User creador;
 
     public User getCreador() {
         return creador;
@@ -96,15 +96,15 @@ public class Proyectos implements iProject, Serializable {
         this.creador = creador;
     }
 
-    public Proyectos(){
-        this(null,"","",LocalDate.now(),null,null,null);
+    public Proyectos() {
+        this(null, "", "", LocalDate.now(), null, null, null);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d+"\n");
-        sb.append(red + "\n"+
+        sb.append(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d + "\n");
+        sb.append(red + "\n" +
                 "  _____                                         _                 \n" +
                 " |  __ \\                                       | |                \n" +
                 " | |__) |  _ __    ___    _   _    ___    ___  | |_    ___    ___ \n" +
@@ -112,7 +112,7 @@ public class Proyectos implements iProject, Serializable {
                 " | |      | |    | (_) | | |_| | |  __/ | (__  | |_  | (_) | \\__ \\\n" +
                 " |_|      |_|     \\___/   \\__, |  \\___|  \\___|  \\__|  \\___/  |___/\n" +
                 "                           __/ |                                  \n" +
-                "                          |___/                                   \n" + d  );
+                "                          |___/                                   \n" + d);
         sb.append("Nombre del proyecto: ").append(nombre).append("\n");
         sb.append("Descripción: ").append(descripcion).append("\n");
         sb.append("Fecha de Inicio: ").append(fechaInicio).append("\n");
@@ -123,14 +123,14 @@ public class Proyectos implements iProject, Serializable {
         for (Task tarea : listaTareas) {
             sb.append("\t ").append(tarea).append("\n");
         }
-        sb.append(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d+"\n");
+        sb.append(purple + "◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥◤▲◥" + d + "\n");
 
         return sb.toString();
     }
 
     @Override
     public ArrayList<Colaborator> addColaborator() {
-        ArrayList <Colaborator> colaborator = new ArrayList<>();
+        ArrayList<Colaborator> colaborator = new ArrayList<>();
 
         boolean auxSN = true;
         while (auxSN) {
@@ -142,6 +142,7 @@ public class Proyectos implements iProject, Serializable {
         }
         return colaborator;
     }
+
     public static LocalDate addEndDate() {
         LocalDateTime ahora = LocalDateTime.now();
 

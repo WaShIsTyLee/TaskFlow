@@ -17,12 +17,12 @@ public class Task implements Serializable {
     static View view = new View();//desapararecer
     static ArrayList<Task> tareas = new ArrayList<>();
 
-    String nombre;
-    String descripcion;
-    StateTask StateTask;
-    String comentario;
-    LocalDate fechaInicio;
-    LocalDate fechaFinaliazacion;
+    private  String nombre;
+    private  String descripcion;
+    private  StateTask StateTask;
+    private String comentario;
+    private  LocalDate fechaInicio;
+    private  LocalDate fechaFinaliazacion;
 
     public LocalDate getFechaInicio() {
         return fechaInicio;
