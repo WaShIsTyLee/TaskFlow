@@ -1,6 +1,6 @@
 package Model.Archivos;
 
-import Model.Entitys.Usuario;
+import Model.Entitys.User;
 import View.View;
 import Interfaces.iSesion;
 
@@ -9,7 +9,7 @@ public class Sesion implements iSesion {
      * Metodos relacionados con el manejo de la sesión dentro del progrma.
      */
     private static Sesion _instance;
-    private static Usuario usuarioIniciado;
+    private static User userIniciado;
 
     private Sesion() {
     }
@@ -17,16 +17,16 @@ public class Sesion implements iSesion {
     public static Sesion getInstancia() {
         if (_instance == null) {
             _instance = new Sesion();
-            _instance.iniciarSesion();
+            _instance.logIn();
         }
         return _instance;
     }
     @Override
-    public void iniciarSesion() {
-        this.usuarioIniciado = View.menuIniciarSesion();
+    public void logIn() {
+        this.userIniciado = View.menuLogin();
     }
 
-    public static Usuario getUsuarioIniciado() {
-        return usuarioIniciado;
+    public static User getUsuarioIniciado() {
+        return userIniciado;
     }
 }

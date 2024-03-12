@@ -2,11 +2,11 @@ package Interfaces;
 
 public interface iController {
 
-    void switchMenuRegistroInicioSesion(int opcion);
+    void switchMenuRegisterLogin(int opcion);
 
-    void switchEleccionCrud(int opcion);
+    void switchChoiceCrud(int opcion);
 
-    void switchListar(int opcion);
+    void switchList(int opcion);
 
      void startApp();
 
