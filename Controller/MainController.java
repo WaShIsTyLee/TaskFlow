@@ -130,24 +130,19 @@ public class MainController implements iController {
                 break;
             case 2:
                 Proyectos aux = RepoProjectos.listarProyectoporNombre(rp.getProyectos());
-                if (aux != null) {
-                    Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
-                    if (aux.getCreador().getNombre().equals(ultimoUsuario.getNombre())) {
-                        Teclado.imprimirCadena(aux.toString());
-                        secondaryController.switchMenuCRUDcreador(view.menuCreador(), aux);
-                    } else {
-                        Colaborador colaborador = Colaborador.encontrarColaborador(aux, ultimoUsuario);
-                        if (colaborador != null && colaborador.getUsuario().equals(ultimoUsuario.getNombre())) {
-                            Teclado.imprimirCadena(aux.toString());
-                            secondaryController.switchMenuColaborador(view.menuColaborador(), aux);
-                        } else {
-                            Teclado.imprimirCadena("No perteneces a ningun proyecto");
-                        }
-                    }
+                Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
+                if (aux.getCreador().getNombre().equals(ultimoUsuario.getNombre())) {
+                    Teclado.imprimirCadena(aux.toString());
+                    secondaryController.switchMenuCRUDcreador(view.menuCreador(),aux);
                 } else {
-                    Teclado.imprimirCadena("El proyecto no fue encontrado");
+                    Colaborador colaborador = Colaborador.encontrarColaborador(aux, ultimoUsuario);
+                    if (colaborador != null && colaborador.getUsuario().equals(ultimoUsuario.getNombre())) {
+                        Teclado.imprimirCadena(aux.toString());
+                        secondaryController.switchMenuColaborador(view.menuColaborador(), aux);
+                    } else {
+                        Teclado.imprimirCadena("No perteneces a ningun proyecto");
+                    }
                 }
-                break;
             case 3:
                 Usuario ultimoUsuario1 = Sesion.getUsuarioIniciado();
                 listarProyectosCreador(rp.getProyectos(), ultimoUsuario1);
