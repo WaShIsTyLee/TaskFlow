@@ -7,9 +7,11 @@ import Model.Archivos.Sesion;
 import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
 import Model.Proyectos.Proyectos;
+import Model.Proyectos.Tareas;
 import Model.Repository.RepoProjectos;
 import View.View;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -185,6 +187,8 @@ public class MainController implements iController {
             }
         }
     }
+
+
 }
 
 

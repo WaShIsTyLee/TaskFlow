@@ -1,8 +1,10 @@
 package Model.Proyectos;
 
 import IO.Teclado;
+import Interfaces.iTareas;
 import View.View;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -12,7 +14,9 @@ import static Model.Proyectos.estadoTareas.*;
 
 import static Model.Proyectos.estadoTareas.*;
 
-public class Tareas implements Serializable {
+public class Tareas implements iTareas, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     /**
      * Metodos relacionados con el manejo de las tareas dentro del progrma.
      *
@@ -216,15 +220,28 @@ public class Tareas implements Serializable {
         }
     }
 
-
     public static Tareas crearTarea() {
         Tareas aux = new Tareas();
         aux.setNombre(Teclado.leeString("Introduce nombre Tarea"));
         aux.setDescripcion(Teclado.leeString("Introduce descripcion par la tarea"));
-        aux.setEstadoTareas(imprimirEstadoTareas(view.estadoTareas()));
+        aux.setEstadoTareas(imprimirEstadoTareas(estadoTareas()));
         aux.setFechaInicio(LocalDate.now());
         aux.setFechaFinaliazacion(Proyectos.añadirFechaFin());
         Tareas.agregarTarea(aux);
         return aux;
+    }
+
+    /**
+     * imprime el menu de estado de tareas
+     * @return
+     */
+    public static int estadoTareas() {
+        int opcion = 0;
+        Teclado.imprimirCadena("1. Tarea sin iniciar");
+        Teclado.imprimirCadena("2. Tarea en tramite");
+        Teclado.imprimirCadena("3. Tarea finalizada");
+        opcion = Teclado.leeEntero("Esperando respuesta: ");
+
+        return opcion;
     }
 }

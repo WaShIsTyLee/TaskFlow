@@ -5,6 +5,7 @@ import Interfaces.iProject;
 import Model.Entitys.Colaborador;
 import Model.Entitys.Usuario;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,6 +15,8 @@ import java.util.List;
 
 
 public class Proyectos implements iProject, Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
     /**
      * Metodos relacionados con el manejo de los proyectos dentro del progrma.
      *

@@ -26,7 +26,7 @@ public interface iView {
 
     int eleccionListarProyecto();
 
-    int estadoTareas();
+
     String nombreTarea();
 
 }
