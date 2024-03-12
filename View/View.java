@@ -20,6 +20,7 @@ public class View implements iView {
     static String blue = "\033[34m"; // Blue
     static String purple = "\033[35m"; // Morado
 
+
     @Override
     public void mensajesDeInicio() {
         Teclado.imprimirCadena("");

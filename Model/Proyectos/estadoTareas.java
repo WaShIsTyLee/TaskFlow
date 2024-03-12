@@ -1,8 +1,11 @@
 package Model.Proyectos;
 
-/**
+
+public enum estadoTareas {
+    /**
+ * enum de los estaos de la tarea
  *
  */
-public enum estadoTareas {
+
     SinIniciar, EnTramite, Finalizada
 }

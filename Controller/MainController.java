@@ -20,6 +20,11 @@ public class MainController implements iController {
     RepoProjectos rp = RepoProjectos.getInstance();
     SecondaryController secondaryController = new SecondaryController();
 
+    /**
+     *
+     * @param proyecto el proyecto en cuestion
+     * @return
+     */
     private boolean esCreador(Proyectos proyecto){
         Usuario ultimoUsuario = Sesion.getUsuarioIniciado();
         boolean aux = false;
@@ -37,7 +42,10 @@ public class MainController implements iController {
         switchMenuRegistroInicioSesion(view.menuRegistroInicioSesion());
     }
 
-
+    /**
+     *
+     * @param opcion la opcion que eliges
+     */
     @Override
     public void switchMenuRegistroInicioSesion(int opcion) {
         do {
@@ -63,6 +71,10 @@ public class MainController implements iController {
         } while (opcion < 1 || opcion > 3);
     }
 
+    /**
+     *
+     * @param opcion la opcion que eliges
+     */
     @Override
     public void switchEleccionCrud(int opcion) {
         switch (opcion) {
@@ -102,6 +114,10 @@ public class MainController implements iController {
         }
     }
 
+    /**
+     *
+     * @param opcion la opcion que eliges
+     */
     @Override
     public void switchListar(int opcion) {
         switch (opcion) {
@@ -135,6 +151,12 @@ public class MainController implements iController {
                 break;
         }
     }
+
+    /**
+     *
+     * @param proyectos lista de proyectos
+     * @param usuario nombre de usuario
+     */
     public static void listarProyectosCreador(ArrayList<Proyectos> proyectos, Usuario usuario) {
         Iterator<Proyectos> iterador = proyectos.iterator();
         while (iterador.hasNext()) {
@@ -144,6 +166,12 @@ public class MainController implements iController {
             }
         }
     }
+
+    /**
+     *
+     * @param proyectos lista de proyectos
+     * @param usuario nombre de usuario
+     */
     public static void listarProyectosColaborador(ArrayList<Proyectos> proyectos, Usuario usuario) {
         Iterator<Proyectos> iterador = proyectos.iterator();
         while (iterador.hasNext()) {
