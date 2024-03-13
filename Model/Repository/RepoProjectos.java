@@ -17,7 +17,7 @@ public class RepoProjectos extends Repository implements iRepoProjectos {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Metodos relacionados con la creacion y destruccuin y guardado  de repositorios  dentro y fuera del progrma.
+     * Metodos relacionados con la creacion y destruccuin y guardado  de repositorios  dentro y fuera del programa.
      *
      */
 
